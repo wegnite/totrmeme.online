@@ -10,7 +10,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { admin } from 'better-auth/plugins';
 import { parse as parseCookies } from 'cookie';
 import type { Locale } from 'next-intl';
-import { getUrlWithLocaleInCallbackUrl } from './urls/urls';
+import { getBaseUrl, getUrlWithLocaleInCallbackUrl } from './urls/urls';
 
 /**
  * Better Auth configuration
@@ -20,6 +20,7 @@ import { getUrlWithLocaleInCallbackUrl } from './urls/urls';
  * https://www.better-auth.com/docs/reference/options
  */
 export const auth = betterAuth({
+  baseURL: getBaseUrl(),
   appName: defaultMessages.Metadata.name,
   database: drizzleAdapter(db, {
     provider: 'pg', // or "mysql", "sqlite"
@@ -152,9 +153,6 @@ export const auth = betterAuth({
     },
   },
 });
-
-// https://www.better-auth.com/docs/concepts/typescript#additional-fields
-export type Session = typeof auth.$Infer.Session;
 
 /**
  * Gets the locale from a request by parsing the cookies

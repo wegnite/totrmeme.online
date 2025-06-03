@@ -1,9 +1,12 @@
+import Container from '@/components/layout/container';
+import { BlurFadeDemo } from '@/components/magicui/example/blur-fade-example';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { websiteConfig } from '@/config/website';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
-import { MailIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { MailIcon, TwitterIcon } from 'lucide-react';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
@@ -31,6 +34,7 @@ export default async function AboutPage() {
   const t = await getTranslations('AboutPage');
 
   return (
+    <Container className="py-16 px-4">
     <div className="max-w-4xl mx-auto space-y-8">
       {/* about section */}
       <div className="relative max-w-(--breakpoint-md) mx-auto mb-24 mt-8 md:mt-16">
@@ -49,7 +53,9 @@ export default async function AboutPage() {
                 </AvatarFallback>
               </Avatar>
               <div>
-                <h1 className="text-4xl text-foreground">{t('authorName')}</h1>
+                  <h1 className="text-4xl text-foreground">
+                    {t('authorName')}
+                  </h1>
                 <p className="text-base text-muted-foreground mt-2">
                   {t('authorBio')}
                 </p>
@@ -62,7 +68,22 @@ export default async function AboutPage() {
                 {t('introduction')}
               </p>
 
-              {websiteConfig.mail.contact && (
+                <div className="flex items-center gap-4">
+                  {websiteConfig.metadata.social?.twitter && (
+                    <a
+                      href={websiteConfig.metadata.social.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        buttonVariants({ variant: 'outline' }),
+                        'rounded-lg cursor-pointer'
+                      )}
+                    >
+                      <TwitterIcon className="mr-1 size-4" />
+                      {t('followMe')}
+                    </a>
+                  )}
+                  {websiteConfig.mail.contact && (
                 <div className="flex items-center gap-4">
                   <Button className="rounded-lg cursor-pointer">
                     <MailIcon className="mr-1 size-4" />
@@ -77,5 +98,10 @@ export default async function AboutPage() {
         </div>
       </div>
     </div>
+
+        {/* image section */}
+        <BlurFadeDemo />
+      </div>
+    </Container>
   );
 }

@@ -29,6 +29,13 @@ export const websiteConfig: WebsiteConfig = {
       youtube: 'https://www.youtube.com/@MkSaaS',
     },
   },
+  routes: {
+    defaultLoginRedirect: '/dashboard',
+  },
+  auth: {
+    enableGoogleLogin: true,
+    enableGithubLogin: true,
+  },
   i18n: {
     defaultLocale: 'en',
     locales: {

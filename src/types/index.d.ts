@@ -5,6 +5,8 @@ import type { ReactNode } from 'react';
  */
 export type WebsiteConfig = {
   metadata: MetadataConfig;
+  routes: RoutesConfig;
+  auth: AuthConfig;
   i18n: I18nConfig;
   blog: BlogConfig;
   mail: MailConfig;
@@ -53,6 +55,18 @@ export interface SocialConfig {
   facebook?: string;
   instagram?: string;
   tiktok?: string;
+}
+
+/**
+ * Routes configuration
+ */
+export interface RoutesConfig {
+  defaultLoginRedirect?: string;      // The default login redirect route
+}
+
+export interface AuthConfig {
+  enableGoogleLogin?: boolean;       // Whether to enable google login
+  enableGithubLogin?: boolean;       // Whether to enable github login
 }
 
 /**

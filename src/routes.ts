@@ -1,3 +1,5 @@
+import { websiteConfig } from './config/website';
+
 /**
  * The routes for the application
  */
@@ -14,7 +16,7 @@ export enum Routes {
   Contact = '/contact',
   Waitlist = '/waitlist',
   Changelog = '/changelog',
-  Roadmap = 'https://mksaas.featurebase.app',
+  Roadmap = 'https://github.com/orgs/MkSaaSHQ/projects/1',
   CookiePolicy = '/cookie',
   PrivacyPolicy = '/privacy',
   TermsOfService = '/terms',
@@ -41,6 +43,7 @@ export enum Routes {
   AIAudio = '/ai/audio',
 
   // block routes
+  MagicuiBlocks = '/magicui',
   HeroBlocks = '/blocks/hero-section',
   LogoCloudBlocks = '/blocks/logo-cloud',
   FeaturesBlocks = '/blocks/features',
@@ -79,4 +82,5 @@ export const protectedRoutes = [
 /**
  * The default redirect path after logging in
  */
-export const DEFAULT_LOGIN_REDIRECT = Routes.Dashboard;
+export const DEFAULT_LOGIN_REDIRECT =
+  websiteConfig.routes.defaultLoginRedirect ?? Routes.Dashboard;
