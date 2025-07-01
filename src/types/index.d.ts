@@ -5,7 +5,9 @@ import type { ReactNode } from 'react';
  */
 export type WebsiteConfig = {
   metadata: MetadataConfig;
+  features: FeaturesConfig;
   routes: RoutesConfig;
+  analytics: AnalyticsConfig;
   auth: AuthConfig;
   i18n: I18nConfig;
   blog: BlogConfig;
@@ -50,11 +52,23 @@ export interface SocialConfig {
   github?: string;
   discord?: string;
   blueSky?: string;
+  mastodon?: string;
   youtube?: string;
   linkedin?: string;
   facebook?: string;
   instagram?: string;
   tiktok?: string;
+  telegram?: string;
+}
+
+/**
+ * Website features
+ */
+export interface FeaturesConfig {
+  enableDiscordWidget?: boolean;      // Whether to enable the discord widget
+  enableUpgradeCard?: boolean;        // Whether to enable the upgrade card in the sidebar
+  enableAffonsoAffiliate?: boolean;   // Whether to enable affonso affiliate
+  enablePromotekitAffiliate?: boolean;   // Whether to enable promotekit affiliate
 }
 
 /**
@@ -62,6 +76,14 @@ export interface SocialConfig {
  */
 export interface RoutesConfig {
   defaultLoginRedirect?: string;      // The default login redirect route
+}
+
+/**
+ * Analytics configuration
+ */
+export interface AnalyticsConfig {
+  enableVercelAnalytics?: boolean;    // Whether to enable vercel analytics
+  enableSpeedInsights?: boolean;      // Whether to enable speed insights
 }
 
 export interface AuthConfig {
@@ -73,8 +95,8 @@ export interface AuthConfig {
  * I18n configuration
  */
 export interface I18nConfig {
-  defaultLocale: string;
-  locales: Record<string, { flag?: string; name: string }>;
+  defaultLocale: string;              // The default locale of the website
+  locales: Record<string, { flag?: string; name: string }>; // The locales of the website
 }
 
 /**
@@ -90,7 +112,8 @@ export interface BlogConfig {
  */
 export interface MailConfig {
   provider: 'resend';                // The email provider, only resend is supported for now
-  contact?: string;                  // Sender email address, as well as recipient email address
+  fromEmail?: string;                // The email address to send from
+  supportEmail?: string;             // The email address to send support emails to
 }
 
 /**

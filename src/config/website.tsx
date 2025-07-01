@@ -24,13 +24,26 @@ export const websiteConfig: WebsiteConfig = {
     },
     social: {
       github: 'https://github.com/MkSaaSHQ',
-      twitter: 'https://x.com/mksaascom',
-      discord: 'https://discord.gg/yVwpEtTT',
-      youtube: 'https://www.youtube.com/@MkSaaS',
+      twitter: 'https://mksaas.link/twitter',
+      blueSky: 'https://mksaas.link/bsky',
+      discord: 'https://mksaas.link/discord',
+      mastodon: 'https://mksaas.link/mastodon',
+      linkedin: 'https://mksaas.link/linkedin',
+      youtube: 'https://mksaas.link/youtube',
     },
+  },
+  features: {
+    enableDiscordWidget: false,
+    enableUpgradeCard: true,
+    enableAffonsoAffiliate: false,
+    enablePromotekitAffiliate: false,
   },
   routes: {
     defaultLoginRedirect: '/dashboard',
+  },
+  analytics: {
+    enableVercelAnalytics: false,
+    enableSpeedInsights: false,
   },
   auth: {
     enableGoogleLogin: true,
@@ -55,7 +68,8 @@ export const websiteConfig: WebsiteConfig = {
   },
   mail: {
     provider: 'resend',
-    contact: 'support@mksaas.com',
+    fromEmail: 'MkSaaS <support@mksaas.com>',
+    supportEmail: 'MkSaaS <support@mksaas.com>',
   },
   newsletter: {
     provider: 'resend',

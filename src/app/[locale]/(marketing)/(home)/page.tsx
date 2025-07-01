@@ -10,6 +10,8 @@ import LogoCloud from '@/components/blocks/logo-cloud/logo-cloud';
 import PricingSection from '@/components/blocks/pricing/pricing';
 import StatsSection from '@/components/blocks/stats/stats';
 import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import { NewsletterCard } from '@/components/newsletter/newsletter-card';
+import DiscordWidget from '@/components/shared/discord-widget';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -30,7 +32,7 @@ export async function generateMetadata({
   return constructMetadata({
     title: t('title'),
     description: t('description'),
-    canonicalUrl: getUrlWithLocale('/', locale),
+    canonicalUrl: getUrlWithLocale('', locale),
   });
 }
 
@@ -46,53 +48,33 @@ export default async function HomePage(props: HomePageProps) {
   return (
     <>
       <div className="flex flex-col">
-        <div id="hero">
-          <HeroSection />
-        </div>
+        <HeroSection />
 
-        <div id="logo-cloud">
-          <LogoCloud />
-        </div>
+        <LogoCloud />
 
-        <div id="stats">
-          <StatsSection />
-        </div>
+        <StatsSection />
 
-        <div id="integration">
-          <IntegrationSection />
-        </div>
+        <IntegrationSection />
 
-        <div id="features">
-          <FeaturesSection />
-        </div>
+        <FeaturesSection />
 
-        <div id="features2">
-          <Features2Section />
-        </div>
+        <Features2Section />
 
-        <div id="features3">
-          <Features3Section />
-        </div>
+        <Features3Section />
 
-        <div id="integration2">
-          <Integration2Section />
-        </div>
+        <Integration2Section />
 
-        <div id="pricing">
-          <PricingSection />
-        </div>
+        <PricingSection />
 
-        <div id="faqs">
-          <FaqSection />
-        </div>
+        <FaqSection />
 
-        <div id="testimonials">
-          <TestimonialsSection />
-        </div>
+        <CallToActionSection />
 
-        <div id="call-to-action">
-          <CallToActionSection />
-        </div>
+        <TestimonialsSection />
+
+        <NewsletterCard />
+
+        <DiscordWidget />
       </div>
     </>
   );

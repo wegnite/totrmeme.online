@@ -6,6 +6,8 @@ import { FacebookIcon } from '@/components/icons/facebook';
 import { GitHubIcon } from '@/components/icons/github';
 import { InstagramIcon } from '@/components/icons/instagram';
 import { LinkedInIcon } from '@/components/icons/linkedin';
+import { MastodonIcon } from '@/components/icons/mastodon';
+import { TelegramIcon } from '@/components/icons/telegram';
 import { TikTokIcon } from '@/components/icons/tiktok';
 import { XTwitterIcon } from '@/components/icons/x';
 import { YouTubeIcon } from '@/components/icons/youtube';
@@ -46,6 +48,14 @@ export function getSocialLinks(): MenuItem[] {
       title: 'Bluesky',
       href: websiteConfig.metadata.social.blueSky,
       icon: <BlueskyIcon className="size-4 shrink-0" />,
+    });
+  }
+
+  if (websiteConfig.metadata.social?.mastodon) {
+    socialLinks.push({
+      title: 'Mastodon',
+      href: websiteConfig.metadata.social.mastodon,
+      icon: <MastodonIcon className="size-4 shrink-0" />,
     });
   }
 
@@ -94,6 +104,14 @@ export function getSocialLinks(): MenuItem[] {
       title: 'TikTok',
       href: websiteConfig.metadata.social.tiktok,
       icon: <TikTokIcon className="size-4 shrink-0" />,
+    });
+  }
+
+  if (websiteConfig.metadata.social?.telegram) {
+    socialLinks.push({
+      title: 'Telegram',
+      href: websiteConfig.metadata.social.telegram,
+      icon: <TelegramIcon className="size-4 shrink-0" />,
     });
   }
 

@@ -1,103 +1,73 @@
-import BlogGrid from '@/components/blog/blog-grid';
-import EmptyGrid from '@/components/shared/empty-grid';
-import CustomPagination from '@/components/shared/pagination';
-import { websiteConfig } from '@/config/website';
+import BlogGridWithPagination from '@/components/blog/blog-grid-with-pagination';
+import { LOCALES } from '@/i18n/routing';
+import { getPaginatedBlogPosts } from '@/lib/blog/data';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
-import type { NextPageProps } from '@/types/next-page-props';
-import { allCategories, allPosts } from 'content-collections';
-import type { Metadata } from 'next';
+import { allCategories } from 'content-collections';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string; locale: Locale }>;
-}): Promise<Metadata | undefined> {
-  const { slug, locale } = await params;
-
-  // Find category with matching slug and locale
-  const category = allCategories.find(
-    (category) => category.slug === slug && category.locale === locale
-  );
-
-  if (!category) {
-    console.warn(
-      `generateMetadata, category not found for slug: ${slug}, locale: ${locale}`
+// Generate all static params for SSG (locale + category)
+export function generateStaticParams() {
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of LOCALES) {
+    const localeCategories = allCategories.filter(
+      (category) => category.locale === locale
     );
-    return {};
+    for (const category of localeCategories) {
+      params.push({ locale, slug: category.slug });
+    }
   }
+  return params;
+}
 
+// Generate metadata for each static category page (locale + category)
+export async function generateMetadata({ params }: BlogCategoryPageProps) {
+  const { locale, slug } = await params;
+  const category = allCategories.find(
+    (category) => category.locale === locale && category.slug === slug
+  );
+  if (!category) {
+    notFound();
+  }
   const t = await getTranslations({ locale, namespace: 'Metadata' });
-
+  const canonicalPath = `/blog/category/${slug}`;
   return constructMetadata({
     title: `${category.name} | ${t('title')}`,
     description: category.description,
-    canonicalUrl: getUrlWithLocale('/blog/category/${slug}', locale),
+    canonicalUrl: getUrlWithLocale(canonicalPath, locale),
   });
+}
+
+interface BlogCategoryPageProps {
+  params: Promise<{
+    locale: Locale;
+    slug: string;
+  }>;
 }
 
 export default async function BlogCategoryPage({
   params,
-  searchParams,
-}: NextPageProps) {
-  const paginationSize = websiteConfig.blog.paginationSize;
-  const resolvedParams = await params;
-  const { slug, locale } = resolvedParams;
-  const resolvedSearchParams = await searchParams;
-  const { page } = (resolvedSearchParams as { [key: string]: string }) || {};
-  const currentPage = page ? Number(page) : 1;
-  const startIndex = (currentPage - 1) * paginationSize;
-  const endIndex = startIndex + paginationSize;
-
-  // Find category with matching slug and locale
+}: BlogCategoryPageProps) {
+  const { locale, slug } = await params;
   const category = allCategories.find(
-    (category) => category.slug === slug && category.locale === locale
+    (category) => category.locale === locale && category.slug === slug
   );
-
-  // Filter posts by category and locale
-  const filteredPosts = allPosts.filter((post) => {
-    if (!post.published || post.locale !== locale) {
-      return false;
-    }
-
-    // Check if any of the post's categories match the current category slug
-    return post.categories.some(
-      (category) => category && category.slug === slug
-    );
+  if (!category) {
+    notFound();
+  }
+  const currentPage = 1;
+  const { paginatedPosts, totalPages } = getPaginatedBlogPosts({
+    locale,
+    page: currentPage,
+    category: slug,
   });
-
-  // Sort posts by date (newest first)
-  const sortedPosts = [...filteredPosts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-
-  // Paginate posts
-  const paginatedPosts = sortedPosts.slice(startIndex, endIndex);
-  const totalCount = filteredPosts.length;
-  const totalPages = Math.ceil(totalCount / paginationSize);
-
-  // console.log("BlogCategoryPage, totalCount", totalCount, ", totalPages", totalPages);
-
   return (
-    <div>
-      {/* when no posts are found */}
-      {paginatedPosts.length === 0 && <EmptyGrid />}
-
-      {/* when posts are found */}
-      {paginatedPosts.length > 0 && (
-        <div>
-          <BlogGrid posts={paginatedPosts} />
-
-          <div className="mt-8 flex items-center justify-center">
-            <CustomPagination
-              routePreix={`/${locale}/blog/category/${resolvedParams.slug}`}
-              totalPages={totalPages}
-            />
-          </div>
-        </div>
-      )}
-    </div>
+    <BlogGridWithPagination
+      posts={paginatedPosts}
+      totalPages={totalPages}
+      routePrefix={`/blog/category/${slug}`}
+    />
   );
 }

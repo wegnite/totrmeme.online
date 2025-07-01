@@ -16,7 +16,7 @@ export enum Routes {
   Contact = '/contact',
   Waitlist = '/waitlist',
   Changelog = '/changelog',
-  Roadmap = 'https://github.com/orgs/MkSaaSHQ/projects/1',
+  Roadmap = 'https://mksaas.link/roadmap',
   CookiePolicy = '/cookie',
   PrivacyPolicy = '/privacy',
   TermsOfService = '/terms',
@@ -73,6 +73,7 @@ export const routesNotAllowedByLoggedInUsers = [Routes.Login, Routes.Register];
  */
 export const protectedRoutes = [
   Routes.Dashboard,
+  Routes.AdminUsers,
   Routes.SettingsProfile,
   Routes.SettingsBilling,
   Routes.SettingsSecurity,
