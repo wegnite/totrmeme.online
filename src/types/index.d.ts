@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { PricePlan } from '@/payment/types';
 
 /**
  * website config, without translations
@@ -65,10 +66,12 @@ export interface SocialConfig {
  * Website features
  */
 export interface FeaturesConfig {
-  enableDiscordWidget?: boolean;      // Whether to enable the discord widget
+  enableDiscordWidget?: boolean;      // Whether to enable the discord widget, deprecated
   enableUpgradeCard?: boolean;        // Whether to enable the upgrade card in the sidebar
   enableAffonsoAffiliate?: boolean;   // Whether to enable affonso affiliate
   enablePromotekitAffiliate?: boolean;   // Whether to enable promotekit affiliate
+  enableDatafastRevenueTrack?: boolean;   // Whether to enable datafast revenue tracking
+  enableTurnstileCaptcha?: boolean;   // Whether to enable turnstile captcha
 }
 
 /**
@@ -162,4 +165,16 @@ export type MenuItem = {
  */
 export type NestedMenuItem = MenuItem & {
   items?: MenuItem[];                // The items to display in the nested menu
+};
+
+/**
+ * Blog Category
+ *
+ * we can not pass CategoryType from server component to client component
+ * so we need to define a new type, and use it in the client component
+ */
+export type BlogCategory = {
+  slug: string;
+  name: string;
+  description: string;
 };
