@@ -61,7 +61,6 @@ export function ImagePlayground({
 
   const providerToModel = {
     replicate: selectedModels.replicate,
-    // vertex: selectedModels.vertex,
     openai: selectedModels.openai,
     fireworks: selectedModels.fireworks,
     fal: selectedModels.fal,
@@ -77,9 +76,9 @@ export function ImagePlayground({
 
   return (
     <div className="rounded-lg bg-background py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto">
         {/* header */}
-        <ImageGeneratorHeader />
+        {/* <ImageGeneratorHeader /> */}
 
         {/* input prompt */}
         <PromptInput

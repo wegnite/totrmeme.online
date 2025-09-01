@@ -9,7 +9,11 @@
     "ignoreUnknown": true,
     "ignore": [
       ".next/**",
+      ".open-next/**",
+      ".wrangler/**",
       ".cursor/**",
+      ".claude/**",
+      ".kiro/**",
       ".vscode/**",
       ".source/**",
       "node_modules/**",
@@ -21,10 +25,11 @@
       "src/components/magicui/*.tsx",
       "src/components/animate-ui/*.tsx",
       "src/components/tailark/*.tsx",
+      "src/components/ai-elements/*.tsx",
       "src/app/[[]locale]/preview/**",
       "src/payment/types.ts",
-      "src/types/index.d.ts",
-      "public/sw.js"
+      "src/credits/types.ts",
+      "src/types/index.d.ts"
     ]
   },
   "formatter": {
@@ -32,7 +37,8 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 80,
-    "formatWithErrors": true
+    "formatWithErrors": true,
+    "useEditorconfig": true
   },
   "organizeImports": {
     "enabled": true
@@ -67,7 +73,11 @@
     },
     "ignore": [
       ".next/**",
+      ".open-next/**",
+      ".wrangler/**",
       ".cursor/**",
+      ".claude/**",
+      ".kiro/**",
       ".vscode/**",
       ".source/**",
       "node_modules/**",
@@ -79,10 +89,11 @@
       "src/components/magicui/*.tsx",
       "src/components/animate-ui/*.tsx",
       "src/components/tailark/*.tsx",
+      "src/components/ai-elements/*.tsx",
       "src/app/[[]locale]/preview/**",
       "src/payment/types.ts",
-      "src/types/index.d.ts",
-      "public/sw.js"
+      "src/credits/types.ts",
+      "src/types/index.d.ts"
     ]
   },
   "javascript": {

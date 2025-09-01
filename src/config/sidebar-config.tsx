@@ -1,10 +1,12 @@
 'use client';
 
+import { isDemoWebsite } from '@/lib/demo';
 import { Routes } from '@/routes';
 import type { NestedMenuItem } from '@/types';
 import {
   BellIcon,
   CircleUserRoundIcon,
+  CoinsIcon,
   CreditCardIcon,
   LayoutDashboardIcon,
   LockKeyholeIcon,
@@ -13,6 +15,7 @@ import {
   UsersRoundIcon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { websiteConfig } from './website';
 
 /**
  * Get sidebar config with translations
@@ -28,7 +31,7 @@ export function getSidebarLinks(): NestedMenuItem[] {
   const t = useTranslations('Dashboard');
 
   // if is demo website, allow user to access admin and user pages, but data is fake
-  const isDemo = process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true';
+  const isDemo = isDemoWebsite();
 
   return [
     {
@@ -66,6 +69,16 @@ export function getSidebarLinks(): NestedMenuItem[] {
           href: Routes.SettingsBilling,
           external: false,
         },
+        ...(websiteConfig.credits.enableCredits
+          ? [
+              {
+                title: t('settings.credits.title'),
+                icon: <CoinsIcon className="size-4 shrink-0" />,
+                href: Routes.SettingsCredits,
+                external: false,
+              },
+            ]
+          : []),
         {
           title: t('settings.security.title'),
           icon: <LockKeyholeIcon className="size-4 shrink-0" />,

@@ -20,6 +20,7 @@ import {
   LogInIcon,
   MailIcon,
   MailboxIcon,
+  MessageCircleIcon,
   NewspaperIcon,
   RocketIcon,
   ShieldCheckIcon,
@@ -34,6 +35,7 @@ import {
   WandSparklesIcon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { websiteConfig } from './website';
 
 /**
  * Get navbar config with translations
@@ -59,31 +61,46 @@ export function getNavbarLinks(): NestedMenuItem[] {
       href: Routes.Pricing,
       external: false,
     },
-    {
-      title: t('blog.title'),
-      href: Routes.Blog,
-      external: false,
-    },
-    {
-      title: t('docs.title'),
-      href: Routes.Docs,
-      external: false,
-    },
+    ...(websiteConfig.blog.enable
+      ? [
+          {
+            title: t('blog.title'),
+            href: Routes.Blog,
+            external: false,
+          },
+        ]
+      : []),
+    ...(websiteConfig.docs.enable
+      ? [
+          {
+            title: t('docs.title'),
+            href: Routes.Docs,
+            external: false,
+          },
+        ]
+      : []),
     {
       title: t('ai.title'),
       items: [
-        // {
-        //   title: t('ai.items.text.title'),
-        //   description: t('ai.items.text.description'),
-        //   icon: <SquarePenIcon className="size-4 shrink-0" />,
-        //   href: Routes.AIText,
-        //   external: false,
-        // },
+        {
+          title: t('ai.items.text.title'),
+          description: t('ai.items.text.description'),
+          icon: <SquarePenIcon className="size-4 shrink-0" />,
+          href: Routes.AIText,
+          external: false,
+        },
         {
           title: t('ai.items.image.title'),
           description: t('ai.items.image.description'),
           icon: <ImageIcon className="size-4 shrink-0" />,
           href: Routes.AIImage,
+          external: false,
+        },
+        {
+          title: t('ai.items.chat.title'),
+          description: t('ai.items.chat.description'),
+          icon: <MessageCircleIcon className="size-4 shrink-0" />,
+          href: Routes.AIChat,
           external: false,
         },
         // {

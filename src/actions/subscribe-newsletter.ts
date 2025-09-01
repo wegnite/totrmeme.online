@@ -1,17 +1,14 @@
 'use server';
 
+import { actionClient } from '@/lib/safe-action';
 import { sendEmail } from '@/mail';
 import { subscribe } from '@/newsletter';
 import { getLocale } from 'next-intl/server';
-import { createSafeActionClient } from 'next-safe-action';
 import { z } from 'zod';
-
-// Create a safe action client
-const actionClient = createSafeActionClient();
 
 // Newsletter schema for validation
 const newsletterSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address' }),
+  email: z.email({ error: 'Please enter a valid email address' }),
 });
 
 // Create a safe action for newsletter subscription

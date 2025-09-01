@@ -1,30 +1,18 @@
 'use server';
 
-import { getSession } from '@/lib/server';
+import { userActionClient } from '@/lib/safe-action';
 import { unsubscribe } from '@/newsletter';
-import { createSafeActionClient } from 'next-safe-action';
 import { z } from 'zod';
-
-// Create a safe action client
-const actionClient = createSafeActionClient();
 
 // Newsletter schema for validation
 const newsletterSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address' }),
+  email: z.email({ error: 'Please enter a valid email address' }),
 });
 
 // Create a safe action for newsletter unsubscription
-export const unsubscribeNewsletterAction = actionClient
+export const unsubscribeNewsletterAction = userActionClient
   .schema(newsletterSchema)
   .action(async ({ parsedInput: { email } }) => {
-    const session = await getSession();
-    if (!session) {
-      return {
-        success: false,
-        error: 'Unauthorized',
-      };
-    }
-
     try {
       const unsubscribed = await unsubscribe(email);
 

@@ -1,72 +1,59 @@
 'use client';
 
-import { getUsersAction } from '@/actions/get-users';
 import { UsersTable } from '@/components/admin/users-table';
-import type { User } from '@/lib/auth-types';
-import { useUsersStore } from '@/stores/users-store';
+import { useUsers } from '@/hooks/use-users';
 import type { SortingState } from '@tanstack/react-table';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
-import { toast } from 'sonner';
+import {
+  parseAsIndex,
+  parseAsInteger,
+  parseAsString,
+  useQueryStates,
+} from 'nuqs';
+import { useMemo } from 'react';
 
 export function UsersPageClient() {
   const t = useTranslations('Dashboard.admin.users');
-  const [pageIndex, setPageIndex] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
-  const [search, setSearch] = useState('');
-  const [data, setData] = useState<User[]>([]);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const refreshTrigger = useUsersStore((state) => state.refreshTrigger);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        setLoading(true);
-        const result = await getUsersAction({
-          pageIndex,
-          pageSize,
-          search,
-          sorting,
-        });
+  const [{ page, pageSize, search, sortId, sortDesc }, setQueryStates] =
+    useQueryStates({
+      page: parseAsIndex.withDefault(0), // parseAsIndex adds +1 to URL, so 0-based internally, 1-based in URL
+      pageSize: parseAsInteger.withDefault(10),
+      search: parseAsString.withDefault(''),
+      sortId: parseAsString.withDefault('createdAt'),
+      sortDesc: parseAsInteger.withDefault(1),
+    });
 
-        if (result?.data?.success) {
-          setData(result.data.data?.items || []);
-          setTotal(result.data.data?.total || 0);
-        } else {
-          const errorMessage = result?.data?.error || t('error');
-          toast.error(errorMessage);
-          setData([]);
-          setTotal(0);
-        }
-      } catch (error) {
-        console.error('Failed to fetch users:', error);
-        toast.error(t('error'));
-        setData([]);
-        setTotal(0);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const sorting: SortingState = useMemo(
+    () => [{ id: sortId, desc: Boolean(sortDesc) }],
+    [sortId, sortDesc]
+  );
 
-    fetchUsers();
-  }, [pageIndex, pageSize, search, sorting, refreshTrigger]);
+  // page is already 0-based internally thanks to parseAsIndex
+  const { data, isLoading } = useUsers(page, pageSize, search, sorting);
 
   return (
-    <>
-      <UsersTable
-        data={data}
-        total={total}
-        pageIndex={pageIndex}
-        pageSize={pageSize}
-        search={search}
-        loading={loading}
-        onSearch={setSearch}
-        onPageChange={setPageIndex}
-        onPageSizeChange={setPageSize}
-        onSortingChange={setSorting}
-      />
-    </>
+    <UsersTable
+      data={data?.items || []}
+      total={data?.total || 0}
+      pageIndex={page}
+      pageSize={pageSize}
+      search={search}
+      sorting={sorting}
+      loading={isLoading}
+      onSearch={(newSearch) => setQueryStates({ search: newSearch, page: 0 })}
+      onPageChange={(newPageIndex) => setQueryStates({ page: newPageIndex })}
+      onPageSizeChange={(newPageSize) =>
+        setQueryStates({ pageSize: newPageSize, page: 0 })
+      }
+      onSortingChange={(newSorting) => {
+        if (newSorting.length > 0) {
+          setQueryStates({
+            sortId: newSorting[0].id,
+            sortDesc: newSorting[0].desc ? 1 : 0,
+          });
+        }
+      }}
+    />
   );
 }

@@ -8,15 +8,17 @@ import type { WebsiteConfig } from '@/types';
  * https://mksaas.com/docs/config/website
  */
 export const websiteConfig: WebsiteConfig = {
-  metadata: {
+  ui: {
     theme: {
       defaultTheme: 'default',
       enableSwitch: true,
     },
     mode: {
-      defaultMode: 'system',
+      defaultMode: 'dark',
       enableSwitch: true,
     },
+  },
+  metadata: {
     images: {
       ogImage: '/og.png',
       logoLight: '/logo.png',
@@ -33,12 +35,13 @@ export const websiteConfig: WebsiteConfig = {
     },
   },
   features: {
-    enableDiscordWidget: false,
     enableUpgradeCard: true,
+    enableUpdateAvatar: true,
     enableAffonsoAffiliate: false,
     enablePromotekitAffiliate: false,
     enableDatafastRevenueTrack: false,
-    enableTurnstileCaptcha: true,
+    enableCrispChat: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
+    enableTurnstileCaptcha: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
   },
   routes: {
     defaultLoginRedirect: '/dashboard',
@@ -50,6 +53,7 @@ export const websiteConfig: WebsiteConfig = {
   auth: {
     enableGoogleLogin: true,
     enableGithubLogin: true,
+    enableCredentialLogin: true,
   },
   i18n: {
     defaultLocale: 'en',
@@ -65,8 +69,12 @@ export const websiteConfig: WebsiteConfig = {
     },
   },
   blog: {
+    enable: true,
     paginationSize: 6,
     relatedPostsSize: 3,
+  },
+  docs: {
+    enable: true,
   },
   mail: {
     provider: 'resend',
@@ -74,10 +82,12 @@ export const websiteConfig: WebsiteConfig = {
     supportEmail: 'MkSaaS <support@mksaas.com>',
   },
   newsletter: {
+    enable: true,
     provider: 'resend',
     autoSubscribeAfterSignUp: true,
   },
   storage: {
+    enable: true,
     provider: 's3',
   },
   payment: {
@@ -90,6 +100,11 @@ export const websiteConfig: WebsiteConfig = {
         prices: [],
         isFree: true,
         isLifetime: false,
+        credits: {
+          enable: true,
+          amount: 50,
+          expireDays: 30,
+        },
       },
       pro: {
         id: 'pro',
@@ -111,7 +126,12 @@ export const websiteConfig: WebsiteConfig = {
         ],
         isFree: false,
         isLifetime: false,
-        recommended: true,
+        popular: true,
+        credits: {
+          enable: true,
+          amount: 1000,
+          expireDays: 30,
+        },
       },
       lifetime: {
         id: 'lifetime',
@@ -126,6 +146,70 @@ export const websiteConfig: WebsiteConfig = {
         ],
         isFree: false,
         isLifetime: true,
+        credits: {
+          enable: true,
+          amount: 1000,
+          expireDays: 30,
+        },
+      },
+    },
+  },
+  credits: {
+    enableCredits: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
+    enablePackagesForFreePlan: false,
+    registerGiftCredits: {
+      enable: true,
+      amount: 50,
+      expireDays: 30,
+    },
+    packages: {
+      basic: {
+        id: 'basic',
+        popular: false,
+        amount: 100,
+        expireDays: 30,
+        price: {
+          priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_BASIC!,
+          amount: 990,
+          currency: 'USD',
+          allowPromotionCode: true,
+        },
+      },
+      standard: {
+        id: 'standard',
+        popular: true,
+        amount: 200,
+        expireDays: 30,
+        price: {
+          priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_STANDARD!,
+          amount: 1490,
+          currency: 'USD',
+          allowPromotionCode: true,
+        },
+      },
+      premium: {
+        id: 'premium',
+        popular: false,
+        amount: 500,
+        expireDays: 30,
+        price: {
+          priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_PREMIUM!,
+          amount: 3990,
+          currency: 'USD',
+          allowPromotionCode: true,
+        },
+      },
+      enterprise: {
+        id: 'enterprise',
+        popular: false,
+        amount: 1000,
+        expireDays: 30,
+        price: {
+          priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_ENTERPRISE!,
+          amount: 6990,
+          currency: 'USD',
+          allowPromotionCode: true,
+        },
       },
     },
   },

@@ -1,9 +1,9 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { LocaleLink } from '@/i18n/navigation';
-import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 import { formatDate } from '@/lib/formatter';
 import { type BlogType, authorSource, categorySource } from '@/lib/source';
 import Image from 'next/image';
+import BlogImage from './blog-image';
 
 interface BlogCardProps {
   locale: string;
@@ -20,56 +20,39 @@ export default function BlogCard({ locale, post }: BlogCardProps) {
 
   return (
     <LocaleLink href={`/blog/${post.slugs}`} className="block h-full">
-      <div className="group flex flex-col border rounded-lg overflow-hidden h-full">
+      <div className="group flex flex-col border border-border rounded-lg overflow-hidden h-full transition-all duration-300 ease-in-out hover:border-primary hover:shadow-lg hover:shadow-primary/20">
         {/* Image container - fixed aspect ratio */}
         <div className="group overflow-hidden relative aspect-16/9 w-full">
-          {image && (
-            <div className="relative w-full h-full">
-              <Image
-                src={image}
-                alt={title || 'image for blog post'}
-                title={title || 'image for blog post'}
-                className="object-cover hover:scale-105 transition-transform duration-300"
-                placeholder="blur"
-                blurDataURL={PLACEHOLDER_IMAGE}
-                fill
-              />
+          <div className="relative w-full h-full">
+            <BlogImage
+              src={image}
+              alt={title || 'image for blog post'}
+              title={title || 'image for blog post'}
+            />
 
-              {blogCategories && blogCategories.length > 0 && (
-                <div className="absolute left-2 bottom-2 opacity-100 transition-opacity duration-300">
-                  <div className="flex flex-wrap gap-1">
-                    {blogCategories.map((category, index) => (
-                      <span
-                        key={`${category?.slugs[0]}-${index}`}
-                        className="text-xs font-medium text-white bg-black bg-opacity-50 px-2 py-1 rounded-md"
-                      >
-                        {category?.data.name}
-                      </span>
-                    ))}
-                  </div>
+            {/* categories */}
+            {blogCategories && blogCategories.length > 0 && (
+              <div className="absolute left-2 bottom-2 opacity-100 transition-opacity duration-300 z-20">
+                <div className="flex flex-wrap gap-1">
+                  {blogCategories.map((category, index) => (
+                    <span
+                      key={`${category?.slugs[0]}-${index}`}
+                      className="text-xs font-medium text-white bg-black/50 bg-opacity-50 px-2 py-1 rounded-md"
+                    >
+                      {category?.data.name}
+                    </span>
+                  ))}
                 </div>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Post info container */}
         <div className="flex flex-col justify-between p-4 flex-1">
           <div>
             {/* Post title */}
-            <h3 className="text-lg line-clamp-2 font-medium">
-              <span
-                className="bg-linear-to-r from-green-200 to-green-100
-                  bg-[length:0px_10px] bg-left-bottom bg-no-repeat
-                  transition-[background-size]
-                  duration-500
-                  hover:bg-[length:100%_3px]
-                  group-hover:bg-[length:100%_10px]
-                  dark:from-purple-800 dark:to-purple-900"
-              >
-                {title}
-              </span>
-            </h3>
+            <h3 className="text-lg line-clamp-2 font-medium">{title}</h3>
 
             {/* Post excerpt */}
             <div className="mt-2">
@@ -111,12 +94,7 @@ export function BlogCardSkeleton() {
   return (
     <div className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden h-full">
       <div className="overflow-hidden relative aspect-16/9 w-full">
-        <Image
-          src={PLACEHOLDER_IMAGE}
-          alt="Loading placeholder"
-          className="object-cover"
-          fill
-        />
+        <Skeleton className="h-full w-full rounded-b-none" />
       </div>
       <div className="p-4 flex flex-col justify-between flex-1">
         <div>

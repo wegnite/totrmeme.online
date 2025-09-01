@@ -1,7 +1,7 @@
 'use client';
 
 import { ActiveThemeProvider } from '@/components/layout/active-theme-provider';
-import { PaymentProvider } from '@/components/layout/payment-provider';
+import { QueryProvider } from '@/components/providers/query-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { websiteConfig } from '@/config/website';
 import type { Translations } from 'fumadocs-ui/i18n';
@@ -25,10 +25,11 @@ interface ProvidersProps {
  * - RootProvider: Provides the root provider for Fumadocs UI.
  * - TooltipProvider: Provides the tooltip to the app.
  * - PaymentProvider: Provides the payment state to the app.
+ * - CreditsProvider: Provides the credits state to the app.
  */
 export function Providers({ children, locale }: ProvidersProps) {
   const theme = useTheme();
-  const defaultMode = websiteConfig.metadata.mode?.defaultMode ?? 'system';
+  const defaultMode = websiteConfig.ui.mode?.defaultMode ?? 'system';
 
   // available languages that will be displayed in the docs UI
   // make sure `locale` is consistent with your i18n config
@@ -52,19 +53,19 @@ export function Providers({ children, locale }: ProvidersProps) {
   };
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme={defaultMode}
-      enableSystem={true}
-      disableTransitionOnChange
-    >
-      <ActiveThemeProvider>
-        <RootProvider theme={theme} i18n={{ locale, locales, translations }}>
-          <TooltipProvider>
-            <PaymentProvider>{children}</PaymentProvider>
-          </TooltipProvider>
-        </RootProvider>
-      </ActiveThemeProvider>
-    </ThemeProvider>
+    <QueryProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme={defaultMode}
+        enableSystem={true}
+        disableTransitionOnChange
+      >
+        <ActiveThemeProvider>
+          <RootProvider theme={theme} i18n={{ locale, locales, translations }}>
+            <TooltipProvider>{children}</TooltipProvider>
+          </RootProvider>
+        </ActiveThemeProvider>
+      </ThemeProvider>
+    </QueryProvider>
   );
 }

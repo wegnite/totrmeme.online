@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { websiteConfig } from '@/config/website';
 import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 import { uploadFileFromBrowser } from '@/storage/client';
@@ -27,6 +28,14 @@ interface UpdateAvatarCardProps {
  * Update the user's avatar
  */
 export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
+  // show nothing if storage is disabled or update avatar is disabled
+  if (
+    !websiteConfig.storage.enable ||
+    !websiteConfig.features.enableUpdateAvatar
+  ) {
+    return null;
+  }
+
   const t = useTranslations('Dashboard.settings.profile');
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | undefined>('');
@@ -128,7 +137,7 @@ export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
   return (
     <Card
       className={cn(
-        'w-full max-w-lg md:max-w-xl overflow-hidden py-0 pt-6 flex flex-col',
+        'w-full overflow-hidden py-0 pt-6 flex flex-col',
         className
       )}
     >
@@ -162,7 +171,7 @@ export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
 
         <FormError message={error} />
       </CardContent>
-      <CardFooter className="mt-auto px-6 py-4 flex justify-between items-center bg-background rounded-none">
+      <CardFooter className="mt-auto px-6 py-4 flex justify-between items-center bg-muted rounded-none">
         <p className="text-sm text-muted-foreground">
           {t('avatar.recommendation')}
         </p>

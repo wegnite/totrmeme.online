@@ -1,13 +1,10 @@
 'use server';
 
 import { websiteConfig } from '@/config/website';
+import { actionClient } from '@/lib/safe-action';
 import { sendEmail } from '@/mail';
 import { getLocale } from 'next-intl/server';
-import { createSafeActionClient } from 'next-safe-action';
 import { z } from 'zod';
-
-// Create a safe action client
-const actionClient = createSafeActionClient();
 
 /**
  * DOC: When using Zod for validation, how can I localize error messages?
@@ -17,13 +14,13 @@ const actionClient = createSafeActionClient();
 const contactFormSchema = z.object({
   name: z
     .string()
-    .min(3, { message: 'Name must be at least 3 characters' })
-    .max(30, { message: 'Name must not exceed 30 characters' }),
-  email: z.string().email({ message: 'Please enter a valid email address' }),
+    .min(3, { error: 'Name must be at least 3 characters' })
+    .max(30, { error: 'Name must not exceed 30 characters' }),
+  email: z.email({ error: 'Please enter a valid email address' }),
   message: z
     .string()
-    .min(10, { message: 'Message must be at least 10 characters' })
-    .max(500, { message: 'Message must not exceed 500 characters' }),
+    .min(10, { error: 'Message must be at least 10 characters' })
+    .max(500, { error: 'Message must not exceed 500 characters' }),
 });
 
 // Create a safe action for contact form submission

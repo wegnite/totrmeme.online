@@ -6,8 +6,7 @@ import { Logo } from '@/components/layout/logo';
 import { ModeSwitcher } from '@/components/layout/mode-switcher';
 import { NavbarMobile } from '@/components/layout/navbar-mobile';
 import { UserButton } from '@/components/layout/user-button';
-import { Button } from '@/components/ui/button';
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,8 +24,7 @@ import { cn } from '@/lib/utils';
 import { Routes } from '@/routes';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Skeleton } from '../ui/skeleton';
 import LocaleSwitcher from './locale-switcher';
 
@@ -39,8 +37,8 @@ const customNavigationMenuTriggerStyle = cn(
   'relative bg-transparent text-muted-foreground cursor-pointer',
   'hover:bg-accent hover:text-accent-foreground',
   'focus:bg-accent focus:text-accent-foreground',
-  'data-active:font-semibold data-active:bg-transparent data-active:text-foreground',
-  'data-[state=open]:bg-transparent data-[state=open]:text-foreground'
+  'data-active:font-semibold data-active:bg-transparent data-active:text-accent-foreground',
+  'data-[state=open]:bg-transparent data-[state=open]:text-accent-foreground'
 );
 
 export function Navbar({ scroll }: NavBarProps) {
@@ -63,9 +61,9 @@ export function Navbar({ scroll }: NavBarProps) {
         'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
         scroll
           ? scrolled
-            ? 'bg-background/80 backdrop-blur-md border-b supports-backdrop-filter:bg-background/60'
+            ? 'bg-muted/50 backdrop-blur-md border-b supports-backdrop-filter:bg-muted/50'
             : 'bg-transparent'
-          : 'border-b bg-background'
+          : 'border-b bg-muted/50'
       )}
     >
       <Container className="px-4">
@@ -134,10 +132,10 @@ export function Navbar({ scroll }: NavBarProps) {
                                       className={cn(
                                         'flex size-8 shrink-0 items-center justify-center transition-colors',
                                         'bg-transparent text-muted-foreground',
-                                        'group-hover:bg-transparent group-hover:text-foreground',
-                                        'group-focus:bg-transparent group-focus:text-foreground',
+                                        'group-hover:bg-transparent group-hover:text-accent-foreground',
+                                        'group-focus:bg-transparent group-focus:text-accent-foreground',
                                         isSubItemActive &&
-                                          'bg-transparent text-foreground'
+                                          'bg-transparent text-accent-foreground'
                                       )}
                                     >
                                       {subItem.icon ? subItem.icon : null}
@@ -146,10 +144,10 @@ export function Navbar({ scroll }: NavBarProps) {
                                       <div
                                         className={cn(
                                           'text-sm font-medium text-muted-foreground',
-                                          'group-hover:bg-transparent group-hover:text-foreground',
-                                          'group-focus:bg-transparent group-focus:text-foreground',
+                                          'group-hover:bg-transparent group-hover:text-accent-foreground',
+                                          'group-focus:bg-transparent group-focus:text-accent-foreground',
                                           isSubItemActive &&
-                                            'bg-transparent text-foreground'
+                                            'bg-transparent text-accent-foreground'
                                         )}
                                       >
                                         {subItem.title}
@@ -158,10 +156,10 @@ export function Navbar({ scroll }: NavBarProps) {
                                         <div
                                           className={cn(
                                             'text-sm text-muted-foreground',
-                                            'group-hover:bg-transparent group-hover:text-foreground/80',
-                                            'group-focus:bg-transparent group-focus:text-foreground/80',
+                                            'group-hover:bg-transparent group-hover:text-accent-foreground/80',
+                                            'group-focus:bg-transparent group-focus:text-accent-foreground/80',
                                             isSubItemActive &&
-                                              'bg-transparent text-foreground/80'
+                                              'bg-transparent text-accent-foreground/80'
                                           )}
                                         >
                                           {subItem.description}
@@ -172,10 +170,10 @@ export function Navbar({ scroll }: NavBarProps) {
                                       <ArrowUpRightIcon
                                         className={cn(
                                           'size-4 shrink-0 text-muted-foreground',
-                                          'group-hover:bg-transparent group-hover:text-foreground',
-                                          'group-focus:bg-transparent group-focus:text-foreground',
+                                          'group-hover:bg-transparent group-hover:text-accent-foreground',
+                                          'group-focus:bg-transparent group-focus:text-accent-foreground',
                                           isSubItemActive &&
-                                            'bg-transparent text-foreground'
+                                            'bg-transparent text-accent-foreground'
                                         )}
                                       />
                                     )}
@@ -222,7 +220,10 @@ export function Navbar({ scroll }: NavBarProps) {
             {!mounted || isPending ? (
               <Skeleton className="size-8 border rounded-full" />
             ) : currentUser ? (
-              <UserButton user={currentUser} />
+              <>
+                {/* <CreditsBalanceButton /> */}
+                <UserButton user={currentUser} />
+              </>
             ) : (
               <div className="flex items-center gap-x-4">
                 <LoginWrapper mode="modal" asChild>

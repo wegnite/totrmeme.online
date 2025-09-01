@@ -6,6 +6,8 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
@@ -25,8 +27,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import type { User } from '@/lib/auth-types';
+import { isDemoWebsite } from '@/lib/demo';
 import { formatDate } from '@/lib/formatter';
 import { getStripeDashboardCustomerUrl } from '@/lib/urls/urls';
+import { IconCaretDownFilled, IconCaretUpFilled } from '@tabler/icons-react';
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -40,7 +44,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import {
-  ArrowUpDownIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -56,6 +59,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Badge } from '../ui/badge';
 import { Label } from '../ui/label';
+import { Skeleton } from '../ui/skeleton';
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -68,21 +72,62 @@ function DataTableColumnHeader<TData, TValue>({
   title,
   className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
+  const tTable = useTranslations('Common.table');
   if (!column.getCanSort()) {
     return <div className={className}>{title}</div>;
   }
 
+  const isSorted = column.getIsSorted(); // 'asc' | 'desc' | false
+
   return (
     <div className={className}>
-      <Button
-        variant="ghost"
-        className="cursor-pointer flex items-center gap-2"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-      >
-        {title}
-        <ArrowUpDownIcon className="h-4 w-4" />
-      </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            className="cursor-pointer flex items-center gap-2 h-8 data-[state=open]:bg-accent"
+          >
+            {title}
+            {isSorted === 'asc' && <IconCaretUpFilled className="h-4 w-4" />}
+            {isSorted === 'desc' && <IconCaretDownFilled className="h-4 w-4" />}
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" className="w-36">
+          <DropdownMenuRadioGroup
+            value={isSorted === false ? '' : isSorted}
+            onValueChange={(value) => {
+              if (value === 'asc') column.toggleSorting(false);
+              else if (value === 'desc') column.toggleSorting(true);
+            }}
+          >
+            <DropdownMenuRadioItem value="asc">
+              <span className="flex items-center gap-2">
+                {tTable('ascending')}
+              </span>
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="desc">
+              <span className="flex items-center gap-2">
+                {tTable('descending')}
+              </span>
+            </DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
+  );
+}
+
+function TableRowSkeleton({ columns }: { columns: number }) {
+  return (
+    <TableRow>
+      {Array.from({ length: columns }).map((_, index) => (
+        <TableCell key={index} className="py-4">
+          <div className="flex items-center gap-2 pl-3">
+            <Skeleton className="h-6 w-full max-w-32" />
+          </div>
+        </TableCell>
+      ))}
+    </TableRow>
   );
 }
 
@@ -92,6 +137,7 @@ interface UsersTableProps {
   pageIndex: number;
   pageSize: number;
   search: string;
+  sorting?: SortingState;
   loading?: boolean;
   onSearch: (search: string) => void;
   onPageChange: (page: number) => void;
@@ -108,6 +154,7 @@ export function UsersTable({
   pageIndex,
   pageSize,
   search,
+  sorting = [{ id: 'createdAt', desc: true }],
   loading,
   onSearch,
   onPageChange,
@@ -115,12 +162,12 @@ export function UsersTable({
   onSortingChange,
 }: UsersTableProps) {
   const t = useTranslations('Dashboard.admin.users');
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const tTable = useTranslations('Common.table');
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   // show fake data in demo website
-  const isDemo = process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true';
+  const isDemo = isDemoWebsite();
 
   // Map column IDs to translation keys
   const columnIdToTranslationKey = {
@@ -145,6 +192,8 @@ export function UsersTable({
         const user = row.original;
         return <UserDetailViewer user={user} />;
       },
+      minSize: 120,
+      size: 140,
     },
     {
       accessorKey: 'email',
@@ -173,6 +222,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 180,
+      size: 200,
     },
     {
       accessorKey: 'role',
@@ -193,6 +244,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 100,
+      size: 120,
     },
     {
       accessorKey: 'createdAt',
@@ -207,6 +260,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 140,
+      size: 160,
     },
     {
       accessorKey: 'customerId',
@@ -235,6 +290,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 120,
+      size: 140,
     },
     {
       accessorKey: 'banned',
@@ -256,6 +313,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 100,
+      size: 120,
     },
     {
       accessorKey: 'banReason',
@@ -270,6 +329,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 120,
+      size: 140,
     },
     {
       accessorKey: 'banExpires',
@@ -287,6 +348,8 @@ export function UsersTable({
           </div>
         );
       },
+      minSize: 140,
+      size: 160,
     },
   ];
 
@@ -302,7 +365,6 @@ export function UsersTable({
     },
     onSortingChange: (updater) => {
       const next = typeof updater === 'function' ? updater(sorting) : updater;
-      setSorting(next);
       onSortingChange?.(next);
     },
     onColumnFiltersChange: setColumnFilters,
@@ -396,14 +458,10 @@ export function UsersTable({
             </TableHeader>
             <TableBody>
               {loading ? (
-                <TableRow>
-                  <TableCell
-                    colSpan={columns.length}
-                    className="h-24 text-center"
-                  >
-                    {t('loading')}
-                  </TableCell>
-                </TableRow>
+                // Show skeleton rows while loading
+                Array.from({ length: pageSize }).map((_, index) => (
+                  <TableRowSkeleton key={index} columns={columns.length} />
+                ))
               ) : table.getRowModel().rows?.length ? (
                 table.getRowModel().rows.map((row) => (
                   <TableRow
@@ -426,7 +484,7 @@ export function UsersTable({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    {t('noResults')}
+                    {tTable('noResults')}
                   </TableCell>
                 </TableRow>
               )}
@@ -440,7 +498,7 @@ export function UsersTable({
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">
               <Label htmlFor="rows-per-page" className="text-sm font-medium">
-                {t('rowsPerPage')}
+                {tTable('rowsPerPage')}
               </Label>
               <Select
                 value={`${pageSize}`}
@@ -466,7 +524,7 @@ export function UsersTable({
               </Select>
             </div>
             <div className="flex w-fit items-center justify-center text-sm font-medium">
-              {t('page')} {pageIndex + 1} {' / '}
+              {tTable('page')} {pageIndex + 1} {' / '}
               {Math.max(1, Math.ceil(total / pageSize))}
             </div>
             <div className="ml-auto flex items-center gap-2 lg:ml-0">
@@ -476,7 +534,7 @@ export function UsersTable({
                 onClick={() => onPageChange(0)}
                 disabled={pageIndex === 0}
               >
-                <span className="sr-only">{t('firstPage')}</span>
+                <span className="sr-only">{tTable('firstPage')}</span>
                 <ChevronsLeftIcon />
               </Button>
               <Button
@@ -486,7 +544,7 @@ export function UsersTable({
                 onClick={() => onPageChange(pageIndex - 1)}
                 disabled={pageIndex === 0}
               >
-                <span className="sr-only">{t('previousPage')}</span>
+                <span className="sr-only">{tTable('previousPage')}</span>
                 <ChevronLeftIcon />
               </Button>
               <Button
@@ -496,7 +554,7 @@ export function UsersTable({
                 onClick={() => onPageChange(pageIndex + 1)}
                 disabled={pageIndex + 1 >= Math.ceil(total / pageSize)}
               >
-                <span className="sr-only">{t('nextPage')}</span>
+                <span className="sr-only">{tTable('nextPage')}</span>
                 <ChevronRightIcon />
               </Button>
               <Button
@@ -508,7 +566,7 @@ export function UsersTable({
                 }
                 disabled={pageIndex + 1 >= Math.ceil(total / pageSize)}
               >
-                <span className="sr-only">{t('lastPage')}</span>
+                <span className="sr-only">{tTable('lastPage')}</span>
                 <ChevronsRightIcon />
               </Button>
             </div>

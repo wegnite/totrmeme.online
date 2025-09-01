@@ -1,8 +1,5 @@
 'use client';
 
-import { checkNewsletterStatusAction } from '@/actions/check-newsletter-status';
-import { subscribeNewsletterAction } from '@/actions/subscribe-newsletter';
-import { unsubscribeNewsletterAction } from '@/actions/unsubscribe-newsletter';
 import { FormError } from '@/components/shared/form-error';
 import {
   Card,
@@ -20,12 +17,18 @@ import {
   FormLabel,
 } from '@/components/ui/form';
 import { Switch } from '@/components/ui/switch';
+import { websiteConfig } from '@/config/website';
+import {
+  useNewsletterStatus,
+  useSubscribeNewsletter,
+  useUnsubscribeNewsletter,
+} from '@/hooks/use-newsletter';
 import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2Icon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -40,16 +43,28 @@ interface NewsletterFormCardProps {
  * Allows users to toggle their newsletter subscription status
  */
 export function NewsletterFormCard({ className }: NewsletterFormCardProps) {
+  // show nothing if newsletter is disabled
+  if (!websiteConfig.newsletter.enable) {
+    return null;
+  }
+
   const t = useTranslations('Dashboard.settings.notification');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>('');
-  const [isSubscriptionChecked, setIsSubscriptionChecked] = useState(false);
   const { data: session } = authClient.useSession();
   const currentUser = session?.user;
 
+  // TanStack Query hooks
+  const {
+    data: newsletterStatus,
+    isLoading: isStatusLoading,
+    error: statusError,
+  } = useNewsletterStatus(currentUser?.email);
+
+  const subscribeMutation = useSubscribeNewsletter();
+  const unsubscribeMutation = useUnsubscribeNewsletter();
+
   // Create a schema for newsletter subscription
   const formSchema = z.object({
-    subscribed: z.boolean().default(false),
+    subscribed: z.boolean(),
   });
 
   // Initialize the form
@@ -60,45 +75,12 @@ export function NewsletterFormCard({ className }: NewsletterFormCardProps) {
     },
   });
 
-  // Check subscription status on component mount
+  // Update form when newsletter status changes
   useEffect(() => {
-    const checkSubscriptionStatus = async () => {
-      if (currentUser?.email) {
-        try {
-          setIsLoading(true);
-          // Check if the user is already subscribed using server action
-          const statusResult = await checkNewsletterStatusAction({
-            email: currentUser.email,
-          });
-
-          if (statusResult?.data?.success) {
-            const isCurrentlySubscribed = statusResult.data.subscribed;
-            setIsSubscriptionChecked(isCurrentlySubscribed);
-            form.setValue('subscribed', isCurrentlySubscribed);
-          } else {
-            // Handle error from server action
-            const errorMessage = statusResult?.data?.error;
-            if (errorMessage) {
-              console.error('check subscription status error:', errorMessage);
-              setError(errorMessage);
-            }
-            // Default to not subscribed if there's an error
-            setIsSubscriptionChecked(false);
-            form.setValue('subscribed', false);
-          }
-        } catch (error) {
-          console.error('check subscription status error:', error);
-          // Default to not subscribed if there's an error
-          setIsSubscriptionChecked(false);
-          form.setValue('subscribed', false);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-    };
-
-    checkSubscriptionStatus();
-  }, [currentUser?.email, form]);
+    if (newsletterStatus) {
+      form.setValue('subscribed', newsletterStatus.subscribed);
+    }
+  }, [newsletterStatus, form]);
 
   // Check if user exists after all hooks are initialized
   if (!currentUser) {
@@ -108,69 +90,32 @@ export function NewsletterFormCard({ className }: NewsletterFormCardProps) {
   // Handle checkbox change
   const handleSubscriptionChange = async (value: boolean) => {
     if (!currentUser.email) {
-      setError(t('newsletter.emailRequired'));
+      toast.error(t('newsletter.emailRequired'));
       return;
     }
 
-    setIsLoading(true);
-    setError('');
-
     try {
       if (value) {
-        // Subscribe to newsletter using server action
-        const subscribeResult = await subscribeNewsletterAction({
-          email: currentUser.email,
-        });
-
-        if (subscribeResult?.data?.success) {
-          toast.success(t('newsletter.subscribeSuccess'));
-          setIsSubscriptionChecked(true);
-          form.setValue('subscribed', true);
-        } else {
-          const errorMessage =
-            subscribeResult?.data?.error || t('newsletter.subscribeFail');
-          toast.error(errorMessage);
-          setError(errorMessage);
-          // Reset checkbox if subscription failed
-          form.setValue('subscribed', false);
-        }
+        // Subscribe to newsletter
+        await subscribeMutation.mutateAsync(currentUser.email);
+        toast.success(t('newsletter.subscribeSuccess'));
       } else {
-        // Unsubscribe from newsletter using server action
-        const unsubscribeResult = await unsubscribeNewsletterAction({
-          email: currentUser.email,
-        });
-
-        if (unsubscribeResult?.data?.success) {
-          toast.success(t('newsletter.unsubscribeSuccess'));
-          setIsSubscriptionChecked(false);
-          form.setValue('subscribed', false);
-        } else {
-          const errorMessage =
-            unsubscribeResult?.data?.error || t('newsletter.unsubscribeFail');
-          toast.error(errorMessage);
-          setError(errorMessage);
-          // Reset checkbox if unsubscription failed
-          form.setValue('subscribed', true);
-        }
+        // Unsubscribe from newsletter
+        await unsubscribeMutation.mutateAsync(currentUser.email);
+        toast.success(t('newsletter.unsubscribeSuccess'));
       }
     } catch (error) {
       console.error('newsletter subscription error:', error);
-      setError(t('newsletter.error'));
-      toast.error(t('newsletter.error'));
+      const errorMessage =
+        error instanceof Error ? error.message : t('newsletter.error');
+      toast.error(errorMessage);
       // Reset form to previous state on error
-      form.setValue('subscribed', isSubscriptionChecked);
-    } finally {
-      setIsLoading(false);
+      form.setValue('subscribed', newsletterStatus?.subscribed || false);
     }
   };
 
   return (
-    <Card
-      className={cn(
-        'w-full max-w-lg md:max-w-xl overflow-hidden pt-6 pb-0',
-        className
-      )}
-    >
+    <Card className={cn('w-full overflow-hidden pt-6 pb-0', className)}>
       <CardHeader>
         <CardTitle className="text-lg font-semibold">
           {t('newsletter.title')}
@@ -192,7 +137,9 @@ export function NewsletterFormCard({ className }: NewsletterFormCardProps) {
                   </div>
                   <FormControl>
                     <div className="relative flex items-center">
-                      {isLoading && (
+                      {(isStatusLoading ||
+                        subscribeMutation.isPending ||
+                        unsubscribeMutation.isPending) && (
                         <Loader2Icon className="mr-2 size-4 animate-spin text-primary" />
                       )}
                       <Switch
@@ -201,8 +148,16 @@ export function NewsletterFormCard({ className }: NewsletterFormCardProps) {
                           field.onChange(checked);
                           handleSubscriptionChange(checked);
                         }}
-                        disabled={isLoading}
-                        aria-readonly={isLoading}
+                        disabled={
+                          isStatusLoading ||
+                          subscribeMutation.isPending ||
+                          unsubscribeMutation.isPending
+                        }
+                        aria-readonly={
+                          isStatusLoading ||
+                          subscribeMutation.isPending ||
+                          unsubscribeMutation.isPending
+                        }
                         className="cursor-pointer"
                       />
                     </div>
@@ -210,9 +165,15 @@ export function NewsletterFormCard({ className }: NewsletterFormCardProps) {
                 </FormItem>
               )}
             />
-            <FormError message={error} />
+            <FormError
+              message={
+                statusError?.message ||
+                subscribeMutation.error?.message ||
+                unsubscribeMutation.error?.message
+              }
+            />
           </CardContent>
-          <CardFooter className="mt-6 px-6 py-4 bg-background rounded-none">
+          <CardFooter className="mt-6 px-6 py-4 bg-muted rounded-none">
             <p className="text-sm text-muted-foreground">
               {t('newsletter.hint')}
             </p>

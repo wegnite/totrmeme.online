@@ -1,16 +1,13 @@
 'use server';
 
-import { getSession } from '@/lib/server';
+import type { User } from '@/lib/auth-types';
+import { userActionClient } from '@/lib/safe-action';
 import { getSubscriptions } from '@/payment';
-import { createSafeActionClient } from 'next-safe-action';
 import { z } from 'zod';
-
-// Create a safe action client
-const actionClient = createSafeActionClient();
 
 // Input schema
 const schema = z.object({
-  userId: z.string().min(1, { message: 'User ID is required' }),
+  userId: z.string().min(1, { error: 'User ID is required' }),
 });
 
 /**
@@ -19,38 +16,27 @@ const schema = z.object({
  * If the user has multiple subscriptions,
  * it returns the most recent active or trialing one
  */
-export const getActiveSubscriptionAction = actionClient
+export const getActiveSubscriptionAction = userActionClient
   .schema(schema)
-  .action(async ({ parsedInput }) => {
-    const { userId } = parsedInput;
+  .action(async ({ ctx }) => {
+    const currentUser = (ctx as { user: User }).user;
 
-    // Get the current user session for authorization
-    const session = await getSession();
-    if (!session) {
-      console.warn(
-        `unauthorized request to get active subscription for user ${userId}`
-      );
-      return {
-        success: false,
-        error: 'Unauthorized',
-      };
-    }
+    // Check if Stripe environment variables are configured
+    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+    const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-    // Only allow users to check their own status unless they're admins
-    if (session.user.id !== userId && session.user.role !== 'admin') {
-      console.warn(
-        `current user ${session.user.id} is not authorized to get active subscription for user ${userId}`
-      );
+    if (!stripeSecretKey || !stripeWebhookSecret) {
+      console.log('Stripe environment variables not configured, return');
       return {
-        success: false,
-        error: 'Not authorized to do this action',
+        success: true,
+        data: null, // No subscription = free plan
       };
     }
 
     try {
       // Find the user's most recent active subscription
       const subscriptions = await getSubscriptions({
-        userId: session.user.id,
+        userId: currentUser.id,
       });
       // console.log('get user subscriptions:', subscriptions);
 
@@ -64,16 +50,16 @@ export const getActiveSubscriptionAction = actionClient
 
         // If found, use it
         if (activeSubscription) {
-          console.log('find active subscription for userId:', session.user.id);
+          console.log('find active subscription for userId:', currentUser.id);
           subscriptionData = activeSubscription;
         } else {
           console.log(
             'no active subscription found for userId:',
-            session.user.id
+            currentUser.id
           );
         }
       } else {
-        console.log('no subscriptions found for userId:', session.user.id);
+        console.log('no subscriptions found for userId:', currentUser.id);
       }
 
       return {

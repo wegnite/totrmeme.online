@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
 import type { PricePlan } from '@/payment/types';
+import type { CreditPackage } from '@/credits/types';
 
 /**
  * website config, without translations
  */
 export type WebsiteConfig = {
+  ui: UiConfig;
   metadata: MetadataConfig;
   features: FeaturesConfig;
   routes: RoutesConfig;
@@ -12,19 +14,27 @@ export type WebsiteConfig = {
   auth: AuthConfig;
   i18n: I18nConfig;
   blog: BlogConfig;
+  docs: DocsConfig;
   mail: MailConfig;
   newsletter: NewsletterConfig;
   storage: StorageConfig;
   payment: PaymentConfig;
   price: PriceConfig;
+  credits: CreditsConfig;
 };
+
+/**
+ * UI configuration
+ */
+export interface UiConfig {
+  mode?: ModeConfig;
+  theme?: ThemeConfig;
+}
 
 /**
  * Website metadata
  */
 export interface MetadataConfig {
-  mode?: ModeConfig;
-  theme?: ThemeConfig;
   images?: ImagesConfig;
   social?: SocialConfig;
 }
@@ -66,8 +76,9 @@ export interface SocialConfig {
  * Website features
  */
 export interface FeaturesConfig {
-  enableDiscordWidget?: boolean;      // Whether to enable the discord widget, deprecated
+  enableCrispChat?: boolean;          // Whether to enable the crisp chat
   enableUpgradeCard?: boolean;        // Whether to enable the upgrade card in the sidebar
+  enableUpdateAvatar?: boolean;       // Whether to enable the update avatar in settings
   enableAffonsoAffiliate?: boolean;   // Whether to enable affonso affiliate
   enablePromotekitAffiliate?: boolean;   // Whether to enable promotekit affiliate
   enableDatafastRevenueTrack?: boolean;   // Whether to enable datafast revenue tracking
@@ -92,6 +103,7 @@ export interface AnalyticsConfig {
 export interface AuthConfig {
   enableGoogleLogin?: boolean;       // Whether to enable google login
   enableGithubLogin?: boolean;       // Whether to enable github login
+  enableCredentialLogin?: boolean;   // Whether to enable email/password login
 }
 
 /**
@@ -106,8 +118,16 @@ export interface I18nConfig {
  * Blog configuration
  */
 export interface BlogConfig {
+  enable: boolean;                   // Whether to enable the blog
   paginationSize: number;            // Number of posts per page
   relatedPostsSize: number;          // Number of related posts to show
+}
+
+/**
+ * Docs configuration
+ */
+export interface DocsConfig {
+  enable: boolean;                   // Whether to enable the docs
 }
 
 /**
@@ -123,6 +143,7 @@ export interface MailConfig {
  * Newsletter configuration
  */
 export interface NewsletterConfig {
+  enable: boolean;                   // Whether to enable the newsletter
   provider: 'resend';                 // The newsletter provider, only resend is supported for now
   autoSubscribeAfterSignUp?: boolean; // Whether to automatically subscribe users to the newsletter after sign up
 }
@@ -131,6 +152,7 @@ export interface NewsletterConfig {
  * Storage configuration
  */
 export interface StorageConfig {
+  enable: boolean;                   // Whether to enable the storage
   provider: 's3';                    // The storage provider, only s3 is supported for now
 }
 
@@ -146,6 +168,20 @@ export interface PaymentConfig {
  */
 export interface PriceConfig {
   plans: Record<string, PricePlan>;  // Plans indexed by ID
+}
+
+/**
+ * Credits configuration
+ */
+export interface CreditsConfig {
+  enableCredits: boolean;            // Whether to enable credits
+  enablePackagesForFreePlan: boolean;// Whether to enable purchase credits for free plan users
+  registerGiftCredits: {
+    enable: boolean;                 // Whether to enable register gift credits
+    amount: number;                  // The amount of credits to give to the user
+    expireDays?: number;             // The number of days to expire the credits, undefined means no expire
+  };
+  packages: Record<string, CreditPackage>;  // Packages indexed by ID
 }
 
 /**

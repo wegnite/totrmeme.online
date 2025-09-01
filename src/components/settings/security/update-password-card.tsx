@@ -114,7 +114,7 @@ export function UpdatePasswordCard({ className }: UpdatePasswordCardProps) {
   return (
     <Card
       className={cn(
-        'w-full max-w-lg md:max-w-xl overflow-hidden pt-6 pb-0 flex flex-col',
+        'w-full overflow-hidden pt-6 pb-0 flex flex-col',
         className
       )}
     >
@@ -206,7 +206,7 @@ export function UpdatePasswordCard({ className }: UpdatePasswordCardProps) {
             />
             <FormError message={error} />
           </CardContent>
-          <CardFooter className="mt-6 px-6 py-4 flex justify-between items-center bg-background rounded-none">
+          <CardFooter className="mt-6 px-6 py-4 flex justify-between items-center bg-muted rounded-none">
             <p className="text-sm text-muted-foreground">{t('hint')}</p>
 
             <Button

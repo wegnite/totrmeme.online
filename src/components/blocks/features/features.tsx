@@ -53,7 +53,7 @@ export default function FeaturesSection() {
 
   return (
     <section id="features" className="px-4 py-16">
-      <div className="bg-linear-to-b absolute inset-0 -z-10 sm:inset-6 sm:rounded-b-3xl dark:block dark:to-[color-mix(in_oklab,var(--color-zinc-900)_75%,var(--color-background))]" />
+      {/* <div className="bg-linear-to-b absolute inset-0 -z-10 sm:inset-6 sm:rounded-b-3xl dark:block dark:to-[color-mix(in_oklab,var(--color-zinc-900)_75%,var(--color-background))]" /> */}
       <div className="mx-auto max-w-6xl space-y-8 lg:space-y-20 dark:[--color-border:color-mix(in_oklab,var(--color-white)_10%,transparent)]">
         <HeaderSection
           title={t('title')}
@@ -66,7 +66,7 @@ export default function FeaturesSection() {
         <div className="grid gap-12 sm:px-12 lg:grid-cols-12 lg:gap-24 lg:px-0">
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div className="lg:pr-0 text-left">
-              <h3 className="text-3xl font-semibold lg:text-4xl text-gradient_indigo-purple leading-normal py-1">
+              <h3 className="text-3xl font-semibold lg:text-4xl text-foreground leading-normal py-1">
                 {t('title')}
               </h3>
               <p className="mt-4 text-muted-foreground">{t('description')}</p>

@@ -2,12 +2,10 @@
 
 import { getDb } from '@/db';
 import { user } from '@/db/schema';
+import { isDemoWebsite } from '@/lib/demo';
+import { adminActionClient } from '@/lib/safe-action';
 import { asc, desc, ilike, or, sql } from 'drizzle-orm';
-import { createSafeActionClient } from 'next-safe-action';
 import { z } from 'zod';
-
-// Create a safe action client
-const actionClient = createSafeActionClient();
 
 // Define the schema for getUsers parameters
 const getUsersSchema = z.object({
@@ -38,14 +36,19 @@ const sortFieldMap = {
 } as const;
 
 // Create a safe action for getting users
-export const getUsersAction = actionClient
+export const getUsersAction = adminActionClient
   .schema(getUsersSchema)
   .action(async ({ parsedInput }) => {
     try {
       const { pageIndex, pageSize, search, sorting } = parsedInput;
 
+      // search by name, email, and customerId
       const where = search
-        ? or(ilike(user.name, `%${search}%`), ilike(user.email, `%${search}%`))
+        ? or(
+            ilike(user.name, `%${search}%`),
+            ilike(user.email, `%${search}%`),
+            ilike(user.customerId, `%${search}%`)
+          )
         : undefined;
 
       const offset = pageIndex * pageSize;
@@ -70,7 +73,8 @@ export const getUsersAction = actionClient
       ]);
 
       // hide user data in demo website
-      if (process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true') {
+      const isDemo = isDemoWebsite();
+      if (isDemo) {
         items = items.map((item) => ({
           ...item,
           name: 'Demo User',
