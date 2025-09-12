@@ -337,6 +337,10 @@
       "pages": {
         "title": "内置页面",
         "items": {
+          "tools": {
+            "title": "精品工具",
+            "description": "Seedream 4.0 精品工具与工作流"
+          },
           "about": {
             "title": "关于我们",
             "description": "了解更多关于我们的公司、使命和价值观"
@@ -1045,6 +1049,29 @@
   "AIImagePage": {
     "title": "Seedream 4.0 图片生成器",
     "description": "Seedream 4.0 图片生成器：支持文生图与图生图，提供多风格与 2x/4x 超分"
+  },
+  "ToolsPage": {
+    "title": "Seedream 4.0 精品工具",
+    "description": "探索 Seedream 4.0 精品工具：图片生成、提示词库、风格预设与超分工作流。",
+    "cta": "打开",
+    "items": {
+      "seedreamImage": {
+        "title": "图片生成器",
+        "description": "文生图与图生图，支持风格与超分"
+      },
+      "prompts": {
+        "title": "提示词库",
+        "description": "精选提示词模板与最佳实践"
+      },
+      "styles": {
+        "title": "风格与预设",
+        "description": "摄影、插画、动漫等即用预设"
+      },
+      "upscale": {
+        "title": "超分与修复",
+        "description": "2x/4x 超分，支持面部修复"
+      }
+    }
   },
   "AIChatPage": {
     "title": "AI 聊天",

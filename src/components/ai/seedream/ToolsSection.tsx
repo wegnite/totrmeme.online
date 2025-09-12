@@ -1,0 +1,55 @@
+import { Card } from '@/components/ui/card';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Routes } from '@/routes';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+
+export async function ToolsSection() {
+  const t = await getTranslations('ToolsPage');
+
+  const items = [
+    {
+      title: t('items.seedreamImage.title'),
+      desc: t('items.seedreamImage.description'),
+      href: Routes.AIImage,
+    },
+    {
+      title: t('items.prompts.title'),
+      desc: t('items.prompts.description'),
+      href: Routes.Blog,
+    },
+    {
+      title: t('items.styles.title'),
+      desc: t('items.styles.description'),
+      href: Routes.AIImage,
+    },
+    {
+      title: t('items.upscale.title'),
+      desc: t('items.upscale.description'),
+      href: Routes.AIImage,
+    },
+  ];
+
+  return (
+    <section className="container mx-auto px-4 py-12" id="tools">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+        {t('title')}
+      </h2>
+      <p className="mt-3 text-muted-foreground max-w-3xl">{t('description')}</p>
+
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((it) => (
+          <Card key={it.title} className="p-6 space-y-2 border bg-card/50">
+            <h3 className="font-medium text-lg">{it.title}</h3>
+            <p className="text-sm text-muted-foreground">{it.desc}</p>
+            <Link href={it.href} className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'mt-3')}>
+              {t('cta')}
+            </Link>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+

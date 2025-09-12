@@ -123,6 +123,13 @@ export function getNavbarLinks(): NestedMenuItem[] {
       title: t('pages.title'),
       items: [
         {
+          title: t('pages.items.tools.title'),
+          description: t('pages.items.tools.description'),
+          icon: <WandSparklesIcon className="size-4 shrink-0" />,
+          href: Routes.Tools,
+          external: false,
+        },
+        {
           title: t('pages.items.about.title'),
           description: t('pages.items.about.description'),
           icon: <BuildingIcon className="size-4 shrink-0" />,

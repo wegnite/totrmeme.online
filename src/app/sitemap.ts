@@ -16,6 +16,7 @@ const staticRoutes = [
   '/pricing',
   '/about',
   '/contact',
+  '/tools',
   '/waitlist',
   '/changelog',
   '/privacy',

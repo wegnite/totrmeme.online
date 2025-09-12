@@ -337,6 +337,10 @@
       "pages": {
         "title": "Pages",
         "items": {
+          "tools": {
+            "title": "Curated Tools",
+            "description": "Seedream 4.0 curated tools and workflows"
+          },
           "about": {
             "title": "About",
             "description": "Learn more about our company, mission, and values"
@@ -1045,6 +1049,29 @@
   "AIImagePage": {
     "title": "Seedream 4.0 Image Generator",
     "description": "Seedream 4.0 image generator for text-to-image and image-to-image with styles and 2x/4x upscaling"
+  },
+  "ToolsPage": {
+    "title": "Seedream 4.0 Curated Tools",
+    "description": "Explore Seedream 4.0 curated tools: image generation, prompt libraries, style presets and upscaling workflows.",
+    "cta": "Open",
+    "items": {
+      "seedreamImage": {
+        "title": "Image Generator",
+        "description": "Text-to-image and image-to-image with styles and upscaling"
+      },
+      "prompts": {
+        "title": "Prompt Library",
+        "description": "Curated prompt templates and best practices"
+      },
+      "styles": {
+        "title": "Styles & Presets",
+        "description": "Ready-to-use presets for photography, illustration, anime"
+      },
+      "upscale": {
+        "title": "Upscale & Face Fix",
+        "description": "2x/4x super-resolution with optional face refinements"
+      }
+    }
   },
   "AIChatPage": {
     "title": "AI Chat",
