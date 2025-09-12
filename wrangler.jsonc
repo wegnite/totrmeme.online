@@ -79,7 +79,7 @@
    */
   "r2_buckets": [
     {
-      "binding": "OPEN_NEXT_CACHE",
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
       "bucket_name": "template4ai"
     }
   ]
