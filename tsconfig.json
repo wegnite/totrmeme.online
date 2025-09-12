@@ -28,6 +28,7 @@
   "exclude": [
     "node_modules",
     "public/ai-tool-homepage",
-    "public/ai-tool-homepage/**"
+    "public/ai-tool-homepage/**",
+    "open-next.config.ts"
   ]
 }
