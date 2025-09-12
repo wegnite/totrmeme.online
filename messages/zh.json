@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "name": "MkSaaS Demo",
-    "title": "MkSaaS - 最好的 AI SaaS 模板",
-    "description": "MkSaaS 是构建 AI SaaS 的最佳模板，使用 MkSaaS 可以在几天内轻松构建您的 AI SaaS，简单且毫不费力。"
+    "name": "Seedream 4.0 图像工作室",
+    "title": "Seedream 4.0 AI 图片生成器 — 文生图与图生图",
+    "description": "使用 Seedream 4.0 生成高质量图片：文生图/图生图、风格预设、2x/4x 超分，快速稳定，适合生产使用。"
   },
   "Common": {
     "login": "登录",
@@ -272,7 +272,7 @@
   },
   "BlogPage": {
     "title": "博客",
-    "description": "来自我们的团队最新新闻和更新",
+    "description": "Seedream 4.0 教程、提示词、对比与应用案例",
     "subtitle": "来自我们的团队最新新闻和更新",
     "author": "作者",
     "categories": "分类",
@@ -318,7 +318,7 @@
           },
           "image": {
             "title": "AI 图像",
-            "description": "展示如何使用 AI 生成精美图像"
+            "description": "Seedream 4.0 图片生成器：文生图、图生图、风格预设与超分修复"
           },
           "chat": {
             "title": "AI 聊天",
@@ -748,8 +748,8 @@
     }
   },
   "HomePage": {
-    "title": "MkSaaS",
-    "description": "使用 MkSaaS 在几天内轻松构建您的 AI SaaS 产品",
+    "title": "Seedream 4.0 图像工作室",
+    "description": "Seedream 4.0 图片生成器：支持文生图与图生图，提供风格预设与 2x/4x 超分，快速稳定，适合生产使用。",
     "hero": {
       "title": "使用 MkSaaS 轻松构建您的 AI SaaS 产品",
       "description": "MkSaaS 是构建 AI SaaS 的最佳模板，内置 AI、身份验证、全球支付、博客、文档、邮件订阅、SEO、多彩主题、丰富组件等。",
@@ -1043,8 +1043,8 @@
     }
   },
   "AIImagePage": {
-    "title": "AI 图片",
-    "description": "MkSaaS 让您在几天内轻松构建您的 AI SaaS，简单且毫不费力"
+    "title": "Seedream 4.0 图片生成器",
+    "description": "Seedream 4.0 图片生成器：支持文生图与图生图，提供多风格与 2x/4x 超分"
   },
   "AIChatPage": {
     "title": "AI 聊天",
