@@ -29,7 +29,18 @@ const intlMiddleware = createMiddleware(routing);
  */
 export default async function middleware(req: NextRequest) {
   const { nextUrl } = req;
-  console.log('>> middleware start, pathname', nextUrl.pathname);
+  // console.log('>> middleware start, pathname', nextUrl.pathname);
+
+  // Force HTTPS redirect in production
+  if (
+    process.env.NODE_ENV === 'production' &&
+    nextUrl.protocol === 'http:' &&
+    !nextUrl.hostname.includes('localhost')
+  ) {
+    const httpsUrl = nextUrl.clone();
+    httpsUrl.protocol = 'https:';
+    return NextResponse.redirect(httpsUrl, 301);
+  }
 
   // Handle internal docs link redirection for internationalization
   // Check if this is a docs page without locale prefix
@@ -45,10 +56,7 @@ export default async function middleware(req: NextRequest) {
       LOCALES.includes(preferredLocale)
     ) {
       const localizedPath = `/${preferredLocale}${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
-      console.log(
-        '<< middleware end, redirecting docs link to preferred locale:',
-        localizedPath
-      );
+      // console.log('<< middleware end, redirecting docs link to preferred locale:', localizedPath);
       return NextResponse.redirect(new URL(localizedPath, nextUrl));
     }
   }
@@ -79,9 +87,7 @@ export default async function middleware(req: NextRequest) {
       new RegExp(`^${route}$`).test(pathnameWithoutLocale)
     );
     if (isNotAllowedRoute) {
-      console.log(
-        '<< middleware end, not allowed route, already logged in, redirecting to dashboard'
-      );
+      // console.log('<< middleware end, not allowed route, already logged in, redirecting to dashboard');
       return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     }
   }
@@ -98,18 +104,30 @@ export default async function middleware(req: NextRequest) {
       callbackUrl += nextUrl.search;
     }
     const encodedCallbackUrl = encodeURIComponent(callbackUrl);
-    console.log(
-      '<< middleware end, not logged in, redirecting to login, callbackUrl',
-      callbackUrl
-    );
+    // console.log('<< middleware end, not logged in, redirecting to login, callbackUrl', callbackUrl);
     return NextResponse.redirect(
       new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl)
     );
   }
 
   // Apply intlMiddleware for all routes
-  console.log('<< middleware end, applying intlMiddleware');
-  return intlMiddleware(req);
+  // console.log('<< middleware end, applying intlMiddleware');
+  const response = intlMiddleware(req);
+  
+  // Add security headers for SEO and security
+  if (response) {
+    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
+    response.headers.set('X-XSS-Protection', '1; mode=block');
+    
+    // Force HTTPS with Strict Transport Security
+    if (process.env.NODE_ENV === 'production') {
+      response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    }
+  }
+  
+  return response;
 }
 
 /**

@@ -3,35 +3,17 @@
 import { Routes } from '@/routes';
 import type { NestedMenuItem } from '@/types';
 import {
-  AudioLinesIcon,
   BuildingIcon,
-  ChartNoAxesCombinedIcon,
-  CircleDollarSignIcon,
-  CircleHelpIcon,
   ComponentIcon,
   CookieIcon,
   FileTextIcon,
-  FilmIcon,
   FlameIcon,
-  FootprintsIcon,
-  ImageIcon,
   ListChecksIcon,
-  LockKeyholeIcon,
-  LogInIcon,
   MailIcon,
   MailboxIcon,
-  MessageCircleIcon,
-  NewspaperIcon,
   RocketIcon,
   ShieldCheckIcon,
-  SnowflakeIcon,
-  SplitSquareVerticalIcon,
-  SquareCodeIcon,
   SquareKanbanIcon,
-  SquarePenIcon,
-  ThumbsUpIcon,
-  UserPlusIcon,
-  UsersIcon,
   WandSparklesIcon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -52,13 +34,18 @@ export function getNavbarLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: t('features.title'),
-      href: Routes.Features,
+      title: 'Play Thwordle',
+      href: '/',
       external: false,
     },
     {
-      title: t('pricing.title'),
-      href: Routes.Pricing,
+      title: 'How to Play',
+      href: '/#how-to-play',
+      external: false,
+    },
+    {
+      title: 'Daily Puzzles',
+      href: '/#daily-puzzles',
       external: false,
     },
     ...(websiteConfig.blog.enable
@@ -70,53 +57,44 @@ export function getNavbarLinks(): NestedMenuItem[] {
           },
         ]
       : []),
-    ...(websiteConfig.docs.enable
-      ? [
-          {
-            title: t('docs.title'),
-            href: Routes.Docs,
-            external: false,
-          },
-        ]
-      : []),
     {
-      title: t('ai.title'),
+      title: 'Game Themes',
       items: [
         {
-          title: t('ai.items.text.title'),
-          description: t('ai.items.text.description'),
-          icon: <SquarePenIcon className="size-4 shrink-0" />,
-          href: Routes.AIText,
+          title: 'Harry Potter Wordle',
+          description: 'Magic-themed word puzzles from the wizarding world',
+          icon: <WandSparklesIcon className="size-4 shrink-0" />,
+          href: '/#harry-potter',
           external: false,
         },
         {
-          title: t('ai.items.image.title'),
-          description: t('ai.items.image.description'),
-          icon: <ImageIcon className="size-4 shrink-0" />,
-          href: Routes.AIImage,
+          title: 'LOTR Word Game',
+          description: 'Middle-earth vocabulary challenges',
+          icon: <FlameIcon className="size-4 shrink-0" />,
+          href: '/#lotr',
           external: false,
         },
         {
-          title: t('ai.items.chat.title'),
-          description: t('ai.items.chat.description'),
-          icon: <MessageCircleIcon className="size-4 shrink-0" />,
-          href: Routes.AIChat,
+          title: 'Greek Mythology',
+          description: 'Ancient gods and heroes word puzzles',
+          icon: <ShieldCheckIcon className="size-4 shrink-0" />,
+          href: '/#greek-mythology',
           external: false,
         },
-        // {
-        //   title: t('ai.items.video.title'),
-        //   description: t('ai.items.video.description'),
-        //   icon: <FilmIcon className="size-4 shrink-0" />,
-        //   href: Routes.AIVideo,
-        //   external: false,
-        // },
-        // {
-        //   title: t('ai.items.audio.title'),
-        //   description: t('ai.items.audio.description'),
-        //   icon: <AudioLinesIcon className="size-4 shrink-0" />,
-        //   href: Routes.AIAudio,
-        //   external: false,
-        // },
+        {
+          title: 'Marvel Wordle',
+          description: 'Superhero-themed word challenges',
+          icon: <RocketIcon className="size-4 shrink-0" />,
+          href: '/#marvel',
+          external: false,
+        },
+        {
+          title: 'DC Comics',
+          description: 'Justice League word puzzles',
+          icon: <ComponentIcon className="size-4 shrink-0" />,
+          href: '/#dc-comics',
+          external: false,
+        },
       ],
     },
     {

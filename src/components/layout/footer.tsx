@@ -35,8 +35,8 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 {t('Marketing.footer.tagline')}
               </p>
 
-              {/* social links */}
-              <div className="flex items-center gap-4 py-2">
+              {/* social links - commented out as requested */}
+              {/* <div className="flex items-center gap-4 py-2">
                 <div className="flex items-center gap-2">
                   {socialLinks?.map((link) => (
                     <a
@@ -53,7 +53,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                     </a>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* built with button */}
               <BuiltWithButton />
@@ -91,14 +91,38 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
       </Container>
 
       <div className="border-t py-8">
-        <Container className="px-4 flex items-center justify-between gap-x-4">
-          <span className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} {t('Metadata.name')} All Rights
-            Reserved.
-          </span>
+        <Container className="px-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <span className="text-muted-foreground text-sm">
+              &copy; {new Date().getFullYear()} {t('Metadata.name')} All Rights
+              Reserved.
+            </span>
 
-          <div className="flex items-center gap-x-4">
-            <ModeSwitcherHorizontal />
+            {/* Legal Links */}
+            <div className="flex flex-wrap items-center gap-4 text-sm">
+              <LocaleLink 
+                href="/privacy-policy" 
+                className="text-muted-foreground hover:text-primary"
+              >
+                {t('Marketing.footer.legal.items.privacyPolicy')}
+              </LocaleLink>
+              <LocaleLink 
+                href="/terms-of-service" 
+                className="text-muted-foreground hover:text-primary"
+              >
+                {t('Marketing.footer.legal.items.termsOfService')}
+              </LocaleLink>
+              <LocaleLink 
+                href="/cookie-policy" 
+                className="text-muted-foreground hover:text-primary"
+              >
+                {t('Marketing.footer.legal.items.cookiePolicy')}
+              </LocaleLink>
+            </div>
+
+            <div className="flex items-center gap-x-4">
+              <ModeSwitcherHorizontal />
+            </div>
           </div>
         </Container>
       </div>

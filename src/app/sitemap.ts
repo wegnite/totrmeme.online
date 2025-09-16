@@ -9,23 +9,19 @@ import { getBaseUrl } from '../lib/urls/urls';
 type Href = Parameters<typeof getLocalePathname>[0]['href'];
 
 /**
- * static routes for sitemap, you may change the routes for your own
+ * static routes for sitemap - optimized for Thwordle game high-value pages
  */
 const staticRoutes = [
-  '/',
-  '/pricing',
-  '/about',
-  '/contact',
-  '/tools',
-  '/waitlist',
-  '/changelog',
-  '/privacy',
-  '/terms',
-  '/cookie',
-  '/auth/login',
-  '/auth/register',
-  ...(websiteConfig.blog.enable ? ['/blog'] : []),
-  ...(websiteConfig.docs.enable ? ['/docs'] : []),
+  '/', // Homepage - main game
+  '/about', // About the game
+  '/contact', // Contact support
+  '/changelog', // Game updates
+  '/privacy', // Privacy policy
+  '/terms', // Terms of service
+  '/cookie', // Cookie policy
+  // Temporarily disabled blog and docs to avoid 404 pages in sitemap
+  // ...(websiteConfig.blog.enable ? ['/blog'] : []), // Game blog/news
+  // ...(websiteConfig.docs.enable ? ['/docs'] : []), // Game documentation
 ];
 
 /**
@@ -49,7 +45,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // add blog related routes if enabled
+  // Blog routes temporarily disabled to avoid 404 pages in sitemap
+  // TODO: Re-enable when blog content is ready for Thwordle game
+  /*
   if (websiteConfig.blog.enable) {
     // add categories
     sitemapList.push(
@@ -134,8 +132,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       )
     );
   }
+  */
 
-  // add docs related routes if enabled
+  // Docs routes temporarily disabled to avoid 404 pages in sitemap
+  // TODO: Re-enable when docs content is relevant for Thwordle game
+  /*
   if (websiteConfig.docs.enable) {
     const docsParams = source.generateParams();
     sitemapList.push(
@@ -149,6 +150,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       )
     );
   }
+  */
 
   return sitemapList;
 }

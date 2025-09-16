@@ -28,23 +28,23 @@ export default async function ToolsPage() {
   const t = await getTranslations('ToolsPage');
   const items = [
     {
-      title: t('items.seedreamImage.title'),
-      desc: t('items.seedreamImage.description'),
+      title: t('items.wordGame.title'),
+      desc: t('items.wordGame.description'),
       href: Routes.AIImage,
     },
     {
-      title: t('items.prompts.title'),
-      desc: t('items.prompts.description'),
+      title: t('items.wordLists.title'),
+      desc: t('items.wordLists.description'),
       href: Routes.Blog,
     },
     {
-      title: t('items.styles.title'),
-      desc: t('items.styles.description'),
+      title: t('items.statistics.title'),
+      desc: t('items.statistics.description'),
       href: Routes.AIImage,
     },
     {
-      title: t('items.upscale.title'),
-      desc: t('items.upscale.description'),
+      title: t('items.hints.title'),
+      desc: t('items.hints.description'),
       href: Routes.AIImage,
     },
   ];

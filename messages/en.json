@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "name": "Seedream 4.0 Image Studio",
-    "title": "Seedream 4.0 AI Image Generator — Text-to-Image & Image-to-Image",
-    "description": "Generate stunning visuals with Seedream 4.0 — text-to-image and image-to-image with styles, presets, and 2x/4x upscaling. Fast, precise, production-ready."
+    "name": "Thwordle",
+    "title": "Thwordle - Free Daily Word Puzzle Game Online",
+    "description": "Play Thwordle, the ultimate thematic word puzzle game! Daily challenges with Harry Potter, LOTR, Marvel themes. Guess 4-7 letter words, unlimited attempts!"
   },
   "Common": {
     "login": "Log in",
@@ -143,10 +143,10 @@
   },
   "AboutPage": {
     "title": "About",
-    "description": "This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better.",
-    "authorName": "MkSaaS",
-    "authorBio": "AI SaaS Boilerplate",
-    "introduction": "👋 Hi there! This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better. If you have any questions, welcome to contact me.",
+    "description": "Thwordle is a daily word puzzle game that challenges your vocabulary and deduction skills.",
+    "authorName": "Thwordle",
+    "authorBio": "Word Puzzle Game",
+    "introduction": "👋 Welcome to Thwordle! Challenge yourself with our daily word puzzle game that tests your vocabulary and problem-solving skills. If you have any questions or feedback, feel free to contact us.",
     "talkWithMe": "Talk with me",
     "followMe": "Follow me on X"
   },
@@ -272,7 +272,7 @@
   },
   "BlogPage": {
     "title": "Blog",
-    "description": "Seedream 4.0 tutorials, prompts, comparisons, and use cases",
+    "description": "Thwordle tips, strategies, word lists, and game guides",
     "subtitle": "Latest news and updates from our team",
     "author": "Author",
     "categories": "Categories",
@@ -291,7 +291,7 @@
     "previousPage": "Previous",
     "nextPage": "Next",
     "chooseLanguage": "Select language",
-    "title": "MkSaaS Docs",
+    "title": "Thwordle Docs",
     "homepage": "Homepage",
     "blog": "Blog"
   },
@@ -318,7 +318,7 @@
           },
           "image": {
             "title": "AI Image",
-            "description": "Seedream 4.0 image generator: text-to-image, image-to-image, styles, and upscaling"
+            "description": "Thwordle daily word puzzle: guess the word, improve vocabulary, compete with friends"
           },
           "chat": {
             "title": "AI Chat",
@@ -339,7 +339,7 @@
         "items": {
           "tools": {
             "title": "Curated Tools",
-            "description": "Seedream 4.0 curated tools and workflows"
+            "description": "Thwordle game tools and word lists"
           },
           "about": {
             "title": "About",
@@ -436,7 +436,7 @@
       }
     },
     "footer": {
-      "tagline": "Make AI SaaS in days, simply and effortlessly",
+      "tagline": "Challenge your mind with daily word puzzles",
       "product": {
         "title": "Product",
         "items": {
@@ -752,12 +752,12 @@
     }
   },
   "HomePage": {
-    "title": "Seedream 4.0 Image Studio",
-    "description": "Seedream 4.0 AI image generator for text-to-image and image-to-image with styles, presets, and 2x/4x upscaling.",
+    "title": "Thwordle - Daily Word Puzzle",
+    "description": "Challenge your vocabulary with Thwordle, the daily word puzzle game that tests your deduction skills.",
     "hero": {
-      "title": "Make AI SaaS in days, simply and effortlessly",
-      "description": "The is a demo website built with MkSaaS, a Next.js SaaS boilerplate to help you build your AI SaaS faster and better.",
-      "introduction": "Introducing MkSaaS Boilerplate",
+      "title": "Master words, challenge your mind",
+      "description": "Thwordle is the ultimate daily word puzzle game that challenges your vocabulary and deduction skills.",
+      "introduction": "Introducing Thwordle",
       "primary": "Get Started",
       "secondary": "See Demo"
     },
@@ -976,8 +976,8 @@
     },
     "stats": {
       "title": "Stats",
-      "subtitle": "MkSaaS in numbers",
-      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "subtitle": "Thwordle in numbers",
+      "description": "Thwordle brings daily word challenges to puzzle enthusiasts worldwide",
       "items": {
         "item-1": {
           "title": "Stars on GitHub"
@@ -991,15 +991,15 @@
       }
     },
     "calltoaction": {
-      "title": "Start Building",
-      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "title": "Start Playing",
+      "description": "Start your daily word challenge with Thwordle today",
       "primaryButton": "Get Started",
       "secondaryButton": "See Demo"
     }
   },
   "AITextPage": {
-    "title": "AI Text Demo",
-    "description": "Analyze web content with AI to extract key information, features, and insights",
+    "title": "Word Analysis Tools",
+    "description": "Discover word patterns, etymology, and vocabulary insights",
     "content": "Web Content Analyzer",
     "subtitle": "Enter a website URL to get AI-powered analysis of its content",
     "analyzer": {
@@ -1047,29 +1047,29 @@
     }
   },
   "AIImagePage": {
-    "title": "Seedream 4.0 Image Generator",
-    "description": "Seedream 4.0 image generator for text-to-image and image-to-image with styles and 2x/4x upscaling"
+    "title": "Thwordle Game",
+    "description": "Play the daily word puzzle game with hints, statistics, and achievements"
   },
   "ToolsPage": {
-    "title": "Seedream 4.0 Curated Tools",
-    "description": "Explore Seedream 4.0 curated tools: image generation, prompt libraries, style presets and upscaling workflows.",
+    "title": "Thwordle Game Tools",
+    "description": "Explore Thwordle tools: word lists, hints, statistics, and vocabulary builders.",
     "cta": "Open",
     "items": {
-      "seedreamImage": {
-        "title": "Image Generator",
-        "description": "Text-to-image and image-to-image with styles and upscaling"
+      "wordGame": {
+        "title": "Daily Puzzle",
+        "description": "Play today's Thwordle challenge with 6 guesses"
       },
-      "prompts": {
-        "title": "Prompt Library",
-        "description": "Curated prompt templates and best practices"
+      "wordLists": {
+        "title": "Word Lists",
+        "description": "Curated word collections and vocabulary builders"
       },
-      "styles": {
-        "title": "Styles & Presets",
-        "description": "Ready-to-use presets for photography, illustration, anime"
+      "statistics": {
+        "title": "Game Stats",
+        "description": "Track your progress, streaks, and achievements"
       },
-      "upscale": {
-        "title": "Upscale & Face Fix",
-        "description": "2x/4x super-resolution with optional face refinements"
+      "hints": {
+        "title": "Hints & Tips",
+        "description": "Strategies and techniques to improve your gameplay"
       }
     }
   },

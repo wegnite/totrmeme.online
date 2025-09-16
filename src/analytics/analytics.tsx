@@ -3,6 +3,7 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { AhrefsAnalytics } from './ahrefs-analytics';
 import DataFastAnalytics from './data-fast-analytics';
+import GoogleAdSense from './google-adsense';
 import GoogleAnalytics from './google-analytics';
 import OpenPanelAnalytics from './open-panel-analytics';
 import { PlausibleAnalytics } from './plausible-analytics';
@@ -27,6 +28,9 @@ export function Analytics() {
     <>
       {/* google analytics */}
       <GoogleAnalytics />
+
+      {/* google adsense */}
+      <GoogleAdSense />
 
       {/* umami analytics */}
       <UmamiAnalytics />

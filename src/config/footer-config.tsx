@@ -20,32 +20,82 @@ export function getFooterLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: t('product.title'),
+      title: 'Thwordle Game',
       items: [
         {
-          title: t('product.items.features'),
-          href: Routes.Features,
+          title: 'Play Thwordle',
+          href: '/',
           external: false,
         },
         {
-          title: t('product.items.pricing'),
-          href: Routes.Pricing,
+          title: 'How to Play',
+          href: '/#how-to-play',
           external: false,
         },
         {
-          title: t('product.items.faq'),
-          href: Routes.FAQ,
+          title: 'Daily Word Puzzles',
+          href: '/#daily-puzzles',
+          external: false,
+        },
+        {
+          title: 'Thwordle Statistics',
+          href: '/#stats',
           external: false,
         },
       ],
     },
     {
-      title: t('resources.title'),
+      title: 'Word Game Themes',
       items: [
+        {
+          title: 'Harry Potter Wordle',
+          href: '/#harry-potter',
+          external: false,
+        },
+        {
+          title: 'LOTR Word Game',
+          href: '/#lotr',
+          external: false,
+        },
+        {
+          title: 'Greek Mythology Puzzle',
+          href: '/#greek-mythology',
+          external: false,
+        },
+        {
+          title: 'Marvel Wordle',
+          href: '/#marvel',
+          external: false,
+        },
+        {
+          title: 'DC Comics Word Game',
+          href: '/#dc-comics',
+          external: false,
+        },
+      ],
+    },
+    {
+      title: 'Game Help',
+      items: [
+        {
+          title: 'How to Play Thwordle',
+          href: '/#how-to-play',
+          external: false,
+        },
+        {
+          title: 'Thwordle Tips & Strategies',
+          href: '/#tips',
+          external: false,
+        },
+        {
+          title: 'Word Game FAQ',
+          href: '/#faq',
+          external: false,
+        },
         ...(websiteConfig.blog.enable
           ? [
               {
-                title: t('resources.items.blog'),
+                title: 'Thwordle Blog',
                 href: Routes.Blog,
                 external: false,
               },
@@ -54,39 +104,34 @@ export function getFooterLinks(): NestedMenuItem[] {
         ...(websiteConfig.docs.enable
           ? [
               {
-                title: t('resources.items.docs'),
+                title: 'Game Documentation',
                 href: Routes.Docs,
                 external: false,
               },
             ]
           : []),
-        {
-          title: t('resources.items.changelog'),
-          href: Routes.Changelog,
-          external: false,
-        },
-        {
-          title: t('resources.items.roadmap'),
-          href: Routes.Roadmap,
-          external: true,
-        },
       ],
     },
     {
-      title: t('company.title'),
+      title: 'About Thwordle',
       items: [
         {
-          title: t('company.items.about'),
+          title: 'About the Game',
           href: Routes.About,
           external: false,
         },
         {
-          title: t('company.items.contact'),
+          title: 'Contact Support',
           href: Routes.Contact,
           external: false,
         },
         {
-          title: t('company.items.waitlist'),
+          title: 'Game Updates',
+          href: Routes.Changelog,
+          external: false,
+        },
+        {
+          title: 'Feature Requests',
           href: Routes.Waitlist,
           external: false,
         },
