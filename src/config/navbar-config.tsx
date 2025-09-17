@@ -25,7 +25,7 @@ import { websiteConfig } from './website';
  * NOTICE: used in client components only
  *
  * docs:
- * https://mksaas.com/docs/config/navbar
+ * https://totrmeme.online/docs/config/navbar
  *
  * @returns The navbar config with translated titles and descriptions
  */
@@ -34,18 +34,18 @@ export function getNavbarLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: 'Play Thwordle',
+      title: 'TOTR Generator',
       href: '/',
       external: false,
     },
     {
-      title: 'How to Play',
-      href: '/#how-to-play',
+      title: 'What is TOTR?',
+      href: '/#what-is-totr',
       external: false,
     },
     {
-      title: 'Daily Puzzles',
-      href: '/#daily-puzzles',
+      title: 'Templates',
+      href: '/#templates',
       external: false,
     },
     ...(websiteConfig.blog.enable
@@ -58,41 +58,41 @@ export function getNavbarLinks(): NestedMenuItem[] {
         ]
       : []),
     {
-      title: 'Game Themes',
+      title: 'Meme Tools',
       items: [
         {
-          title: 'Harry Potter Wordle',
-          description: 'Magic-themed word puzzles from the wizarding world',
+          title: 'TOTR vs ПЫ',
+          description: 'Compare TOTR and PY memes side by side',
           icon: <WandSparklesIcon className="size-4 shrink-0" />,
-          href: '/#harry-potter',
+          href: '/#totr-vs-py',
           external: false,
         },
         {
-          title: 'LOTR Word Game',
-          description: 'Middle-earth vocabulary challenges',
+          title: 'Meme Creator',
+          description: 'Advanced meme generation tools',
           icon: <FlameIcon className="size-4 shrink-0" />,
-          href: '/#lotr',
+          href: '/#creator',
           external: false,
         },
         {
-          title: 'Greek Mythology',
-          description: 'Ancient gods and heroes word puzzles',
+          title: 'Template Library',
+          description: 'Browse and download meme templates',
           icon: <ShieldCheckIcon className="size-4 shrink-0" />,
-          href: '/#greek-mythology',
+          href: '/#library',
           external: false,
         },
         {
-          title: 'Marvel Wordle',
-          description: 'Superhero-themed word challenges',
+          title: 'Trending Memes',
+          description: "Explore what's trending in the meme world",
           icon: <RocketIcon className="size-4 shrink-0" />,
-          href: '/#marvel',
+          href: '/#trending',
           external: false,
         },
         {
-          title: 'DC Comics',
-          description: 'Justice League word puzzles',
+          title: 'Meme Timeline',
+          description: 'Track the evolution of TOTR memes',
           icon: <ComponentIcon className="size-4 shrink-0" />,
-          href: '/#dc-comics',
+          href: '/#timeline',
           external: false,
         },
       ],

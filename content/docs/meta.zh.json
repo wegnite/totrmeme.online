@@ -20,6 +20,9 @@
     "search",
     "components",
     "mdx",
-    "layouts"
+    "layouts",
+    "---TOTR 专题---",
+    "totr-prd",
+    "totr-homepage-playbook"
   ]
 }

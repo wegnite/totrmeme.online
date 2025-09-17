@@ -42,6 +42,16 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(httpsUrl, 301);
   }
 
+  // Block access to Tailus/Tailark preview auth flows to avoid phishing classification
+  const blockedPreviewPatterns = [
+    /^\/(zh\/)?preview\/(login|sign-up|forgot-password)(\/|$)/,
+    /^\/(zh\/)?tailark\/preview\/(login|sign-up|forgot-password)(\/|$)/,
+    /^\/(zh\/)?blocks\/(login|sign-up|forgot-password)(\/|$)/,
+  ];
+  if (blockedPreviewPatterns.some((pattern) => pattern.test(nextUrl.pathname))) {
+    return new NextResponse('Not Found', { status: 404 });
+  }
+
   // Handle internal docs link redirection for internationalization
   // Check if this is a docs page without locale prefix
   if (nextUrl.pathname.startsWith('/docs/') || nextUrl.pathname === '/docs') {
@@ -113,20 +123,23 @@ export default async function middleware(req: NextRequest) {
   // Apply intlMiddleware for all routes
   // console.log('<< middleware end, applying intlMiddleware');
   const response = intlMiddleware(req);
-  
+
   // Add security headers for SEO and security
   if (response) {
     response.headers.set('X-Frame-Options', 'DENY');
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
     response.headers.set('X-XSS-Protection', '1; mode=block');
-    
+
     // Force HTTPS with Strict Transport Security
     if (process.env.NODE_ENV === 'production') {
-      response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+      response.headers.set(
+        'Strict-Transport-Security',
+        'max-age=31536000; includeSubDomains; preload'
+      );
     }
   }
-  
+
   return response;
 }
 

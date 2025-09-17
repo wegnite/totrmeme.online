@@ -11,7 +11,7 @@ import { websiteConfig } from './website';
  * NOTICE: used in client components only
  *
  * docs:
- * https://mksaas.com/docs/config/footer
+ * https://totrmeme.online/docs/config/footer
  *
  * @returns The footer config with translated titles
  */
@@ -20,82 +20,82 @@ export function getFooterLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: 'Thwordle Game',
+      title: 'TOTR Meme',
       items: [
         {
-          title: 'Play Thwordle',
+          title: 'TOTR Generator',
           href: '/',
           external: false,
         },
         {
-          title: 'How to Play',
-          href: '/#how-to-play',
+          title: 'What is TOTR?',
+          href: '/#what-is-totr',
           external: false,
         },
         {
-          title: 'Daily Word Puzzles',
-          href: '/#daily-puzzles',
+          title: 'TOTR Templates',
+          href: '/#templates',
           external: false,
         },
         {
-          title: 'Thwordle Statistics',
-          href: '/#stats',
-          external: false,
-        },
-      ],
-    },
-    {
-      title: 'Word Game Themes',
-      items: [
-        {
-          title: 'Harry Potter Wordle',
-          href: '/#harry-potter',
-          external: false,
-        },
-        {
-          title: 'LOTR Word Game',
-          href: '/#lotr',
-          external: false,
-        },
-        {
-          title: 'Greek Mythology Puzzle',
-          href: '/#greek-mythology',
-          external: false,
-        },
-        {
-          title: 'Marvel Wordle',
-          href: '/#marvel',
-          external: false,
-        },
-        {
-          title: 'DC Comics Word Game',
-          href: '/#dc-comics',
+          title: 'TOTR Timeline',
+          href: '/#timeline',
           external: false,
         },
       ],
     },
     {
-      title: 'Game Help',
+      title: 'Meme Tools',
       items: [
         {
-          title: 'How to Play Thwordle',
-          href: '/#how-to-play',
+          title: 'TOTR vs ПЫ',
+          href: '/#totr-vs-py',
           external: false,
         },
         {
-          title: 'Thwordle Tips & Strategies',
-          href: '/#tips',
+          title: 'Meme Creator',
+          href: '/#creator',
           external: false,
         },
         {
-          title: 'Word Game FAQ',
+          title: 'Template Library',
+          href: '/#library',
+          external: false,
+        },
+        {
+          title: 'Trending Memes',
+          href: '/#trending',
+          external: false,
+        },
+        {
+          title: 'Meme History',
+          href: '/#history',
+          external: false,
+        },
+      ],
+    },
+    {
+      title: 'Help & Guides',
+      items: [
+        {
+          title: 'How to Use Generator',
+          href: '/#how-to-use',
+          external: false,
+        },
+        {
+          title: 'TOTR Meme Guide',
+          href: '/#guide',
+          external: false,
+        },
+        {
+          title: 'Meme FAQ',
           href: '/#faq',
           external: false,
         },
         ...(websiteConfig.blog.enable
           ? [
               {
-                title: 'Thwordle Blog',
+                title: 'TOTR Meme Blog',
                 href: Routes.Blog,
                 external: false,
               },
@@ -104,7 +104,7 @@ export function getFooterLinks(): NestedMenuItem[] {
         ...(websiteConfig.docs.enable
           ? [
               {
-                title: 'Game Documentation',
+                title: 'Meme Documentation',
                 href: Routes.Docs,
                 external: false,
               },
@@ -113,10 +113,10 @@ export function getFooterLinks(): NestedMenuItem[] {
       ],
     },
     {
-      title: 'About Thwordle',
+      title: 'About TOTR',
       items: [
         {
-          title: 'About the Game',
+          title: 'About the Project',
           href: Routes.About,
           external: false,
         },
@@ -126,7 +126,7 @@ export function getFooterLinks(): NestedMenuItem[] {
           external: false,
         },
         {
-          title: 'Game Updates',
+          title: 'Updates',
           href: Routes.Changelog,
           external: false,
         },

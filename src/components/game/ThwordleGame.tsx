@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function ThwordleGame() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,14 +25,14 @@ export function ThwordleGame() {
           </div>
         </div>
       )}
-      
+
       {/* iframe 嵌入游戏 */}
       <iframe
-        src="https://www.thwordle.com/index.html"
+        src="https://totrmeme.online/index.html"
         className="w-full border-0 rounded-lg"
-        style={{ 
+        style={{
           height: '100vh',
-          minHeight: '800px'
+          minHeight: '800px',
         }}
         title="Thwordle - Daily Thematic Word Puzzles"
         loading="lazy"

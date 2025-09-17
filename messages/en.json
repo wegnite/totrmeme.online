@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "name": "Thwordle",
-    "title": "Thwordle - Free Daily Word Puzzle Game Online",
-    "description": "Play Thwordle, the ultimate thematic word puzzle game! Daily challenges with Harry Potter, LOTR, Marvel themes. Guess 4-7 letter words, unlimited attempts!"
+    "name": "TOTR Meme",
+    "title": "TOTR Meme (TOTЯ, Тотя) — Generator & Guide",
+    "description": "Create viral TOTR memes instantly! Learn about the Russian brainrot meme that got 2M+ plays. Free generator, templates & complete guide."
   },
   "Common": {
     "login": "Log in",
@@ -1084,5 +1084,182 @@
   "AIAudioPage": {
     "title": "AI Audio",
     "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+  },
+  "TotrMemeGenerator": {
+    "title": "TOTR Meme Generator",
+    "subtitle": "Create professional TOTR memes with advanced canvas tools",
+    "templateSelector": {
+      "title": "Select Template",
+      "description": "Choose a base template to start creating your TOTR meme",
+      "templates": {
+        "classic": "TOTR Classic",
+        "ocean": "Ocean Vibes",
+        "purple": "Purple Haze"
+      },
+      "addDefaultText": "Add Default Text",
+      "randomText": "Random Text"
+    },
+    "textEditor": {
+      "title": "Text Editor",
+      "addNewText": "Add New Text",
+      "textContent": "Text Content",
+      "placeholder": "Enter text content...",
+      "font": "Font",
+      "fontSize": "Font Size",
+      "textColor": "Text Color",
+      "strokeSettings": "Stroke Settings",
+      "strokeColor": "Stroke Color",
+      "strokeWidth": "Stroke Width",
+      "editSelected": "Edit Selected Text",
+      "clickToEdit": "Click on text in the canvas to edit styles",
+      "selectTemplate": "Please select a template first, then add text",
+      "colors": {
+        "hotPink": "Hot Pink",
+        "white": "White",
+        "black": "Black",
+        "red": "Red",
+        "blue": "Blue",
+        "yellow": "Yellow",
+        "green": "Green",
+        "purple": "Purple"
+      },
+      "popularTexts": {
+        "totya": "Тотя ❤️",
+        "totr": "TOTR",
+        "vibes": "totya vibes",
+        "brainrot": "brainrot mode",
+        "spongebob": "SpongeBob core",
+        "russian": "Russian energy",
+        "meme": "мем энергия",
+        "vs": "ПЫ vs TOTR"
+      }
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "undo": "Undo",
+      "redo": "Redo",
+      "clearCanvas": "Clear Canvas"
+    },
+    "exportPanel": {
+      "title": "Export Settings",
+      "format": "Export Format",
+      "formatPng": "PNG (transparent background)",
+      "formatJpg": "JPG (smaller file)",
+      "quality": "Image Quality",
+      "qualityStandard": "Standard Quality (70%)",
+      "qualityHigh": "High Quality (80%)",
+      "qualitySuper": "Super Quality (90%)",
+      "qualityMax": "Maximum Quality (100%)",
+      "watermark": "Include Watermark",
+      "watermarkNote": "Free version includes totrmeme.online watermark",
+      "freeExport": "Free Export (400×300, watermarked)",
+      "premiumExport": "Premium Export (800×600, no watermark) - $3.9",
+      "generating": "Generating...",
+      "exportSuccess": "✅ Export successful! File saved to downloads folder",
+      "exportInfo": {
+        "title": "Export Info",
+        "freeNote": "Free version: Standard size, includes website watermark",
+        "premiumNote": "Premium version: High resolution, no watermark, transparent background support",
+        "pngNote": "PNG format supports transparent background, ideal for overlay use",
+        "jpgNote": "JPG format has smaller file size, suitable for sharing and uploading"
+      },
+      "upgradeHint": {
+        "title": "Upgrade to Premium",
+        "description": "Remove watermark, get high-resolution export and more features",
+        "learnMore": "Learn More"
+      }
+    },
+    "canvas": {
+      "title": "Edit Canvas",
+      "description": "Drag text to adjust position, click to select and edit styles",
+      "selectTemplate": "Please select a template first to start creating",
+      "selectTemplateHint": "👈 Select a template from the left panel"
+    },
+    "tips": {
+      "title": "💡 Usage Tips",
+      "dragText": "• Drag text to any position",
+      "clickEdit": "• Click text to adjust size and rotation",
+      "shortcuts": "• Use Ctrl+Z/Y shortcuts for undo/redo",
+      "styles": "• Supports multiple text styles and colors",
+      "watermark": "• Free version includes watermark, premium version can remove it"
+    }
+  },
+  "TotrHotMemes": {
+    "title": "Hot TOTR Memes",
+    "description": "Trending TOTR memes created by our community. Get inspired and create your own!",
+    "viewAll": "View All",
+    "badges": {
+      "trending": "Trending",
+      "new": "New"
+    },
+    "actions": {
+      "useTemplate": "Use Template"
+    },
+    "cta": {
+      "description": "Join thousands creating viral TOTR content daily",
+      "createNow": "Create Your TOTR Meme",
+      "browseTemplates": "Browse Templates"
+    }
+  },
+  "TotrTrendingTopics": {
+    "title": "Trending TOTR Topics",
+    "description": "Hot topics and tags in the TOTR meme community",
+    "searchPlaceholder": "Search TOTR topics...",
+    "topics": {
+      "classic": "TOTR Classic",
+      "spongebob": "SpongeBob TOTR",
+      "totya": "Тотя Energy",
+      "brainrot": "Brainrot Mode",
+      "russian": "Russian Memes",
+      "viral": "Viral TOTR",
+      "ocean": "Ocean Vibes",
+      "purple": "Purple Haze"
+    },
+    "stats": {
+      "memes": "memes",
+      "views": "views",
+      "trending": "🔥 trending"
+    }
+  },
+  "TotrQuickTutorial": {
+    "title": "Quick TOTR Tutorial",
+    "subtitle": "Master TOTR meme creation in 3 simple steps",
+    "steps": {
+      "step1": {
+        "title": "Choose Template",
+        "description": "Select from classic TOTR, ocean vibes, or purple energy templates"
+      },
+      "step2": {
+        "title": "Add Text",
+        "description": "Use popular TOTR phrases like 'Тотя ❤️', 'TOTR vibes', or create your own"
+      },
+      "step3": {
+        "title": "Export & Share",
+        "description": "Download your meme and share on TikTok, Instagram, or social media"
+      }
+    },
+    "tryNow": "Try Now",
+    "watchVideo": "Watch Video Tutorial"
+  },
+  "TotrUserGallery": {
+    "title": "Community Creations",
+    "description": "Amazing TOTR memes created by our community members",
+    "viewAll": "View Gallery",
+    "badges": {
+      "featured": "Featured"
+    },
+    "actions": {
+      "viewMeme": "View Meme"
+    },
+    "stats": {
+      "creators": "Creators",
+      "memes": "TOTR Memes",
+      "views": "Daily Views"
+    },
+    "cta": {
+      "description": "Join thousands of creators making viral TOTR content",
+      "createMeme": "Create Your TOTR",
+      "joinCommunity": "Join Community"
+    }
   }
 }

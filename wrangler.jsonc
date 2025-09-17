@@ -5,7 +5,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "thwordle-top",
+  "name": "totrmeme-online",
   "compatibility_date": "2024-12-30",
   "compatibility_flags": [
     // Enable Node.js API
@@ -66,20 +66,17 @@
    * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
    */
   "vars": {
-    "NEXT_PUBLIC_BASE_URL": "https://thwordle.top",
-    "NEXT_URL": "https://thwordle.top",
-    "VERCEL_URL": "thwordle.top",
+    "NEXT_PUBLIC_BASE_URL": "https://totrmeme.online",
+    "NEXT_URL": "https://totrmeme.online",
+    "VERCEL_URL": "totrmeme.online",
     "DISABLE_IMAGE_OPTIMIZATION": "true",
-    "NEXT_PUBLIC_DEMO_WEBSITE": "false",
-    "NEXT_PUBLIC_GOOGLE_ANALYTICS_ID": "G-MM928ZVYZB",
-    "NEXT_PUBLIC_GOOGLE_ADSENSE_ID": "ca-pub-6224617757558738"
+    "NEXT_PUBLIC_DEMO_WEBSITE": "false"
   },
   /**
    * Note: Use secrets to store sensitive data.
    * https://developers.cloudflare.com/workers/configuration/secrets/
    */
-  "kv_namespaces": []
-  ,
+  "kv_namespaces": [],
   /**
    * R2 Buckets (required when using r2-incremental-cache)
    * Create an R2 bucket in the dashboard first, then bind it here.
@@ -88,7 +85,7 @@
   "r2_buckets": [
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "template4ai"
+      "bucket_name": "totrmeme-cache"
     }
   ]
 }

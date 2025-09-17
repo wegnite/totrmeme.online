@@ -9,19 +9,24 @@ import { getBaseUrl } from '../lib/urls/urls';
 type Href = Parameters<typeof getLocalePathname>[0]['href'];
 
 /**
- * static routes for sitemap - optimized for Thwordle game high-value pages
+ * Static routes prioritized for TOTR Meme
  */
 const staticRoutes = [
-  '/', // Homepage - main game
-  '/about', // About the game
-  '/contact', // Contact support
-  '/changelog', // Game updates
-  '/privacy', // Privacy policy
-  '/terms', // Terms of service
-  '/cookie', // Cookie policy
-  // Temporarily disabled blog and docs to avoid 404 pages in sitemap
-  // ...(websiteConfig.blog.enable ? ['/blog'] : []), // Game blog/news
-  // ...(websiteConfig.docs.enable ? ['/docs'] : []), // Game documentation
+  '/',
+  '/meme/totr',
+  '/generator/totr',
+  '/download/totr-template',
+  '/compare/totr-vs-py',
+  '/trends/totr',
+  '/policy/ugc',
+  // legal/basic pages
+  '/privacy',
+  '/terms',
+  '/cookie',
+  // optional
+  '/about',
+  '/contact',
+  '/changelog',
 ];
 
 /**
@@ -33,20 +38,43 @@ const staticRoutes = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sitemapList: MetadataRoute.Sitemap = []; // final result
 
+  // Route-specific priority and change frequency
+  const routeMeta: Record<
+    string,
+    {
+      priority: number;
+      changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'];
+    }
+  > = {
+    '/': { priority: 1.0, changeFrequency: 'weekly' },
+    '/meme/totr': { priority: 1.0, changeFrequency: 'weekly' },
+    '/generator/totr': { priority: 0.9, changeFrequency: 'weekly' },
+    '/download/totr-template': { priority: 0.9, changeFrequency: 'monthly' },
+    '/compare/totr-vs-py': { priority: 0.8, changeFrequency: 'monthly' },
+    '/trends/totr': { priority: 0.8, changeFrequency: 'daily' },
+    '/policy/ugc': { priority: 0.6, changeFrequency: 'yearly' },
+    '/privacy': { priority: 0.5, changeFrequency: 'yearly' },
+    '/terms': { priority: 0.5, changeFrequency: 'yearly' },
+    '/cookie': { priority: 0.5, changeFrequency: 'yearly' },
+    '/about': { priority: 0.3, changeFrequency: 'yearly' },
+    '/contact': { priority: 0.3, changeFrequency: 'yearly' },
+    '/changelog': { priority: 0.3, changeFrequency: 'monthly' },
+  };
+
   // add static routes
   sitemapList.push(
-    ...staticRoutes.flatMap((route) => {
-      return routing.locales.map((locale) => ({
+    ...staticRoutes.flatMap((route) =>
+      routing.locales.map((locale) => ({
         url: getUrl(route, locale),
         lastModified: new Date(),
-        priority: 1,
-        changeFrequency: 'weekly' as const,
-      }));
-    })
+        priority: routeMeta[route]?.priority ?? 0.5,
+        changeFrequency: routeMeta[route]?.changeFrequency ?? 'monthly',
+      }))
+    )
   );
 
   // Blog routes temporarily disabled to avoid 404 pages in sitemap
-  // TODO: Re-enable when blog content is ready for Thwordle game
+  // TODO: Re-enable when blog content is ready for TOTR Meme
   /*
   if (websiteConfig.blog.enable) {
     // add categories
@@ -135,7 +163,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   */
 
   // Docs routes temporarily disabled to avoid 404 pages in sitemap
-  // TODO: Re-enable when docs content is relevant for Thwordle game
+  // TODO: Re-enable when docs content is relevant for TOTR Meme
   /*
   if (websiteConfig.docs.enable) {
     const docsParams = source.generateParams();

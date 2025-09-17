@@ -13,46 +13,12 @@ import { createI18nSearchAPI } from 'fumadocs-core/search/server';
  * https://fumadocs.dev/docs/headless/search/orama#special-languages
  * https://docs.orama.com/open-source/supported-languages/using-chinese-with-orama
  */
-const searchAPI = createI18nSearchAPI('advanced', {
-  // Pass the i18n config for proper language detection
-  i18n: docsI18nConfig,
+// 让该 API 在构建时不执行重型初始化，改为请求时懒加载
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
-  // Get all pages from all languages and map them to search indexes
-  indexes: source.getLanguages().flatMap(({ language, pages }) =>
-    pages.map((page) => ({
-      title: page.data.title,
-      description: page.data.description,
-      structuredData: page.data.structuredData,
-      id: page.url,
-      url: page.url,
-      locale: language,
-    }))
-  ),
-
-  // Configure special language tokenizers and search options
-  localeMap: {
-    // Chinese configuration with Mandarin tokenizer
-    zh: {
-      components: {
-        tokenizer: createTokenizer(),
-      },
-      search: {
-        // Lower threshold for better matches with Chinese text
-        threshold: 0,
-        // Lower tolerance for better precision
-        tolerance: 0,
-      },
-    },
-
-    // Use the default English tokenizer for English content
-    en: 'english',
-  },
-
-  // Global search configuration
-  search: {
-    limit: 20,
-  },
-});
+// Cache the search API instance to avoid rebuilding the index on every request
+let cachedSearchAPI: ReturnType<typeof createI18nSearchAPI> | null = null;
 
 /**
  * Fumadocs 15.2.8 fixed the bug that the `locale` is not passed to the search API
@@ -67,7 +33,42 @@ const searchAPI = createI18nSearchAPI('advanced', {
  * 3. Fumadocs core searchAPI get `locale` from searchParams, and pass it to the search API
  * https://github.com/fuma-nama/fumadocs/blob/dev/packages/core/src/search/orama/create-endpoint.ts#L19
  */
+function getOrCreateSearchAPI() {
+  if (!cachedSearchAPI) {
+    cachedSearchAPI = createI18nSearchAPI('advanced', {
+      i18n: docsI18nConfig,
+      indexes: source.getLanguages().flatMap(({ language, pages }) =>
+        pages.map((page) => ({
+          title: page.data.title,
+          description: page.data.description,
+          structuredData: page.data.structuredData,
+          id: page.url,
+          url: page.url,
+          locale: language,
+        }))
+      ),
+      localeMap: {
+        zh: {
+          components: { tokenizer: createTokenizer() },
+          search: { threshold: 0, tolerance: 0 },
+        },
+        en: 'english',
+      },
+      search: { limit: 20 },
+    });
+  }
+  return cachedSearchAPI;
+}
+
 export const GET = async (request: Request) => {
-  const response = await searchAPI.GET(request);
-  return response;
+  try {
+    const searchAPI = getOrCreateSearchAPI();
+    return await searchAPI.GET(request);
+  } catch (err) {
+    console.error('[docs search] init error:', err);
+    return new Response(JSON.stringify({ ok: false }), {
+      status: 500,
+      headers: { 'content-type': 'application/json' },
+    });
+  }
 };

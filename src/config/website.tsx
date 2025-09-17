@@ -5,7 +5,7 @@ import type { WebsiteConfig } from '@/types';
  * website config, without translations
  *
  * docs:
- * https://mksaas.com/docs/config/website
+ * https://totrmeme.online/docs/config/website
  */
 export const websiteConfig: WebsiteConfig = {
   ui: {
@@ -25,13 +25,13 @@ export const websiteConfig: WebsiteConfig = {
       logoDark: '/logo-dark.png',
     },
     social: {
-      github: 'https://github.com/thwordle',
-      twitter: 'https://twitter.com/thwordle',
-      blueSky: 'https://bsky.app/profile/thwordle.com',
-      discord: 'https://discord.gg/thwordle',
-      mastodon: 'https://mastodon.social/@thwordle',
-      linkedin: 'https://linkedin.com/company/thwordle',
-      youtube: 'https://youtube.com/@thwordle',
+      github: 'https://github.com/totrmeme',
+      twitter: 'https://twitter.com/totrmeme',
+      blueSky: 'https://bsky.app/profile/totrmeme.online',
+      discord: 'https://discord.gg/totrmeme',
+      mastodon: 'https://mastodon.social/@totrmeme',
+      linkedin: 'https://linkedin.com/company/totrmeme',
+      youtube: 'https://youtube.com/@totrmeme',
     },
   },
   features: {
@@ -78,8 +78,8 @@ export const websiteConfig: WebsiteConfig = {
   },
   mail: {
     provider: 'resend',
-    fromEmail: 'MkSaaS <support@mksaas.com>',
-    supportEmail: 'MkSaaS <support@mksaas.com>',
+    fromEmail: 'TOTR Meme <support@totrmeme.online>',
+    supportEmail: 'TOTR Meme <support@totrmeme.online>',
   },
   newsletter: {
     enable: true,

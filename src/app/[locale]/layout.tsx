@@ -43,7 +43,12 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html suppressHydrationWarning lang={locale} className="dark" style={{ colorScheme: 'dark' }}>
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      className="dark"
+      style={{ colorScheme: 'dark' }}
+    >
       <head>
         <AffonsoScript />
         <PromotekitScript />

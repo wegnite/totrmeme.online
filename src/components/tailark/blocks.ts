@@ -511,63 +511,6 @@ export const blocks: Block[] = [
   },
 
   {
-    slug: 'login',
-    title: 'one',
-    category: 'login',
-    preview: '/preview/login/one',
-    // code: loadCode('app/preview/login/one/page.tsx'),
-  },
-  {
-    slug: 'login',
-    title: 'two',
-    category: 'login',
-    preview: '/preview/login/two',
-    // code: loadCode('app/preview/login/two/page.tsx'),
-  },
-  {
-    slug: 'login',
-    title: 'three',
-    category: 'login',
-    preview: '/preview/login/three',
-    // code: loadCode('app/preview/login/three/page.tsx'),
-  },
-
-  {
-    slug: 'sign-up',
-    title: 'one',
-    category: 'sign-up',
-    preview: '/preview/sign-up/one',
-    // code: loadCode('app/preview/sign-up/one/page.tsx'),
-  },
-  {
-    slug: 'sign-up',
-    title: 'two',
-    category: 'sign-up',
-    preview: '/preview/sign-up/two',
-    // code: loadCode('app/preview/sign-up/two/page.tsx'),
-  },
-  {
-    slug: 'sign-up',
-    title: 'three',
-    category: 'sign-up',
-    preview: '/preview/sign-up/three',
-    // code: loadCode('app/preview/sign-up/three/page.tsx'),
-  },
-  {
-    slug: 'forgot-password',
-    title: 'one',
-    category: 'forgot-password',
-    preview: '/preview/forgot-password/one',
-    // code: loadCode('app/preview/forgot-password/one/page.tsx'),
-  },
-  {
-    slug: 'forgot-password',
-    title: 'two',
-    category: 'forgot-password',
-    preview: '/preview/forgot-password/two',
-    // code: loadCode('app/preview/forgot-password/two/page.tsx'),
-  },
-  {
     slug: 'contact',
     title: 'one',
     category: 'contact',
@@ -581,6 +524,7 @@ export const blocks: Block[] = [
     preview: '/preview/contact/two',
     // code: loadCode('app/preview/contact/two/page.tsx'),
   },
+
 ];
 
 export const categories = [...new Set(blocks.map((b) => b.category))];
