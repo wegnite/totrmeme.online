@@ -14,6 +14,7 @@ type Href = Parameters<typeof getLocalePathname>[0]['href'];
 const staticRoutes = [
   '/',
   '/meme/totr',
+  '/meme/totya',
   '/generator/totr',
   '/download/totr-template',
   '/compare/totr-vs-py',
@@ -48,6 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   > = {
     '/': { priority: 1.0, changeFrequency: 'weekly' },
     '/meme/totr': { priority: 1.0, changeFrequency: 'weekly' },
+    '/meme/totya': { priority: 0.9, changeFrequency: 'weekly' },
     '/generator/totr': { priority: 0.9, changeFrequency: 'weekly' },
     '/download/totr-template': { priority: 0.9, changeFrequency: 'monthly' },
     '/compare/totr-vs-py': { priority: 0.8, changeFrequency: 'monthly' },

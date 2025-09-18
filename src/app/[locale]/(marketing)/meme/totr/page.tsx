@@ -1,52 +1,68 @@
+import { LocaleLink } from '@/i18n/navigation';
 import { constructMetadata } from '@/lib/metadata';
+import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
-  await params; // locale not used for now
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'TotrMemePage' });
+
   return constructMetadata({
-    title: 'What Is the TOTR (TOTЯ, Тотя) Meme? Meaning & Origin',
-    description:
-      'Understand the viral TOTR/TOTЯ/Тотя meme in 60 seconds — meaning, origin timeline, spellings, and how it relates to ПЫ.',
-    canonicalUrl: 'https://totrmeme.online/meme/totr',
+    title: t('meta.title'),
+    description: t('meta.description'),
+    canonicalUrl: getUrlWithLocale('/meme/totr', locale),
   });
 }
 
-export default function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'TotrMemePage' });
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'What Is the TOTR (TOTЯ, Тотя) Meme? Meaning & Origin',
-    mainEntityOfPage: 'https://totrmeme.online/meme/totr',
-    inLanguage: 'en',
-  };
+    headline: t('meta.title'),
+    description: t('meta.description'),
+    mainEntityOfPage: getUrlWithLocale('/meme/totr', locale),
+    inLanguage: locale,
+  } as const;
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-12">
+    <main className="mx-auto max-w-3xl px-6 py-12 space-y-6">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <h1 className="text-3xl font-bold">
-        TOTR Meme (TOTЯ, Тотя) — Meaning & Origin
-      </h1>
-      <p className="mt-4 text-muted-foreground">
-        Quick guide to the viral TOTR meme. We cover the meaning, origin
-        timeline, common spellings (totr/totya/totя/Тотя), and its relationship
-        to the ПЫ meme. Explore examples via official embeds only.
-      </p>
-      <div className="mt-6 flex gap-3">
-        <a className="underline" href="/generator/totr">
-          Make your TOTR meme →
-        </a>
-        <a className="underline" href="/compare/totr-vs-py">
-          Compare TOTR vs ПЫ →
-        </a>
-      </div>
+      <header className="space-y-4">
+        <h1 className="text-3xl font-bold tracking-tight">{t('hero.title')}</h1>
+        <p className="text-muted-foreground text-lg">{t('hero.subtitle')}</p>
+      </header>
+      <section className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+        {t.raw('body.paragraphs').map((paragraph: string, index: number) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </section>
+      <footer className="mt-6 flex flex-wrap gap-4">
+        <LocaleLink href="/generator/totr" className="underline font-medium">
+          {t('cta.generator')}
+        </LocaleLink>
+        <LocaleLink
+          href="/compare/totr-vs-py"
+          className="underline font-medium"
+        >
+          {t('cta.compare')}
+        </LocaleLink>
+      </footer>
     </main>
   );
 }

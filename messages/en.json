@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "name": "TOTR Meme",
-    "title": "TOTR Meme (TOTЯ, Тотя) — Generator & Guide",
-    "description": "Create viral TOTR memes instantly! Learn about the Russian brainrot meme that got 2M+ plays. Free generator, templates & complete guide."
+    "title": "TOTR Meme Explained (TOTЯ, Тотя) — Meaning, Videos & Free Generator",
+    "description": "Understand the viral TOTЯ brainrot meme, watch the original clip, compare TOTR vs ПЫ, and remix it instantly with our SpongeBob templates and online generator."
   },
   "Common": {
     "login": "Log in",
@@ -143,12 +143,12 @@
   },
   "AboutPage": {
     "title": "About",
-    "description": "Thwordle is a daily word puzzle game that challenges your vocabulary and deduction skills.",
-    "authorName": "Thwordle",
-    "authorBio": "Word Puzzle Game",
-    "introduction": "👋 Welcome to Thwordle! Challenge yourself with our daily word puzzle game that tests your vocabulary and problem-solving skills. If you have any questions or feedback, feel free to contact us.",
-    "talkWithMe": "Talk with me",
-    "followMe": "Follow me on X"
+    "description": "TOTR Meme documents the viral TOTЯ trend and provides creators with safe remix tools and research.",
+    "authorName": "TOTR Meme Team",
+    "authorBio": "Curators of the TOTR/TOTЯ phenomenon",
+    "introduction": "👋 Welcome to TOTR Meme! We track the TOTR/TOTЯ/Тотя brainrot wave, collect official references, and ship templates that help you remix the meme responsibly. Reach out if you have questions or want to collaborate.",
+    "talkWithMe": "Talk with us",
+    "followMe": "Follow us on X"
   },
   "ChangelogPage": {
     "title": "Changelog",
@@ -272,7 +272,7 @@
   },
   "BlogPage": {
     "title": "Blog",
-    "description": "Thwordle tips, strategies, word lists, and game guides",
+    "description": "TOTR meme breakdowns, template guides, and community updates",
     "subtitle": "Latest news and updates from our team",
     "author": "Author",
     "categories": "Categories",
@@ -291,7 +291,7 @@
     "previousPage": "Previous",
     "nextPage": "Next",
     "chooseLanguage": "Select language",
-    "title": "Thwordle Docs",
+    "title": "TOTR Guides",
     "homepage": "Homepage",
     "blog": "Blog"
   },
@@ -318,7 +318,7 @@
           },
           "image": {
             "title": "AI Image",
-            "description": "Thwordle daily word puzzle: guess the word, improve vocabulary, compete with friends"
+            "description": "Generate TOTR visuals, thumbnails, and remixes with AI"
           },
           "chat": {
             "title": "AI Chat",
@@ -339,7 +339,7 @@
         "items": {
           "tools": {
             "title": "Curated Tools",
-            "description": "Thwordle game tools and word lists"
+            "description": "TOTR meme generators, timelines, and remix resources"
           },
           "about": {
             "title": "About",
@@ -436,7 +436,7 @@
       }
     },
     "footer": {
-      "tagline": "Challenge your mind with daily word puzzles",
+      "tagline": "Create viral TOTR memes with our free online generator",
       "product": {
         "title": "Product",
         "items": {
@@ -752,14 +752,14 @@
     }
   },
   "HomePage": {
-    "title": "Thwordle - Daily Word Puzzle",
-    "description": "Challenge your vocabulary with Thwordle, the daily word puzzle game that tests your deduction skills.",
+    "title": "TOTR Meme Hub",
+    "description": "Understand the TOTR/TOTЯ/Тотя meme, explore verified timelines, and remix it with our free generator.",
     "hero": {
-      "title": "Master words, challenge your mind",
-      "description": "Thwordle is the ultimate daily word puzzle game that challenges your vocabulary and deduction skills.",
-      "introduction": "Introducing Thwordle",
-      "primary": "Get Started",
-      "secondary": "See Demo"
+      "title": "Decode the TOTR phenomenon",
+      "description": "Follow the official timeline, grab templates, and create your own SpongeBob brainrot remix in minutes.",
+      "introduction": "Introducing TOTR Meme",
+      "primary": "Start Creating",
+      "secondary": "View Timeline"
     },
     "logocloud": {
       "title": "Your favorite companies are our partners"
@@ -976,8 +976,8 @@
     },
     "stats": {
       "title": "Stats",
-      "subtitle": "Thwordle in numbers",
-      "description": "Thwordle brings daily word challenges to puzzle enthusiasts worldwide",
+      "subtitle": "TOTR in numbers",
+      "description": "Track how the TOTR/TOTЯ meme spreads across platforms and remixes",
       "items": {
         "item-1": {
           "title": "Stars on GitHub"
@@ -992,7 +992,7 @@
     },
     "calltoaction": {
       "title": "Start Playing",
-      "description": "Start your daily word challenge with Thwordle today",
+      "description": "Start creating TOTR memes with our free generator today",
       "primaryButton": "Get Started",
       "secondaryButton": "See Demo"
     }
@@ -1047,29 +1047,29 @@
     }
   },
   "AIImagePage": {
-    "title": "Thwordle Game",
-    "description": "Play the daily word puzzle game with hints, statistics, and achievements"
+    "title": "TOTR Meme Generator",
+    "description": "Build TOTR/TOTЯ memes with drag-and-drop templates, text styles, and export controls"
   },
   "ToolsPage": {
-    "title": "Thwordle Game Tools",
-    "description": "Explore Thwordle tools: word lists, hints, statistics, and vocabulary builders.",
+    "title": "TOTR Meme Tools",
+    "description": "Explore TOTR generators, template packs, timeline archives, and research resources.",
     "cta": "Open",
     "items": {
       "wordGame": {
-        "title": "Daily Puzzle",
-        "description": "Play today's Thwordle challenge with 6 guesses"
+        "title": "Generator",
+        "description": "Launch the TOTR editor with official templates and typography"
       },
       "wordLists": {
-        "title": "Word Lists",
-        "description": "Curated word collections and vocabulary builders"
+        "title": "Asset Packs",
+        "description": "Download TOTR overlays, typography, and soundtrack snippets"
       },
       "statistics": {
-        "title": "Game Stats",
-        "description": "Track your progress, streaks, and achievements"
+        "title": "Trend Tracker",
+        "description": "See search interest, repost velocity, and platform-specific growth"
       },
       "hints": {
-        "title": "Hints & Tips",
-        "description": "Strategies and techniques to improve your gameplay"
+        "title": "Creative Tips",
+        "description": "Learn remix best practices and copyright-friendly publishing advice"
       }
     }
   },
@@ -1260,6 +1260,128 @@
       "description": "Join thousands of creators making viral TOTR content",
       "createMeme": "Create Your TOTR",
       "joinCommunity": "Join Community"
+    }
+  },
+  "TotrMemePage": {
+    "meta": {
+      "title": "What Is the TOTR (TOTЯ, Тотя) Meme? Meaning & Origin",
+      "description": "Understand the viral TOTR/TOTЯ/Тотя meme in 60 seconds — meaning, origin timeline, spellings, and how it relates to ПЫ."
+    },
+    "hero": {
+      "title": "TOTR Meme (TOTЯ, Тотя) — Meaning & Origin",
+      "subtitle": "A quick primer on the Russian SpongeBob brainrot trend that took over TikTok."
+    },
+    "body": {
+      "paragraphs": [
+        "TOTR is the transliteration of the Russian word “Тотя”, the chant shouted by two pantless SpongeBobs in a viral TikTok posted on September 1, 2025. Fans also spell it as TOTЯ, totia or totya when captioning memes outside Cyrillic platforms.",
+        "The original upload by TikToker @ddghfjwiedi3929 paired the scene with a slowed remix of ‘Stay’ by The Kid LAROI & Justin Bieber. Within two weeks the clip crossed 2M views and inspired countless remakes, 3D renders and music edits across Russian-speaking circles.",
+        "As the format spread globally, TOTR started appearing alongside other brainrot memes like ПЫ. The core formula stays the same: two SpongeBobs sliding across the screen, the glowing “Тотя ❤️” text, and the Stay remix pulsating in the background.",
+        "Use our generator to recreate the meme safely with parody-ready assets, compare it with the ПЫ format, and explore the full timeline before you publish your own edit."
+      ]
+    },
+    "cta": {
+      "generator": "Make your TOTR meme →",
+      "compare": "Compare TOTR vs ПЫ →"
+    }
+  },
+  "TotyaPage": {
+    "hero": {
+      "eyebrow": "TOTЯ Deep Dive",
+      "title": "TOTЯ Meme: Story, Soundtrack & Fan Culture Explained",
+      "subtitle": "Follow the viral rise of TOTЯ — from the original SpongeBob clip to worldwide brainrot edits. Watch key videos, learn the timeline, and collect ideas for your own remix.",
+      "ctaGenerator": "Create a TOTR meme now",
+      "ctaCompare": "See TOTR vs ПЫ"
+    },
+    "spotlight": {
+      "title": "Why TOTЯ blew up",
+      "items": [
+        "Launched by a September 2025 TikTok using a slowed remix of “Stay”.",
+        "Defined by two pantless SpongeBobs shouting the phrase “Тотя”.",
+        "Intertwined with ПЫ and other multilingual brainrot memes.",
+        "Spawned 3D renders, AI remasters, lyric edits, and mashups."
+      ]
+    },
+    "videos": {
+      "title": "Trending TOTЯ video playlists",
+      "description": "Curated YouTube searches showing original uploads, remixes, and the TOTR vs ПЫ rivalry.",
+      "items": {
+        "origin": {
+          "title": "Original TOTЯ uploads",
+          "description": "Watch the earliest viral clips and high-engagement re-uploads.",
+          "platform": "YouTube search",
+          "duration": "Auto playlist"
+        },
+        "comparison": {
+          "title": "TOTЯ vs ПЫ showdown",
+          "description": "Fan edits contrasting the two brainrot icons, polls, and storylines.",
+          "platform": "YouTube search",
+          "duration": "Auto playlist"
+        },
+        "remix": {
+          "title": "Remix compilation",
+          "description": "Accelerated mixes, 3D animations, lyric-caption remasters, and more.",
+          "platform": "YouTube search",
+          "duration": "Auto playlist"
+        }
+      }
+    },
+    "timeline": {
+      "title": "Timeline",
+      "items": {
+        "origin": {
+          "date": "Sep 1, 2025",
+          "title": "First TOTЯ clip",
+          "description": "@ddghfjwiedi3929 posts the original SpongeBob duet with the Stay remix, hitting 2M views fast."
+        },
+        "remix": {
+          "date": "Sep 6, 2025",
+          "title": "Remix explosion",
+          "description": "3D renders and lyric caption edits push the format beyond Russian TikTok."
+        },
+        "vs": {
+          "date": "Sep 13, 2025",
+          "title": "TOTЯ vs ПЫ",
+          "description": "Fan edits compare the two memes, spawning polls and cinematic mashups."
+        },
+        "global": {
+          "date": "Oct 2025",
+          "title": "Global spread",
+          "description": "The hashtag tops 4M posts, crossing into Roblox, Bilibili, and western meme compilations."
+        }
+      }
+    },
+    "guide": {
+      "title": "How to create TOTЯ edits",
+      "steps": [
+        "Start with a template: original walk cycle, hug variant, or dance loop.",
+        "Keep the “Тотя ❤️” text or add bilingual captions for wider audiences.",
+        "Pair it with the Stay remix (slowed, nightcore, or your own mix).",
+        "Layer 3D renders, AI recolors, subtitles, or lyric cards for extra energy.",
+        "Close with TOTR/TOTЯ/PЫ easter eggs or polls to spark engagement."
+      ]
+    },
+    "cta": {
+      "title": "Join the TOTЯ creator community",
+      "description": "Use our generator to craft TOTЯ/TOTR edits or grab the template pack to start offline.",
+      "primary": "Open the TOTR/TOTЯ generator",
+      "secondary": "Download the template pack"
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": {
+        "origin": {
+          "question": "Where did TOTЯ first go viral?",
+          "answer": "On September 1, 2025 when TikToker @ddghfjwiedi3929 uploaded the SpongeBob duo with the Stay remix, crossing a million views within days."
+        },
+        "music": {
+          "question": "What music is used in TOTЯ clips?",
+          "answer": "Most edits still use the slowed or remixed version of “Stay” by The Kid LAROI & Justin Bieber, though creators experiment with other brainrot tracks."
+        },
+        "copyright": {
+          "question": "Can I monetise TOTЯ content?",
+          "answer": "The format involves SpongeBob characters (Nickelodeon/Viacom) and licensed music. Seek appropriate permissions for commercial use or swap in royalty-free assets."
+        }
+      }
     }
   }
 }
