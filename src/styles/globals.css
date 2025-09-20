@@ -329,6 +329,61 @@ body {
   background-clip: text;
 }
 
+@layer utilities {
+  .font-display {
+    font-family: var(--font-bricolage-grotesque);
+  }
+
+  .bg-totr-space {
+    background: radial-gradient(
+        circle at 0% -15%,
+        rgba(109, 91, 255, 0.4),
+        transparent 58%
+      ),
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(59, 130, 246, 0.28),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 50% 90%,
+        rgba(244, 114, 182, 0.2),
+        transparent 65%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(5, 1, 19, 1) 0%,
+        rgba(9, 6, 30, 1) 45%,
+        rgba(9, 6, 24, 1) 100%
+      );
+  }
+
+  .bg-totr-panel {
+    background: linear-gradient(
+      155deg,
+      rgba(24, 16, 52, 0.92) 0%,
+      rgba(14, 11, 38, 0.92) 48%,
+      rgba(9, 7, 26, 0.94) 100%
+    );
+    border: 1px solid rgba(172, 148, 255, 0.14);
+    box-shadow: 0 45px 120px -60px rgba(111, 76, 255, 0.6);
+  }
+
+  .glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+  }
+
+  .grid-overlay {
+    background-image: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.09) 1px,
+      transparent 1px
+    );
+    background-size: 40px 40px;
+  }
+}
+
 /*
  * 1. all the themes are copied from the shadcn-ui dashboard example
  * https://github.com/shadcn-ui/ui/blob/main/apps/v4/app/(examples)/dashboard/theme.css

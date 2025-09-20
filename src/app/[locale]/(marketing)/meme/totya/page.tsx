@@ -77,10 +77,7 @@ export default async function TotyaPage({
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-12 space-y-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
       {/* Hero */}
       <section className="space-y-4 text-center">

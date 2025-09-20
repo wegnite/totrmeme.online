@@ -79,13 +79,18 @@ export function NavbarMobile({
   return (
     <>
       <div
-        className={cn('flex items-center justify-between', className)}
+        className={cn(
+          'flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-xl text-white',
+          className
+        )}
         {...other}
       >
         {/* navbar left shows logo */}
         <LocaleLink href={Routes.Root} className="flex items-center gap-2">
           <Logo />
-          <span className="text-xl font-semibold">{t('Metadata.name')}</span>
+          <span className="font-display text-lg font-semibold text-white">
+            {t('Metadata.name')}
+          </span>
         </LocaleLink>
 
         {/* navbar right shows menu icon and user button */}
@@ -106,8 +111,7 @@ export function NavbarMobile({
             aria-expanded={open}
             aria-label="Toggle Mobile Menu"
             onClick={handleToggleMobileMenu}
-            className="size-8 flex aspect-square h-fit select-none items-center
-              justify-center rounded-md border cursor-pointer"
+            className="size-9 flex aspect-square h-fit select-none items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:border-white/40 hover:bg-white/20"
           >
             {open ? (
               <XIcon className="size-4" />
@@ -150,14 +154,11 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
   const localePathname = useLocalePathname();
 
   return (
-    <div
-      className="fixed w-full inset-0 z-50 mt-[64px] overflow-y-auto
-      bg-background backdrop-blur-md animate-in fade-in-0"
-    >
+    <div className="fixed inset-0 z-50 mt-[68px] w-full overflow-y-auto bg-[#07031a]/90 backdrop-blur-2xl animate-in fade-in-0">
       <div className="size-full flex flex-col items-start space-y-4">
         {/* action buttons */}
         {userLoggedIn ? null : (
-          <div className="w-full flex flex-col gap-4 px-4">
+          <div className="flex w-full flex-col gap-4 px-4">
             <LocaleLink
               href={Routes.Login}
               onClick={onLinkClicked}
@@ -166,7 +167,7 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
                   variant: 'outline',
                   size: 'lg',
                 }),
-                'w-full'
+                'w-full rounded-full border-white/30 bg-white/5 text-white hover:border-white/50 hover:bg-white/10'
               )}
             >
               {t('Common.login')}
@@ -178,7 +179,7 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
                   variant: 'default',
                   size: 'lg',
                 }),
-                'w-full'
+                'w-full rounded-full bg-primary text-white shadow-[0_20px_60px_-30px_rgba(103,64,255,0.9)] hover:bg-primary/90'
               )}
               onClick={onLinkClicked}
             >
@@ -188,7 +189,7 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
         )}
 
         {/* main menu */}
-        <ul className="w-full px-4">
+        <ul className="w-full px-4 text-white">
           {menuLinks?.map((item) => {
             const isActive = item.href
               ? item.href === '/'

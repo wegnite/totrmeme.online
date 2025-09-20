@@ -1,3 +1,4 @@
+import { HomeHero } from '@/components/marketing/home-hero';
 import { TotrVideoShowcase } from '@/components/totr/TotrVideoShowcase';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -134,6 +135,36 @@ const homeCopy = {
       badge: 'Viral',
       download: 'Download Audio',
       use: 'Use in Meme',
+    },
+    socialProof: {
+      title: 'Creators Are Keeping Viewers Hooked',
+      subtitle:
+        'Results from meme editors and fan accounts who switched to the TOTR generator',
+      highlight: {
+        quote:
+          '“This is the only tool that nails the glowing тотя❤️ aura. My watch time jumped instantly.”',
+        author: 'PixelLena — TikTok Animator',
+      },
+      metrics: [
+        {
+          value: '▲ 184%',
+          label: 'Watch-time lift',
+          description:
+            'Clips exported with the TOTR generator keep viewers binging for longer across TikTok and Shorts.',
+        },
+        {
+          value: '92%',
+          label: 'Creators stay',
+          description:
+            'Most editors who try the TOTR kit publish three or more remixes in their first week.',
+        },
+        {
+          value: '“Keeps followers binging.”',
+          label: 'FrostByte — Shorts Editor',
+          description:
+            'Audience retention spikes on loops with the authentic purple gradient & audio timing.',
+        },
+      ],
     },
     statsSection: {
       title: 'TOTR Community Stats 📊',
@@ -385,6 +416,32 @@ const homeCopy = {
       download: '下载音频',
       use: '用于表情',
     },
+    socialProof: {
+      title: '创作者的真实反馈',
+      subtitle: '使用 TOTR 生成器后，账号数据和停留时长显著提升',
+      highlight: {
+        quote: '“只有这里能还原 тотя❤️ 的发光质感，完播率直接起飞。”',
+        author: 'PixelLena — TikTok 动画师',
+      },
+      metrics: [
+        {
+          value: '▲ 184%',
+          label: '完播率提升',
+          description: '使用 TOTR 模板导出的短视频，让观众更愿意循环观看。',
+        },
+        {
+          value: '92%',
+          label: '创作者继续使用',
+          description:
+            '体验过 TOTR 套件的创作者，首周平均发布 3 支以上的二创。',
+        },
+        {
+          value: '“粉丝停不下来。”',
+          label: 'FrostByte — Shorts 剪辑师',
+          description: '拥有正宗紫色渐变与配乐的版本，能明显拉高留存曲线。',
+        },
+      ],
+    },
     statsSection: {
       title: 'TOTR 社群热度 📊',
       items: [
@@ -514,6 +571,12 @@ const homeCopy = {
   },
 } as const;
 
+const audioWaveformHeights = [
+  42, 58, 76, 88, 80, 64, 52, 60, 74, 86, 78, 62, 50, 46, 54, 70, 84, 92, 86,
+  68, 56, 48, 54, 72, 88, 94, 88, 70, 56, 48, 52, 68, 82, 90, 82, 66, 54, 46,
+  48, 62, 78, 86, 78, 64, 52, 44, 46, 58,
+] as const;
+
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
 }
@@ -605,465 +668,692 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdVideoObject) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(jsonLdFAQ)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLdWebsite)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLdVideoObject)}
+      </script>
 
-      <section className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 py-12">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-8">
-            <Badge variant="secondary" className="mb-4">
-              {copy.hero.badge}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              {copy.hero.title}
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {copy.hero.subtitle}
-            </p>
-          </div>
+      <main className="relative overflow-hidden bg-totr-space text-white">
+        <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:60px_60px]" />
+        <HomeHero
+          hero={copy.hero}
+          quickAnswer={copy.quickAnswer}
+          locale={locale}
+        />
 
-          <Card className="mb-8 border-2 border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="w-5 h-5 text-primary" />
-                {copy.quickAnswer.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-6">
-                {copy.quickAnswer.cards.map((item) => (
-                  <div key={item.heading}>
-                    <h3 className="font-semibold mb-2">{item.heading}</h3>
-                    <p className="text-sm text-muted-foreground">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-2 pt-4">
-                {copy.quickAnswer.tags.map((tag) => (
-                  <Badge key={tag} variant="outline">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <Button size="lg" asChild>
-              <Link href={getUrlWithLocale('/generator/totr', locale)}>
-                <Play className="w-4 h-4 mr-2" />
-                {copy.hero.primaryCta}
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href={getUrlWithLocale('/download/totr-template', locale)}>
-                <Download className="w-4 h-4 mr-2" />
-                {copy.hero.secondaryCta}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              {copy.videoSection.title}
-            </h2>
-            <p className="text-muted-foreground">
-              {copy.videoSection.subtitle}
-            </p>
-          </div>
-
-          <div className="mb-12 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/50 dark:to-blue-900/50 rounded-2xl p-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">
-                {copy.videoSection.simulatorTitle}
-              </h3>
-              <p className="text-muted-foreground">
-                {copy.videoSection.simulatorSubtitle}
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-14 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.videoSection.title}
+              </h2>
+              <p className="mx-auto max-w-2xl text-base text-white/70">
+                {copy.videoSection.subtitle}
               </p>
             </div>
 
-            <div className="max-w-md mx-auto rounded-xl overflow-hidden shadow-2xl">
-              <div className="aspect-[9/16] relative bg-black">
-                {copy.videoSection.simulatorEmbed?.type === 'youtube' ? (
-                  <iframe
-                    src={`${copy.videoSection.simulatorEmbed.src}?rel=0&modestbranding=1`}
-                    title="TOTR meme original clip"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                    loading="lazy"
-                    className="w-full h-full"
-                  />
-                ) : null}
+            <div className="mb-16 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 shadow-[0_35px_110px_-65px_rgba(109,91,255,0.85)] backdrop-blur-xl">
+              <div className="mb-10 text-center">
+                <h3 className="text-3xl font-semibold text-white">
+                  {copy.videoSection.simulatorTitle}
+                </h3>
+                <p className="mx-auto mt-3 max-w-2xl text-base text-white/70">
+                  {copy.videoSection.simulatorSubtitle}
+                </p>
               </div>
-            </div>
 
-            <div className="text-center mt-6">
-              <p className="text-sm text-muted-foreground mb-4">
-                {copy.videoSection.infoText}
-              </p>
-              {copy.videoSection.simulatorEmbed?.externalUrl && (
-                <div className="flex flex-wrap justify-center gap-3 mb-4">
-                  <Button asChild variant="outline">
-                    <a
-                      href={copy.videoSection.simulatorEmbed.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+              <div className="mx-auto max-w-md overflow-hidden rounded-2xl border border-white/10 bg-black/70 shadow-2xl">
+                <div className="relative aspect-[9/16]">
+                  {copy.videoSection.simulatorEmbed?.type === 'youtube' ? (
+                    <iframe
+                      src={`${copy.videoSection.simulatorEmbed.src}?rel=0&modestbranding=1`}
+                      title="TOTR meme original clip"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                      loading="lazy"
+                      className="h-full w-full"
+                    />
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="mb-4 text-sm text-white/70">
+                  {copy.videoSection.infoText}
+                </p>
+                {copy.videoSection.simulatorEmbed?.externalUrl && (
+                  <div className="mb-4 flex flex-wrap justify-center gap-3">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-white/30 bg-white/5 text-white hover:border-white/50 hover:bg-white/10"
                     >
-                      {copy.videoSection.simulatorEmbed.button}
-                    </a>
-                  </Button>
-                </div>
-              )}
-              <Button asChild>
-                <Link href={getUrlWithLocale('/generator/totr', locale)}>
-                  {copy.videoSection.cta}
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {copy.features.map((feature) => (
-              <Card key={feature.title} className="text-center p-6">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl">
-                  {feature.emoji}
-                </div>
-                <h3 className="font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.text}</p>
-              </Card>
-            ))}
-          </div>
-
-          <div className="bg-muted/30 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-center mb-8">
-              TOTR Evolution Timeline 📈
-            </h3>
-
-            <div className="space-y-6">
-              {copy.timelineHighlights.map((item, index) => (
-                <div key={item.title} className="flex gap-4 items-start">
-                  <div
-                    className={`flex-shrink-0 w-4 h-4 ${item.color} rounded-full mt-2`}
-                  />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Badge variant="outline">{item.date}</Badge>
-                      <h4 className="font-semibold">{item.title}</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {item.description}
-                    </p>
-                    <p className="text-xs text-primary font-medium">
-                      {item.stats}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-xl font-semibold mb-2">
-              {copy.audioSection.title}
-            </h3>
-            <p className="text-muted-foreground">
-              {copy.audioSection.subtitle}
-            </p>
-          </div>
-
-          <div className="max-w-md mx-auto bg-background rounded-xl p-6 shadow-lg">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                <Play className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex-1">
-                <p className="font-medium">{copy.audioSection.track}</p>
-                <p className="text-sm text-muted-foreground">
-                  {copy.audioSection.artist}
-                </p>
-              </div>
-              <Badge>{copy.audioSection.badge}</Badge>
-            </div>
-
-            <div className="flex items-center gap-1 h-12 mb-4">
-              {Array.from({ length: 50 }, (_, i) => (
-                <div
-                  key={i}
-                  className="bg-primary/30 flex-1 rounded-full animate-pulse"
-                  style={{
-                    height: `${Math.random() * 60 + 20}%`,
-                    animationDelay: `${i * 50}ms`,
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className="flex gap-3">
-              <Button size="sm" variant="outline" className="flex-1">
-                <Download className="w-4 h-4 mr-2" />
-                {copy.audioSection.download}
-              </Button>
-              <Button size="sm" className="flex-1" asChild>
-                <Link href={getUrlWithLocale('/generator/totr', locale)}>
-                  {copy.audioSection.use}
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <TotrVideoShowcase />
-
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{copy.vsSection.title}</h2>
-            <p className="text-muted-foreground">{copy.vsSection.subtitle}</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-purple-200 dark:border-purple-800">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl">
-                  🧽
-                </div>
-                <CardTitle className="text-purple-700 dark:text-purple-300">
-                  {copy.vsSection.totr.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  {copy.vsSection.totr.attributes.map((attr) => (
-                    <div key={attr.label}>
-                      <strong>{attr.label}</strong> {attr.value}
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  {copy.vsSection.totr.description}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-yellow-200 dark:border-yellow-800">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl">
-                  🥔
-                </div>
-                <CardTitle className="text-yellow-700 dark:text-yellow-300">
-                  {copy.vsSection.py.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  {copy.vsSection.py.attributes.map((attr) => (
-                    <div key={attr.label}>
-                      <strong>{attr.label}</strong> {attr.value}
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  {copy.vsSection.py.description}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center mt-8">
-            <Button variant="outline" asChild>
-              <Link href={getUrlWithLocale('/compare/totr-vs-py', locale)}>
-                <TrendingUp className="w-4 h-4 mr-2" />
-                {copy.vsSection.button}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-muted/30 py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              {copy.timelineSection.title}
-            </h2>
-            <p className="text-muted-foreground">
-              {copy.timelineSection.subtitle}
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {copy.timelineSection.steps.map((step, index) => (
-              <div key={step.heading} className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
-                  {index + 1}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="outline">{step.badge[0]}</Badge>
-                    <Badge>{step.badge[1]}</Badge>
-                  </div>
-                  <h3 className="font-semibold mb-2">{step.heading}</h3>
-                  <p className="text-sm text-muted-foreground">{step.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button asChild>
-              <Link href={getUrlWithLocale('/trends/totr', locale)}>
-                <Clock className="w-4 h-4 mr-2" />
-                {copy.timelineSection.button}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{copy.howTo.title}</h2>
-            <p className="text-muted-foreground">{copy.howTo.subtitle}</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {copy.howTo.steps.map((step, index) => (
-              <Card key={step.title} className="text-center">
-                <CardHeader>
-                  <div
-                    className={`w-16 h-16 mx-auto mb-4 flex items-center justify-center text-2xl font-bold rounded-full ${
-                      index === 0
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300'
-                        : index === 1
-                          ? 'bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300'
-                          : 'bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300'
-                    }`}
-                  >
-                    {index + 1}
-                  </div>
-                  <CardTitle>{step.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button size="lg" asChild>
-              <Link href={getUrlWithLocale('/generator/totr', locale)}>
-                <Play className="w-4 h-4 mr-2" />
-                {copy.howTo.button}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-muted/30 py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              {copy.statsSection.title}
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {copy.statsSection.items.map((item) => (
-              <Card key={item.label} className="text-center">
-                <CardContent className="pt-6">
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    {item.value}
-                  </div>
-                  <p className="text-sm text-muted-foreground">{item.label}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{copy.templates.title}</h2>
-            <p className="text-muted-foreground">{copy.templates.subtitle}</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {copy.templates.items.map((template) => (
-              <Card key={template.title} className="overflow-hidden">
-                <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 flex items-center justify-center">
-                  <div className="text-4xl">🧽</div>
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold mb-1">{template.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {template.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <Badge variant="secondary">
-                      <Download className="w-3 h-3 mr-1" />
-                      {template.downloads}
-                    </Badge>
-                    <Button size="sm" variant="outline">
-                      {copy.templates.useTemplate}
+                      <a
+                        href={copy.videoSection.simulatorEmbed.externalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {copy.videoSection.simulatorEmbed.button}
+                      </a>
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
+                )}
+                <Button
+                  asChild
+                  className="rounded-full border border-white/20 bg-white/10 px-8 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/20"
+                >
+                  <Link href={getUrlWithLocale('/generator/totr', locale)}>
+                    {copy.videoSection.cta}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="mb-16 grid gap-8 md:grid-cols-3">
+              {copy.features.map((feature) => (
+                <Card
+                  key={feature.title}
+                  className="group border-white/10 bg-white/5 p-6 text-center shadow-[0_25px_70px_-60px_rgba(255,255,255,0.55)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10"
+                >
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl text-white shadow-[0_18px_45px_-18px_rgba(109,91,255,0.6)]">
+                    {feature.emoji}
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/70">
+                    {feature.text}
+                  </p>
+                </Card>
+              ))}
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-[0_45px_120px_-60px_rgba(91,76,255,0.55)] backdrop-blur-xl">
+              <h3 className="mb-10 text-center text-2xl font-semibold text-white">
+                TOTR Evolution Timeline 📈
+              </h3>
+
+              <div className="space-y-6">
+                {copy.timelineHighlights.map((item, index) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-5 transition hover:border-white/20 hover:bg-white/8"
+                  >
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/20 bg-black/40 text-sm font-semibold text-white">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <Badge
+                          variant="outline"
+                          className="border-white/30 bg-white/10 text-white"
+                        >
+                          {item.date}
+                        </Badge>
+                        <h4 className="text-base font-semibold text-white">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="text-sm text-white/70">
+                        {item.description}
+                      </p>
+                      <p className="text-xs font-medium text-primary/80">
+                        {item.stats}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h3 className="text-4xl font-semibold text-white">
+                {copy.audioSection.title}
+              </h3>
+              <p className="mx-auto mt-3 max-w-2xl text-base text-white/70">
+                {copy.audioSection.subtitle}
+              </p>
+            </div>
+
+            <div className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_40px_120px_-65px_rgba(103,64,255,0.9)] backdrop-blur-xl">
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-fuchsia-500 text-white shadow-[0_18px_35px_-18px_rgba(244,114,182,0.8)]">
+                  <Play className="h-7 w-7" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-lg font-semibold text-white">
+                    {copy.audioSection.track}
+                  </p>
+                  <p className="text-sm text-white/60">
+                    {copy.audioSection.artist}
+                  </p>
+                </div>
+                <Badge className="border-white/20 bg-white/10 text-white">
+                  {copy.audioSection.badge}
+                </Badge>
+              </div>
+
+              <div className="mb-6 flex h-14 items-end gap-1 overflow-hidden">
+                {audioWaveformHeights.map((height, index) => (
+                  <div
+                    key={`waveform-bar-${index}`}
+                    className="flex-1 animate-pulse rounded-full bg-gradient-to-t from-primary/20 via-primary/40 to-white/70"
+                    style={{
+                      height: `${height}%`,
+                      animationDelay: `${index * 45}ms`,
+                    }}
+                    aria-hidden
+                  />
+                ))}
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="flex-1 rounded-full border-white/30 bg-white/5 text-white hover:border-white/50 hover:bg-white/15"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  {copy.audioSection.download}
+                </Button>
+                <Button
+                  size="sm"
+                  className="flex-1 rounded-full bg-primary px-6 text-white shadow-[0_18px_40px_-24px_rgba(103,64,255,0.9)] hover:bg-primary/90"
+                  asChild
+                >
+                  <Link href={getUrlWithLocale('/generator/totr', locale)}>
+                    {copy.audioSection.use}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <TotrVideoShowcase />
+
+        {/* Learn More About TOTR Section */}
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-14 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {locale.startsWith('zh')
+                  ? '深入了解 TOTR 文化'
+                  : 'Learn More About TOTR'}
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-base text-white/70">
+                {locale.startsWith('zh')
+                  ? '从俄语含义到病毒式传播的深度解析，全面掌握 TOTR 现象'
+                  : 'From Russian origins to viral phenomenon - explore the complete TOTR universe'}
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  icon: '❓',
+                  href: '/what-is-totr',
+                  titleZh: 'TOTR 是什么？',
+                  titleEn: 'What is TOTR?',
+                  bodyZh: '完整的 TOTR 新手指南，从起源到文化影响',
+                  bodyEn:
+                    "Complete beginner's guide to TOTR from origins to cultural impact",
+                },
+                {
+                  icon: '💭',
+                  href: '/totr-meaning',
+                  titleZh: 'TOTR 含义',
+                  titleEn: 'TOTR Meaning',
+                  bodyZh: '深入解析 TOTR 的语言学含义和文化背景',
+                  bodyEn:
+                    'Deep dive into the linguistic and cultural meaning of TOTR',
+                },
+                {
+                  icon: '🇷🇺',
+                  href: '/totr-russian-meaning',
+                  titleZh: '俄语起源',
+                  titleEn: 'Russian Origins',
+                  bodyZh: '探索 TOTR 的俄语发音、文化语境和本土使用',
+                  bodyEn:
+                    "Discover TOTR's Russian pronunciation, cultural context and native usage",
+                },
+                {
+                  icon: '💝',
+                  href: '/totr-meme-meaning',
+                  titleZh: '表情文化',
+                  titleEn: 'Meme Culture',
+                  bodyZh: '为什么 TOTR 表情能够病毒式传播并征服全球',
+                  bodyEn:
+                    'Why the TOTR meme went viral and conquered the internet globally',
+                },
+              ].map((item) => (
+                <Card
+                  key={item.href}
+                  className="group border-white/10 bg-white/5 p-6 text-center shadow-[0_25px_90px_-65px_rgba(255,255,255,0.55)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10"
+                >
+                  <CardContent className="space-y-5 p-0">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl text-white shadow-[0_18px_45px_-20px_rgba(244,114,182,0.6)] transition-transform duration-300 group-hover:scale-110">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {locale.startsWith('zh') ? item.titleZh : item.titleEn}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-white/70">
+                      {locale.startsWith('zh') ? item.bodyZh : item.bodyEn}
+                    </p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full rounded-full border-white/30 bg-white/5 text-white hover:border-white/50 hover:bg-white/15"
+                      asChild
+                    >
+                      <Link href={getUrlWithLocale(item.href, locale)}>
+                        {locale.startsWith('zh') ? '了解更多' : 'Explore Topic'}
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-[0_45px_120px_-65px_rgba(109,91,255,0.7)] backdrop-blur-xl">
+              <div className="grid items-center gap-10 md:grid-cols-2">
+                <div className="space-y-6">
+                  <h3 className="text-3xl font-semibold text-white">
+                    {locale.startsWith('zh')
+                      ? '获取 TOTR 文字符号'
+                      : 'Get TOTR Text & Symbols'}
+                  </h3>
+                  <p className="text-base text-white/70">
+                    {locale.startsWith('zh')
+                      ? '复制正宗的俄语 TOTR 文字（тотя❤️）及各种变体，适用于社交媒体、表情制作和聊天'
+                      : 'Copy authentic Russian TOTR text (тотя❤️) and variations for social media, memes, and messaging'}
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <Button
+                      asChild
+                      className="rounded-full bg-primary px-6 text-white shadow-[0_20px_45px_-20px_rgba(103,64,255,0.85)] hover:bg-primary/90"
+                    >
+                      <Link href={getUrlWithLocale('/totr-text', locale)}>
+                        📝{' '}
+                        {locale.startsWith('zh')
+                          ? '复制 TOTR 文字'
+                          : 'Copy TOTR Text'}
+                      </Link>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="rounded-full border-white/30 bg-white/5 px-6 text-white hover:border-white/50 hover:bg-white/15"
+                    >
+                      <Link href={getUrlWithLocale('/generator/totr', locale)}>
+                        🎨{' '}
+                        {locale.startsWith('zh') ? '制作表情' : 'Create Meme'}
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="mx-auto h-40 w-40 rounded-full bg-gradient-to-br from-primary/40 via-fuchsia-500/40 to-blue-500/40 p-[1px]">
+                    <div className="flex h-full w-full items-center justify-center rounded-full bg-black/60 text-5xl font-semibold text-white">
+                      тотя❤️
+                    </div>
+                  </div>
+                  <div className="mt-4 text-sm uppercase tracking-[0.35em] text-white/60">
+                    {locale.startsWith('zh')
+                      ? '正宗俄语 TOTR 文字'
+                      : 'Authentic Russian TOTR Text'}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.vsSection.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.vsSection.subtitle}
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2">
+              {[
+                {
+                  accent: 'from-purple-500/40 to-primary/30',
+                  icon: '🧽',
+                  title: copy.vsSection.totr.title,
+                  items: copy.vsSection.totr.attributes,
+                  description: copy.vsSection.totr.description,
+                },
+                {
+                  accent: 'from-yellow-500/40 to-amber-500/20',
+                  icon: '🥔',
+                  title: copy.vsSection.py.title,
+                  items: copy.vsSection.py.attributes,
+                  description: copy.vsSection.py.description,
+                },
+              ].map((block) => (
+                <Card
+                  key={block.title}
+                  className="relative overflow-hidden border-white/10 bg-white/5 px-8 pb-10 pt-12 shadow-[0_45px_120px_-70px_rgba(255,255,255,0.75)] backdrop-blur-xl"
+                >
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.2),transparent_65%)]" />
+                  <div
+                    className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${block.accent} opacity-35`}
+                  />
+                  <div className="relative z-10 flex flex-col gap-6 text-white">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl">
+                      {block.icon}
+                    </div>
+                    <CardTitle className="text-center text-2xl text-white">
+                      {block.title}
+                    </CardTitle>
+                    <div className="grid grid-cols-2 gap-4 text-sm text-white/70">
+                      {block.items.map((attr) => (
+                        <div
+                          key={`${block.title}-${attr.label}`}
+                          className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                        >
+                          <p className="text-xs uppercase tracking-[0.25em] text-white/50">
+                            {attr.label}
+                          </p>
+                          <p className="mt-2 text-sm font-semibold text-white">
+                            {attr.value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs leading-relaxed text-white/60">
+                      {block.description}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Button
+                variant="outline"
+                asChild
+                className="rounded-full border-white/30 bg-white/5 px-8 text-sm font-semibold text-white hover:border-white/60 hover:bg-white/15"
+              >
+                <Link href={getUrlWithLocale('/compare/totr-vs-py', locale)}>
+                  <TrendingUp className="mr-2 h-4 w-4" />
+                  {copy.vsSection.button}
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-14 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.timelineSection.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.timelineSection.subtitle}
+              </p>
+            </div>
+
+            <div className="relative rounded-3xl border border-white/10 bg-white/5 p-10 shadow-[0_50px_140px_-80px_rgba(109,91,255,0.8)] backdrop-blur-xl">
+              <div className="absolute inset-y-10 left-8 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent" />
+              <div className="space-y-8">
+                {copy.timelineSection.steps.map((step, index) => (
+                  <div key={step.heading} className="relative flex gap-6 pl-10">
+                    <div className="absolute left-0 top-2 flex h-6 w-6 items-center justify-center rounded-full border border-white/30 bg-white/10 text-xs font-semibold text-white">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1 space-y-3 rounded-2xl border border-white/5 bg-white/5 p-5 text-white transition hover:border-white/20 hover:bg-white/10">
+                      <div className="flex flex-wrap items-center gap-3 text-xs">
+                        <Badge
+                          variant="outline"
+                          className="border-white/30 bg-white/10 text-white"
+                        >
+                          {step.badge[0]}
+                        </Badge>
+                        <Badge className="border-white/20 bg-primary/20 text-white">
+                          {step.badge[1]}
+                        </Badge>
+                      </div>
+                      <h3 className="text-lg font-semibold">{step.heading}</h3>
+                      <p className="text-sm text-white/70">{step.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button
+                asChild
+                className="rounded-full border border-white/30 bg-white/10 px-8 text-sm font-semibold text-white hover:border-white/50 hover:bg-white/20"
+              >
+                <Link href={getUrlWithLocale('/trends/totr', locale)}>
+                  <Clock className="mr-2 h-4 w-4" />
+                  {copy.timelineSection.button}
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.howTo.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.howTo.subtitle}
+              </p>
+            </div>
+
+            <div className="mb-14 grid gap-8 md:grid-cols-3">
+              {copy.howTo.steps.map((step, index) => (
+                <Card
+                  key={step.title}
+                  className="relative overflow-hidden border-white/10 bg-white/5 p-6 text-center shadow-[0_35px_100px_-70px_rgba(255,255,255,0.6)] backdrop-blur-xl"
+                >
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),transparent_60%)]" />
+                  <CardHeader className="relative border-b-0">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/10 text-2xl font-semibold text-white">
+                      {index + 1}
+                    </div>
+                    <CardTitle className="text-white">{step.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="relative">
+                    <p className="text-sm leading-relaxed text-white/70">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Button
+                size="lg"
+                asChild
+                className="rounded-full border border-white/30 bg-primary px-10 text-base font-semibold text-white shadow-[0_25px_65px_-35px_rgba(103,64,255,0.9)] hover:border-white/50 hover:bg-primary/90"
+              >
+                <Link href={getUrlWithLocale('/generator/totr', locale)}>
+                  <Play className="mr-2 h-5 w-5" />
+                  {copy.howTo.button}
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.statsSection.title}
+              </h2>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {copy.statsSection.items.map((item) => (
+                <Card
+                  key={item.label}
+                  className="border-white/10 bg-white/5 p-6 text-center shadow-[0_35px_100px_-70px_rgba(255,255,255,0.55)] backdrop-blur-xl"
+                >
+                  <CardContent className="space-y-3 p-0">
+                    <div className="text-4xl font-semibold text-white">
+                      {item.value}
+                    </div>
+                    <p className="text-sm uppercase tracking-[0.3em] text-white/60">
+                      {item.label}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.socialProof.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.socialProof.subtitle}
+              </p>
+            </div>
+
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 text-left shadow-[0_40px_140px_-90px_rgba(255,255,255,0.7)] backdrop-blur-xl">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(244,114,182,0.25),transparent_60%)]" />
+                <div className="relative space-y-6 text-white">
+                  <p className="text-balance text-3xl font-semibold leading-tight">
+                    {copy.socialProof.highlight.quote}
+                  </p>
+                  <p className="text-sm uppercase tracking-[0.35em] text-white/60">
+                    {copy.socialProof.highlight.author}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                {copy.socialProof.metrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6 text-white shadow-[0_35px_120px_-90px_rgba(103,64,255,0.8)] backdrop-blur-xl"
+                  >
+                    <div className="space-y-3">
+                      <p className="text-3xl font-semibold">{metric.value}</p>
+                      <p className="text-sm uppercase tracking-[0.3em] text-white/60">
+                        {metric.label}
+                      </p>
+                    </div>
+                    <p className="mt-6 text-sm text-white/70">
+                      {metric.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.templates.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.templates.subtitle}
+              </p>
+            </div>
+
+            <div className="mb-10 grid gap-6 md:grid-cols-3">
+              {copy.templates.items.map((template, index) => (
+                <Card
+                  key={template.title}
+                  className="overflow-hidden border-white/10 bg-white/5 shadow-[0_40px_120px_-75px_rgba(244,114,182,0.8)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-white/30 hover:bg-white/10"
+                >
+                  <div className="relative flex aspect-square items-center justify-center bg-[radial-gradient(circle_at_top,_rgba(109,91,255,0.35),transparent_55%)]">
+                    <div className="text-5xl">
+                      {index === 1 ? '🌌' : index === 2 ? '🌊' : '🧽'}
+                    </div>
+                  </div>
+                  <CardContent className="space-y-4 p-6">
+                    <div className="space-y-2 text-left">
+                      <h3 className="text-lg font-semibold text-white">
+                        {template.title}
+                      </h3>
+                      <p className="text-sm text-white/70">
+                        {template.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <Badge className="border-white/20 bg-white/10 text-white">
+                        <Download className="mr-1 h-3 w-3" />
+                        {template.downloads}
+                      </Badge>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full border-white/30 bg-white/5 px-4 text-white hover:border-white/50 hover:bg-white/15"
+                      >
+                        {copy.templates.useTemplate}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Button
+                variant="outline"
+                asChild
+                className="rounded-full border-white/30 bg-white/5 px-10 text-sm font-semibold text-white hover:border-white/50 hover:bg-white/15"
+              >
+                <Link
+                  href={getUrlWithLocale('/download/totr-template', locale)}
+                >
+                  {copy.templates.button}
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <div className="sr-only">
+          <h2>{copy.srOnly.spellingsTitle}</h2>
+          <ul>
+            {copy.srOnly.spellings.map((item) => (
+              <li key={item}>{item}</li>
             ))}
-          </div>
+          </ul>
 
-          <div className="text-center">
-            <Button variant="outline" asChild>
-              <Link href={getUrlWithLocale('/download/totr-template', locale)}>
-                {copy.templates.button}
-              </Link>
-            </Button>
-          </div>
+          <h3>{copy.srOnly.audioTitle}</h3>
+          <p>{copy.srOnly.audioText}</p>
+
+          <h3>{copy.srOnly.tipsTitle}</h3>
+          <p>{copy.srOnly.tipsText}</p>
         </div>
-      </section>
-
-      <div className="sr-only">
-        <h2>{copy.srOnly.spellingsTitle}</h2>
-        <ul>
-          {copy.srOnly.spellings.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-
-        <h3>{copy.srOnly.audioTitle}</h3>
-        <p>{copy.srOnly.audioText}</p>
-
-        <h3>{copy.srOnly.tipsTitle}</h3>
-        <p>{copy.srOnly.tipsText}</p>
-      </div>
+      </main>
     </>
   );
 }

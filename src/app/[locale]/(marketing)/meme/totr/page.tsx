@@ -39,10 +39,7 @@ export default async function Page({
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-12 space-y-6">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <header className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">{t('hero.title')}</h1>
         <p className="text-muted-foreground text-lg">{t('hero.subtitle')}</p>

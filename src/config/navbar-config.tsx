@@ -10,7 +10,6 @@ import {
   FlameIcon,
   ListChecksIcon,
   MailIcon,
-  MailboxIcon,
   RocketIcon,
   ShieldCheckIcon,
   SquareKanbanIcon,
@@ -35,18 +34,50 @@ export function getNavbarLinks(): NestedMenuItem[] {
   return [
     {
       title: 'TOTR Generator',
-      href: '/',
+      href: '/generator/totr',
       external: false,
     },
     {
-      title: 'What is TOTR?',
-      href: '/#what-is-totr',
-      external: false,
-    },
-    {
-      title: 'Templates',
-      href: '/#templates',
-      external: false,
+      title: 'Learn About TOTR',
+      items: [
+        {
+          title: 'What is TOTR?',
+          description: "Complete beginner's guide to the viral TOTR meme",
+          icon: <ComponentIcon className="size-4 shrink-0" />,
+          href: '/what-is-totr',
+          external: false,
+        },
+        {
+          title: 'TOTR Meaning',
+          description: 'Deep dive into the linguistic meaning and definition',
+          icon: <FlameIcon className="size-4 shrink-0" />,
+          href: '/totr-meaning',
+          external: false,
+        },
+        {
+          title: 'Russian Origins',
+          description:
+            "Discover TOTR's Russian pronunciation and cultural context",
+          icon: <ShieldCheckIcon className="size-4 shrink-0" />,
+          href: '/totr-russian-meaning',
+          external: false,
+        },
+        {
+          title: 'Meme Culture',
+          description:
+            'Why the TOTR meme went viral and conquered the internet',
+          icon: <RocketIcon className="size-4 shrink-0" />,
+          href: '/totr-meme-meaning',
+          external: false,
+        },
+        {
+          title: 'TOTR Text & Symbols',
+          description: 'Copy authentic Russian TOTR text and variations',
+          icon: <FileTextIcon className="size-4 shrink-0" />,
+          href: '/totr-text',
+          external: false,
+        },
+      ],
     },
     ...(websiteConfig.blog.enable
       ? [
@@ -119,13 +150,6 @@ export function getNavbarLinks(): NestedMenuItem[] {
           description: t('pages.items.contact.description'),
           icon: <MailIcon className="size-4 shrink-0" />,
           href: Routes.Contact,
-          external: false,
-        },
-        {
-          title: t('pages.items.waitlist.title'),
-          description: t('pages.items.waitlist.description'),
-          icon: <MailboxIcon className="size-4 shrink-0" />,
-          href: Routes.Waitlist,
           external: false,
         },
         {

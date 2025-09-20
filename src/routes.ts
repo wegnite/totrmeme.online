@@ -14,7 +14,6 @@ export enum Routes {
   Docs = '/docs',
   About = '/about',
   Contact = '/contact',
-  Waitlist = '/waitlist',
   Changelog = '/changelog',
   Roadmap = 'https://totrmeme.online/roadmap',
   CookiePolicy = '/cookie',

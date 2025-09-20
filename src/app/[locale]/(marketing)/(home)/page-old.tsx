@@ -88,14 +88,12 @@ export default async function HomePage(props: HomePageProps) {
   return (
     <>
       {/* 结构化数据 */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdItemList) }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLdWebsite)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLdItemList)}
+      </script>
 
       {/* 首页 Hero */}
       <section className="relative overflow-hidden">

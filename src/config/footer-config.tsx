@@ -132,8 +132,8 @@ export function getFooterLinks(): NestedMenuItem[] {
         },
         {
           title: 'Feature Requests',
-          href: Routes.Waitlist,
-          external: false,
+          href: Routes.Roadmap,
+          external: true,
         },
       ],
     },

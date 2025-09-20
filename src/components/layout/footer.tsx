@@ -16,21 +16,26 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
   const socialLinks = getSocialLinks();
 
   return (
-    <footer className={cn('border-t', className)}>
-      <Container className="px-4">
-        <div className="grid grid-cols-2 gap-8 py-16 md:grid-cols-6">
-          <div className="flex flex-col items-start col-span-full md:col-span-2">
+    <footer
+      className={cn(
+        'border-t border-white/10 bg-[#060224]/95 text-white backdrop-blur-2xl',
+        className
+      )}
+    >
+      <Container className="px-6">
+        <div className="grid grid-cols-2 gap-10 py-16 md:grid-cols-6">
+          <div className="col-span-full flex flex-col items-start md:col-span-2">
             <div className="space-y-4">
               {/* logo and name */}
               <div className="items-center space-x-2 flex">
                 <Logo />
-                <span className="text-xl font-semibold">
+                <span className="font-display text-xl font-semibold text-white">
                   {t('Metadata.name')}
                 </span>
               </div>
 
               {/* tagline */}
-              <p className="text-muted-foreground text-base py-2 md:pr-12">
+              <p className="py-2 text-base text-white/70 md:pr-12">
                 {t('Marketing.footer.tagline')}
               </p>
 
@@ -60,9 +65,9 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
           {footerLinks?.map((section) => (
             <div
               key={section.title}
-              className="col-span-1 md:col-span-1 items-start"
+              className="items-start col-span-1 md:col-span-1"
             >
-              <span className="text-sm font-semibold uppercase">
+              <span className="text-sm font-semibold uppercase tracking-[0.3em] text-white/50">
                 {section.title}
               </span>
               <ul className="mt-4 list-inside space-y-3">
@@ -73,7 +78,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                         <LocaleLink
                           href={item.href || '#'}
                           target={item.external ? '_blank' : undefined}
-                          className="text-sm text-muted-foreground hover:text-primary"
+                          className="text-sm text-white/60 transition hover:text-white"
                         >
                           {item.title}
                         </LocaleLink>
@@ -86,37 +91,37 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
         </div>
       </Container>
 
-      <div className="border-t py-8">
-        <Container className="px-4">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <span className="text-muted-foreground text-sm">
-              &copy; {new Date().getFullYear()} {t('Metadata.name')} All Rights
-              Reserved.
+      <div className="border-t border-white/10 py-8">
+        <Container className="px-6">
+          <div className="flex flex-col gap-4 text-white/60 md:flex-row md:items-center md:justify-between">
+            <span className="text-sm">
+              &copy; {new Date().getFullYear()} {t('Metadata.name')} · All
+              rights reserved.
             </span>
 
             {/* Legal Links */}
             <div className="flex flex-wrap items-center gap-4 text-sm">
               <LocaleLink
                 href="/privacy-policy"
-                className="text-muted-foreground hover:text-primary"
+                className="transition hover:text-white"
               >
                 {t('Marketing.footer.legal.items.privacyPolicy')}
               </LocaleLink>
               <LocaleLink
                 href="/terms-of-service"
-                className="text-muted-foreground hover:text-primary"
+                className="transition hover:text-white"
               >
                 {t('Marketing.footer.legal.items.termsOfService')}
               </LocaleLink>
               <LocaleLink
                 href="/cookie-policy"
-                className="text-muted-foreground hover:text-primary"
+                className="transition hover:text-white"
               >
                 {t('Marketing.footer.legal.items.cookiePolicy')}
               </LocaleLink>
             </div>
 
-            <div className="flex items-center gap-x-4">
+            <div className="flex items-center gap-x-4 text-white">
               <ModeSwitcherHorizontal />
             </div>
           </div>

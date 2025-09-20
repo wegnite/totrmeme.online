@@ -29,7 +29,8 @@
       "src/app/[[]locale]/preview/**",
       "src/payment/types.ts",
       "src/credits/types.ts",
-      "src/types/index.d.ts"
+      "src/types/index.d.ts",
+      "cloudflare-env.d.ts"
     ]
   },
   "formatter": {
@@ -93,7 +94,8 @@
       "src/app/[[]locale]/preview/**",
       "src/payment/types.ts",
       "src/credits/types.ts",
-      "src/types/index.d.ts"
+      "src/types/index.d.ts",
+      "cloudflare-env.d.ts"
     ]
   },
   "javascript": {
