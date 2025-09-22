@@ -8,7 +8,15 @@ import { useCanvasStore } from '@/hooks/useCanvasState';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-const stickers = [
+interface Sticker {
+  readonly id: string;
+  readonly nameKey: string;
+  readonly src: string;
+  readonly width: number;
+  readonly height: number;
+}
+
+const stickers: readonly Sticker[] = [
   {
     id: 'totr-duo',
     nameKey: 'stickers.duo',
@@ -30,11 +38,37 @@ const stickers = [
     width: 280,
     height: 210,
   },
-];
+] as const;
+
+// 文本映射配置
+const STICKER_TEXT_MAP = {
+  'totr-duo': {
+    name: 'stickers.duo.name',
+    description: 'stickers.duo.description',
+  },
+  'heart-burst': {
+    name: 'stickers.heartBurst.name',
+    description: 'stickers.heartBurst.description',
+  },
+  'sparkle-frame': {
+    name: 'stickers.sparkleFrame.name',
+    description: 'stickers.sparkleFrame.description',
+  },
+} as const;
 
 export function StickerPanel() {
   const t = useTranslations('TotrMemeGenerator');
   const { addImage, template } = useCanvasStore();
+
+  // 获取贴纸文本的辅助函数
+  const getStickerText = (
+    stickerId: string,
+    textType: 'name' | 'description'
+  ) => {
+    const textMap =
+      STICKER_TEXT_MAP[stickerId as keyof typeof STICKER_TEXT_MAP];
+    return textMap ? t(textMap[textType] as any) : '';
+  };
 
   const handleAddSticker = (sticker: (typeof stickers)[number]) => {
     if (!template) return;
@@ -92,18 +126,10 @@ export function StickerPanel() {
                   </div>
                   <div className="flex-1 text-left">
                     <p className="font-medium text-sm text-foreground">
-                      {sticker.id === 'totr-duo'
-                        ? t('stickers.duo.name')
-                        : sticker.id === 'heart-burst'
-                          ? t('stickers.heartBurst.name')
-                          : t('stickers.sparkleFrame.name')}
+                      {getStickerText(sticker.id, 'name')}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {sticker.id === 'totr-duo'
-                        ? t('stickers.duo.description')
-                        : sticker.id === 'heart-burst'
-                          ? t('stickers.heartBurst.description')
-                          : t('stickers.sparkleFrame.description')}
+                      {getStickerText(sticker.id, 'description')}
                     </p>
                   </div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
