@@ -1136,6 +1136,7 @@
     },
     "quickActions": {
       "title": "快捷操作",
+      "hint": "命令",
       "undo": "撤销",
       "redo": "重做",
       "clearCanvas": "清空画布"
@@ -1182,6 +1183,23 @@
       "shortcuts": "• 支持 Ctrl+Z / Y 快捷键",
       "styles": "• 多种文字样式和颜色组合",
       "watermark": "• 免费版有水印，高级版可移除"
+    },
+    "label": "贴纸",
+    "description": "为你的表情包添加装饰贴纸",
+    "cta": "快速添加贴纸",
+    "stickers": {
+      "duo": {
+        "name": "TOTR 双子",
+        "description": "经典双海绵宝宝"
+      },
+      "heartBurst": {
+        "name": "爱心爆炸",
+        "description": "浪漫爱心特效"
+      },
+      "sparkleFrame": {
+        "name": "闪光边框",
+        "description": "闪闪发光的边框效果"
+      }
     }
   },
   "TotrHotMemes": {

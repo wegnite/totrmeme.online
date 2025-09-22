@@ -6,6 +6,7 @@ import { websiteConfig } from '@/config/website';
 import { LocaleLink } from '@/i18n/navigation';
 import { formatDate } from '@/lib/formatter';
 import { constructMetadata } from '@/lib/metadata';
+import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import {
   type BlogType,
   authorSource,
@@ -203,6 +204,11 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
                   className="bg-muted/50 border-none"
                 />
               )}
+            </div>
+
+            {/* Native Banner Ad */}
+            <div className="mt-6">
+              <AdsterraNativeBanner />
             </div>
           </div>
         </div>

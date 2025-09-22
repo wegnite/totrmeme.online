@@ -1,0 +1,31 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b0764" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#f472b6" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.45)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)" />
+  <circle cx="400" cy="260" r="280" fill="url(#glow)" />
+  <g transform="translate(220,170)">
+    <rect x="0" y="70" width="150" height="210" rx="36" fill="#fef08a" />
+    <rect x="210" y="70" width="150" height="210" rx="36" fill="#fde047" />
+    <ellipse cx="75" cy="260" rx="40" ry="18" fill="#facc15" opacity="0.5" />
+    <ellipse cx="285" cy="260" rx="40" ry="18" fill="#facc15" opacity="0.5" />
+    <circle cx="75" cy="110" r="12" fill="#1e293b" opacity="0.85" />
+    <circle cx="285" cy="110" r="12" fill="#1e293b" opacity="0.85" />
+    <path d="M60 155 Q75 180 90 155" stroke="#e11d48" stroke-width="10" stroke-linecap="round" fill="none" />
+    <path d="M270 155 Q285 180 300 155" stroke="#ec4899" stroke-width="10" stroke-linecap="round" fill="none" />
+  </g>
+  <text x="400" y="470" text-anchor="middle" font-family="'Bricolage Grotesque', 'Arial Black', sans-serif" font-size="56" fill="#ffffff" opacity="0.92" stroke="#1f2937" stroke-width="3" paint-order="stroke">
+    тотя ❤️
+  </text>
+  <text x="400" y="520" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="22" fill="rgba(255,255,255,0.75)">
+    Viral SpongeBob energy • neon dream gradient • TOTR classic
+  </text>
+</svg>

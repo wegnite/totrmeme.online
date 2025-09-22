@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
+import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import { Clock, Download, Play, TrendingUp, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -880,6 +881,13 @@ export default async function HomePage({ params }: HomePageProps) {
 
         <TotrVideoShowcase />
 
+        {/* Native Banner Ad */}
+        <section className="relative z-10 py-12 px-6">
+          <div className="mx-auto max-w-4xl">
+            <AdsterraNativeBanner />
+          </div>
+        </section>
+
         {/* Learn More About TOTR Section */}
         <section className="relative z-10 py-20 px-6">
           <div className="mx-auto max-w-6xl">
@@ -1336,6 +1344,13 @@ export default async function HomePage({ params }: HomePageProps) {
                 </Link>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* Native Banner Ad */}
+        <section className="relative z-10 py-12 px-6">
+          <div className="mx-auto max-w-4xl">
+            <AdsterraNativeBanner />
           </div>
         </section>
 

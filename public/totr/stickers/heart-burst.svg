@@ -1,0 +1,17 @@
+<svg width="500" height="420" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="burst" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fda4af" />
+      <stop offset="70%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#be123c" />
+    </radialGradient>
+    <linearGradient id="halo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(251,191,36,0.75)" />
+      <stop offset="100%" stop-color="rgba(14,165,233,0.65)" />
+    </linearGradient>
+  </defs>
+  <circle cx="250" cy="210" r="200" fill="url(#halo)" opacity="0.4" />
+  <path d="M250 360 C230 330 120 250 120 170 C120 120 160 90 200 90 C230 90 250 110 250 130 C250 110 270 90 300 90 C340 90 380 120 380 170 C380 250 270 330 250 360 Z" fill="url(#burst)" stroke="#fef2f2" stroke-width="8" />
+  <text x="250" y="220" text-anchor="middle" font-size="48" font-family="'Bricolage Grotesque',sans-serif" fill="#f8fafc" stroke="#0f172a" stroke-width="3" paint-order="stroke">TOTR</text>
+  <text x="250" y="260" text-anchor="middle" font-size="24" font-family="'Space Grotesk',sans-serif" fill="rgba(255,255,255,0.85)">stay remix loop</text>
+</svg>

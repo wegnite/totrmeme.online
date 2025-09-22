@@ -1136,6 +1136,7 @@
     },
     "quickActions": {
       "title": "Quick Actions",
+      "hint": "Commands",
       "undo": "Undo",
       "redo": "Redo",
       "clearCanvas": "Clear Canvas"
@@ -1182,6 +1183,23 @@
       "shortcuts": "• Use Ctrl+Z/Y shortcuts for undo/redo",
       "styles": "• Supports multiple text styles and colors",
       "watermark": "• Free version includes watermark, premium version can remove it"
+    },
+    "label": "Stickers",
+    "description": "Add decorative stickers to your meme",
+    "cta": "Add Quick Sticker",
+    "stickers": {
+      "duo": {
+        "name": "TOTR Duo",
+        "description": "Classic two SpongeBobs"
+      },
+      "heartBurst": {
+        "name": "Heart Burst",
+        "description": "Romantic heart explosion"
+      },
+      "sparkleFrame": {
+        "name": "Sparkle Frame",
+        "description": "Glittering border effect"
+      }
     }
   },
   "TotrHotMemes": {

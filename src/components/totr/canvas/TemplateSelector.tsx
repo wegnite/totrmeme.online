@@ -6,27 +6,30 @@ import { type CanvasTemplate, useCanvasStore } from '@/hooks/useCanvasState';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 
-const defaultTemplates: CanvasTemplate[] = [
+export const defaultTemplates: CanvasTemplate[] = [
   {
     id: 'totr-classic',
     name: 'TOTR Classic',
     backgroundColor: '#FFE066',
-    width: 400,
-    height: 300,
+    backgroundImage: '/totr/templates/classic.svg',
+    width: 480,
+    height: 360,
   },
   {
     id: 'totr-ocean',
     name: 'Ocean Vibes',
-    backgroundColor: '#00CED1',
-    width: 400,
-    height: 300,
+    backgroundColor: '#0EA5E9',
+    backgroundImage: '/totr/templates/ocean.svg',
+    width: 480,
+    height: 360,
   },
   {
     id: 'totr-purple',
     name: 'Purple Haze',
-    backgroundColor: '#9370DB',
-    width: 400,
-    height: 300,
+    backgroundColor: '#7C3AED',
+    backgroundImage: '/totr/templates/neon.svg',
+    width: 480,
+    height: 360,
   },
 ];
 
@@ -78,7 +81,7 @@ export function TemplateSelector({ className }: TemplateSelectorProps) {
               <CardContent className="p-3">
                 {/* Template Preview */}
                 <div
-                  className="w-full aspect-[4/3] rounded-md border-2 border-dashed border-muted-foreground/20 mb-3 flex items-center justify-center relative overflow-hidden"
+                  className="w-full aspect-[4/3] rounded-xl border border-border/40 mb-3 flex items-center justify-center relative overflow-hidden shadow-[0_22px_38px_-26px_rgba(124,58,237,0.55)]"
                   style={{
                     backgroundColor: templateOption.backgroundColor,
                     backgroundImage: templateOption.backgroundImage

@@ -1,0 +1,37 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ocean-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="40%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#164e63" />
+    </linearGradient>
+    <radialGradient id="ocean-glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)" />
+      <stop offset="100%" stop-color="rgba(6,182,212,0)" />
+    </radialGradient>
+    <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)" />
+      <stop offset="50%" stop-color="rgba(255,255,255,0.45)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.1)" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#ocean-bg)" />
+  <circle cx="400" cy="260" r="260" fill="url(#ocean-glow)" />
+  <path d="M0,420 C120,360 220,470 400,420 C580,370 680,460 800,410 L800,600 L0,600 Z" fill="url(#wave)" opacity="0.5" />
+  <g transform="translate(220,160)">
+    <rect x="0" y="70" width="150" height="220" rx="40" fill="#facc15" />
+    <rect x="210" y="70" width="150" height="220" rx="40" fill="#fde047" />
+    <circle cx="75" cy="110" r="14" fill="#082f49" opacity="0.9" />
+    <circle cx="285" cy="110" r="14" fill="#082f49" opacity="0.9" />
+    <path d="M55 160 Q75 185 95 160" stroke="#f97316" stroke-width="12" stroke-linecap="round" fill="none" />
+    <path d="M265 160 Q285 185 305 160" stroke="#fb7185" stroke-width="12" stroke-linecap="round" fill="none" />
+    <path d="M30 210 Q75 250 120 210" stroke="#1d4ed8" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.35" />
+    <path d="M240 210 Q285 250 330 210" stroke="#22d3ee" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.35" />
+  </g>
+  <text x="400" y="470" text-anchor="middle" font-family="'Bricolage Grotesque','Arial Black',sans-serif" font-size="54" fill="#fdf2f8" stroke="#0f172a" stroke-width="3" paint-order="stroke">
+    TOTR Splash 💦
+  </text>
+  <text x="400" y="515" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="22" fill="rgba(226,232,240,0.85)">
+    Aqua glow • drift vibes • stay remix energy
+  </text>
+</svg>
