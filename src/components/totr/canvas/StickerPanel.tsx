@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useCanvasStore } from '@/hooks/useCanvasState';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const stickers = [
   {
@@ -58,7 +58,10 @@ export function StickerPanel() {
     <Card>
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
-          <Badge variant="outline" className="rounded-full px-2 py-0 text-[0.65rem]">
+          <Badge
+            variant="outline"
+            className="rounded-full px-2 py-0 text-[0.65rem]"
+          >
             {t('label')}
           </Badge>
           {t('title')}
@@ -89,14 +92,18 @@ export function StickerPanel() {
                   </div>
                   <div className="flex-1 text-left">
                     <p className="font-medium text-sm text-foreground">
-                      {sticker.id === 'totr-duo' ? t('stickers.duo.name') : 
-                       sticker.id === 'heart-burst' ? t('stickers.heartBurst.name') :
-                       t('stickers.sparkleFrame.name')}
+                      {sticker.id === 'totr-duo'
+                        ? t('stickers.duo.name')
+                        : sticker.id === 'heart-burst'
+                          ? t('stickers.heartBurst.name')
+                          : t('stickers.sparkleFrame.name')}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {sticker.id === 'totr-duo' ? t('stickers.duo.description') : 
-                       sticker.id === 'heart-burst' ? t('stickers.heartBurst.description') :
-                       t('stickers.sparkleFrame.description')}
+                      {sticker.id === 'totr-duo'
+                        ? t('stickers.duo.description')
+                        : sticker.id === 'heart-burst'
+                          ? t('stickers.heartBurst.description')
+                          : t('stickers.sparkleFrame.description')}
                     </p>
                   </div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">

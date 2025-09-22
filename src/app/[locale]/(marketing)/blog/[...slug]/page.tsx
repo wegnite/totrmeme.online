@@ -1,3 +1,4 @@
+import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import AllPostsButton from '@/components/blog/all-posts-button';
 import BlogGrid from '@/components/blog/blog-grid';
 import { getMDXComponents } from '@/components/docs/mdx-components';
@@ -6,7 +7,6 @@ import { websiteConfig } from '@/config/website';
 import { LocaleLink } from '@/i18n/navigation';
 import { formatDate } from '@/lib/formatter';
 import { constructMetadata } from '@/lib/metadata';
-import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import {
   type BlogType,
   authorSource,

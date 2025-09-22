@@ -1,3 +1,4 @@
+import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import { HomeHero } from '@/components/marketing/home-hero';
 import { TotrVideoShowcase } from '@/components/totr/TotrVideoShowcase';
 import { Badge } from '@/components/ui/badge';
@@ -5,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
-import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import { Clock, Download, Play, TrendingUp, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';

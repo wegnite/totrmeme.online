@@ -80,7 +80,10 @@ export function TotrMemeGenerator() {
             <CardContent className="space-y-3 p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-sm font-medium text-white/80">
-                  <Badge variant="outline" className="rounded-full px-2 py-0 text-[0.65rem]">
+                  <Badge
+                    variant="outline"
+                    className="rounded-full px-2 py-0 text-[0.65rem]"
+                  >
                     {t('quickActions.title')}
                   </Badge>
                   <span className="text-[0.65rem] uppercase tracking-[0.2em] text-white/40">
@@ -134,7 +137,9 @@ export function TotrMemeGenerator() {
                     <h3 className="text-xl font-semibold tracking-tight text-white">
                       {t('canvas.title')}
                     </h3>
-                    <p className="text-sm text-white/70">{t('canvas.description')}</p>
+                    <p className="text-sm text-white/70">
+                      {t('canvas.description')}
+                    </p>
                   </div>
                   <div className="flex justify-center">
                     <KonvaStage
@@ -151,7 +156,9 @@ export function TotrMemeGenerator() {
                 <div className="flex h-[360px] items-center justify-center rounded-lg border border-dashed border-white/20 bg-white/5">
                   <div className="text-center text-white/70">
                     <p className="mb-2 text-sm">{t('canvas.selectTemplate')}</p>
-                    <p className="text-xs text-white/60">{t('canvas.selectTemplateHint')}</p>
+                    <p className="text-xs text-white/60">
+                      {t('canvas.selectTemplateHint')}
+                    </p>
                   </div>
                 </div>
               )}

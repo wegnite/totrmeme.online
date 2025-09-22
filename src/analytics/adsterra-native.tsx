@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 /**
  * Adsterra Native Banner
- * 
+ *
  * Native banner ads that blend with site content
  */
 export default function AdsterraNativeBanner() {
@@ -13,12 +13,15 @@ export default function AdsterraNativeBanner() {
     return null;
   }
 
-  const containerId = "container-326489faac48041616f3b86cb101057b";
+  const containerId = 'container-326489faac48041616f3b86cb101057b';
 
   useEffect(() => {
     // Ensure the script loads and initializes properly
     const checkAdLoad = () => {
-      if (typeof window !== 'undefined' && window.document.getElementById(containerId)) {
+      if (
+        typeof window !== 'undefined' &&
+        window.document.getElementById(containerId)
+      ) {
         console.log('Adsterra Native Banner container ready');
       }
     };
@@ -41,7 +44,7 @@ export default function AdsterraNativeBanner() {
           console.error('Adsterra Native Banner script failed to load:', e);
         }}
       />
-      <div 
+      <div
         id={containerId}
         className="min-h-[200px] w-full"
         style={{ display: 'block' }}

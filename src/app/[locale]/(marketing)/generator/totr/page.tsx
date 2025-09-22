@@ -1,8 +1,8 @@
+import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import { TotrMemeGenerator } from '@/components/totr/TotrMemeGenerator';
 import { TotrVideoShowcase } from '@/components/totr/TotrVideoShowcase';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
-import AdsterraNativeBanner from '@/analytics/adsterra-native';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 
@@ -47,7 +47,7 @@ export default function Page() {
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <main className="container mx-auto py-8">
         <TotrMemeGenerator />
-        
+
         {/* Native Banner Ad */}
         <section className="py-12">
           <AdsterraNativeBanner />
