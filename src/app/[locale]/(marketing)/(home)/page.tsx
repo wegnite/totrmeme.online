@@ -62,6 +62,77 @@ const homeCopy = {
       ],
       tags: ['TOTR', 'TOTЯ', 'Тотя', 'totya', 'totia'],
     },
+    entrySection: {
+      title: 'Browse Our Trend Hubs',
+      subtitle:
+        'Jump into the launch trackers and meme playbooks visitors are already searching for.',
+      categories: [
+        {
+          label: 'Game Launches',
+          blurb: 'Release schedules, limited editions, and monetization-ready angles.',
+          links: [
+            {
+              href: '/ghost-of-yotei',
+              title: 'Ghost of Yōtei Launch Hub',
+              badge: 'New',
+              description:
+                'Timeline, PS5 bundles, Photo Mode upgrades, and ad placement ideas to convert PS5 hype.',
+            },
+          ],
+        },
+        {
+          label: 'AI Meme Trends',
+          blurb: 'Prompt formulas, creator workflows, and distribution checklists.',
+          links: [
+            {
+              href: '/meme/ghostface-ai-picture',
+              title: 'Ghostface AI Picture Guide',
+              badge: 'Seasonal',
+              description:
+                'Gemini prompts, toolkit breakdowns, and Shorts strategy for the Halloween boom.',
+            },
+            {
+              href: '/meme/scream-ai-picture',
+              title: 'Scream AI Challenge',
+              badge: 'Trending',
+              description:
+                'Production pipeline, keyword positioning, and moderation tips for the viral challenge.',
+            },
+            {
+              href: '/generator/totr',
+              title: 'TOTR Meme Generator',
+              badge: 'Core',
+              description:
+                'Remix the original TOTR format with drag-and-drop templates and audio timing.',
+            },
+          ],
+        },
+        {
+          label: 'TOTR Foundations',
+          blurb: 'Explain the meme’s meaning, text, and cultural roots for new fans.',
+          links: [
+            {
+              href: '/what-is-totr',
+              title: 'What is TOTR?',
+              description:
+                'Full primer covering origins, timeline, and why the meme exploded globally.',
+            },
+            {
+              href: '/totr-meaning',
+              title: 'TOTR Meaning',
+              description:
+                'Language breakdown, translation notes, and how creators interpret “тотя❤️”.',
+            },
+            {
+              href: '/totr-text',
+              title: 'TOTR Text Pack',
+              description:
+                'Copy-paste symbols and formatting packs ready for captions and chats.',
+            },
+          ],
+        },
+      ],
+    },
     videoSection: {
       title: 'Watch: TOTR Meme Evolution 📹',
       subtitle:
@@ -98,6 +169,69 @@ const homeCopy = {
         text: '“Stay” by The Kid LAROI & Justin Bieber, usually slowed or remixed.',
       },
     ],
+    launchSection: {
+      title: 'Launch Playbooks to Capture Fresh Traffic',
+      subtitle:
+        'Leverage our newest guides to answer high-intent October searches before competitors do.',
+      cards: [
+        {
+          emoji: '🎮',
+          badge: 'New',
+          title: 'Ghost of Yōtei Launch Hub',
+          description:
+            'Release timeline, limited-edition PS5 bundles, Photo Mode hooks, and ad placement sandbox for monetizing the sequel hype.',
+          href: '/ghost-of-yotei',
+        },
+        {
+          emoji: '👻',
+          badge: 'Seasonal',
+          title: 'Ghostface AI Picture Guide',
+          description:
+            'Prompt formulas, toolkit comparisons, and Shorts distribution tips for the Halloween-ready Ghostface AI trend.',
+          href: '/meme/ghostface-ai-picture',
+        },
+        {
+          emoji: '😱',
+          badge: 'Trending',
+          title: 'Scream AI Picture Trend',
+          description:
+            'Step-by-step production chain, keyword positioning, and safety notes to keep the viral Scream challenge on your site.',
+          href: '/meme/scream-ai-picture',
+        },
+      ],
+    },
+    keywordSection: {
+      title: 'Priority Keyword Checklist',
+      subtitle:
+        'Answer these intent-packed queries on-site to increase average session duration and ad impressions.',
+      note: 'Updated October 2025 • Add to navigation or newsletters for fast wins.',
+      items: [
+        {
+          keyword: 'ghost of yotei release date',
+          intent: 'Launch timing',
+          trend: '▲ Rapid',
+          href: '/ghost-of-yotei',
+        },
+        {
+          keyword: 'ghost of yotei editions',
+          intent: 'Commercial research',
+          trend: '▲ Hardware bundle demand',
+          href: '/ghost-of-yotei',
+        },
+        {
+          keyword: 'ghostface ai picture prompts',
+          intent: 'Creator playbook',
+          trend: '▲ Seasonal spike',
+          href: '/meme/ghostface-ai-picture',
+        },
+        {
+          keyword: 'scream ai picture challenge',
+          intent: 'How-to / tutorial',
+          trend: '▲ Viral Shorts',
+          href: '/meme/scream-ai-picture',
+        },
+      ],
+    },
     timelineHighlights: [
       {
         date: 'Sep 1, 2025',
@@ -345,6 +479,73 @@ const homeCopy = {
       ],
       tags: ['TOTR', 'TOTЯ', 'Тотя', 'totya', 'totia'],
     },
+    entrySection: {
+      title: '精选入口：一键直达专题',
+      subtitle: '把用户正在搜索的热门玩法集中呈现，分类浏览更高效。',
+      categories: [
+        {
+          label: '游戏首发情报',
+          blurb: '掌握发售时间、限定版本与商业化思路。',
+          links: [
+            {
+              href: '/ghost-of-yotei',
+              title: 'Ghost of Yōtei 发售指南',
+              badge: 'NEW',
+              description:
+                '涵盖时间线、限量 PS5、Photo Mode 升级与广告位配置建议。',
+            },
+          ],
+        },
+        {
+          label: 'AI 表情趋势',
+          blurb: '提供提词、工具组合与分发策略，抓住短视频红利。',
+          links: [
+            {
+              href: '/meme/ghostface-ai-picture',
+              title: 'Ghostface AI 图片攻略',
+              badge: '季节热点',
+              description:
+                'Gemini 提词、工具拆解、Shorts 分发步骤，适配万圣节档期。',
+            },
+            {
+              href: '/meme/scream-ai-picture',
+              title: 'Scream AI 挑战教程',
+              badge: '热搜',
+              description:
+                '制作流程、关键词布局与安全提示，把挑战流量留在站内。',
+            },
+            {
+              href: '/generator/totr',
+              title: 'TOTR 在线生成器',
+              badge: '核心',
+              description:
+                '拖拽式模板、音频自动对齐，快速做出正宗 TOTR 视频。',
+            },
+          ],
+        },
+        {
+          label: 'TOTR 基础知识',
+          blurb: '给新访客解释 TOTR 的含义、用语与文化背景。',
+          links: [
+            {
+              href: '/what-is-totr',
+              title: 'TOTR 是什么？',
+              description: '完整梳理起源、时间线与爆红原因。',
+            },
+            {
+              href: '/totr-meaning',
+              title: 'TOTR 含义解析',
+              description: '语言层面与文化语境详解 “тотя❤️”。',
+            },
+            {
+              href: '/totr-text',
+              title: 'TOTR 文字素材库',
+              description: '复制俄语字符与美化文案，适配社交媒体。',
+            },
+          ],
+        },
+      ],
+    },
     videoSection: {
       title: '观看：TOTR 进化史 📹',
       subtitle: '交互时间线带你了解 TOTR 怎么走红',
@@ -378,6 +579,67 @@ const homeCopy = {
         text: 'Kid LAROI & Justin Bieber 的《Stay》慢速或再混音版本。',
       },
     ],
+    launchSection: {
+      title: '热点专题：提前锁住新流量',
+      subtitle: '围绕当月搜索飙升的关键词布置内容，让访客愿意留下来深入探索。',
+      cards: [
+        {
+          emoji: '🎮',
+          badge: 'NEW',
+          title: 'Ghost of Yōtei 首发情报站',
+          description:
+            '收录发售时间线、限定主机、Photo Mode 升级与广告位示例，帮助你承接 PS5 玩家需求。',
+          href: '/ghost-of-yotei',
+        },
+        {
+          emoji: '👻',
+          badge: '季节热点',
+          title: 'Ghostface AI 图片玩法',
+          description:
+            '提供 Gemini 提词、工具组合与 Shorts 分发策略，抓住万圣节创作者流量。',
+          href: '/meme/ghostface-ai-picture',
+        },
+        {
+          emoji: '😱',
+          badge: '热搜',
+          title: 'Scream AI Picture 挑战',
+          description:
+            '梳理制作流程、关键词布局与安全提醒，把病毒式挑战的流量留在站内。',
+          href: '/meme/scream-ai-picture',
+        },
+      ],
+    },
+    keywordSection: {
+      title: '搜索需求清单',
+      subtitle: '把这些问题的答案写在站内，同时安排内链与广告，自然延长停留时长。',
+      note: '2025 年 10 月更新 · 可按活动加入导航或邮件订阅。',
+      items: [
+        {
+          keyword: 'ghost of yotei release date',
+          intent: '发售时间',
+          trend: '▲ 搜索飙升',
+          href: '/ghost-of-yotei',
+        },
+        {
+          keyword: 'ghost of yotei editions',
+          intent: '购买信息',
+          trend: '▲ 限量主机需求',
+          href: '/ghost-of-yotei',
+        },
+        {
+          keyword: 'ghostface ai picture prompts',
+          intent: '制作教程',
+          trend: '▲ 季节主题',
+          href: '/meme/ghostface-ai-picture',
+        },
+        {
+          keyword: 'scream ai picture challenge',
+          intent: '玩法指南',
+          trend: '▲ 短视频爆款',
+          href: '/meme/scream-ai-picture',
+        },
+      ],
+    },
     timelineHighlights: [
       {
         date: '2025 年 9 月 1 日',
@@ -684,6 +946,66 @@ export default async function HomePage({ params }: HomePageProps) {
           quickAnswer={copy.quickAnswer}
           locale={locale}
         />
+
+        <section className="relative z-10 px-6 pb-12 pt-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.entrySection.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.entrySection.subtitle}
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-3">
+              {copy.entrySection.categories.map((category) => (
+                <Card
+                  key={category.label}
+                  className="border-white/10 bg-white/5 p-6 shadow-[0_35px_110px_-70px_rgba(103,64,255,0.65)] backdrop-blur-xl transition hover:border-white/25 hover:bg-white/10"
+                >
+                  <CardHeader className="space-y-3 p-0">
+                    <Badge className="w-fit border-white/20 bg-white/10 text-[0.65rem] uppercase tracking-[0.3em] text-white/80">
+                      {category.label}
+                    </Badge>
+                    <CardTitle className="text-xl text-white">
+                      {category.blurb}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="mt-6 space-y-4 p-0">
+                    {category.links.map((link) => (
+                      <Link
+                        key={link.title}
+                        href={getUrlWithLocale(link.href, locale)}
+                        className="group block rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-white/25 hover:bg-white/15"
+                      >
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-base font-semibold text-white">
+                          {link.title}
+                        </p>
+                        {'badge' in link && link.badge ? (
+                          <Badge className="border-white/20 bg-white/10 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
+                            {link.badge}
+                          </Badge>
+                        ) : null}
+                      </div>
+                        {link.description ? (
+                          <p className="mt-2 text-sm leading-relaxed text-white/70">
+                            {link.description}
+                          </p>
+                        ) : null}
+                        <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-[0.3em] text-primary/70 transition group-hover:text-primary">
+                          {locale.startsWith('zh') ? '立即进入' : 'Enter hub'}
+                          <span aria-hidden>→</span>
+                        </span>
+                      </Link>
+                    ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="relative z-10 py-20 px-6">
           <div className="mx-auto max-w-6xl">
@@ -1023,6 +1345,107 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.launchSection.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.launchSection.subtitle}
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {copy.launchSection.cards.map((card) => (
+                <Card
+                  key={card.title}
+                  className="border-white/10 bg-white/5 p-6 shadow-[0_35px_110px_-70px_rgba(109,91,255,0.7)] backdrop-blur-xl transition hover:border-white/25 hover:bg-white/10"
+                >
+                  <CardHeader className="space-y-4 p-0">
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl text-white">
+                        {card.emoji}
+                      </div>
+                      {card.badge ? (
+                        <Badge className="border-white/20 bg-white/10 text-[0.65rem] uppercase tracking-[0.3em] text-white">
+                          {card.badge}
+                        </Badge>
+                      ) : null}
+                    </div>
+                    <CardTitle className="text-xl text-white">
+                      {card.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-5 p-0 text-sm leading-relaxed text-white/70">
+                    <p>{card.description}</p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full rounded-full border-white/30 bg-white/5 text-white hover:border-white/60 hover:bg-white/15"
+                      asChild
+                    >
+                      <Link href={getUrlWithLocale(card.href, locale)}>
+                        {locale.startsWith('zh') ? '查看攻略' : 'Open playbook'}
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 py-20 px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-semibold text-white">
+                {copy.keywordSection.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-white/70">
+                {copy.keywordSection.subtitle}
+              </p>
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_40px_120px_-75px_rgba(103,64,255,0.8)] backdrop-blur-xl">
+              <div className="divide-y divide-white/10">
+                {copy.keywordSection.items.map((item) => (
+                  <div
+                    key={item.keyword}
+                    className="flex flex-col gap-4 p-6 text-white md:flex-row md:items-center md:justify-between"
+                  >
+                    <div>
+                      <p className="font-mono text-lg font-semibold text-white">
+                        {item.keyword}
+                      </p>
+                      <p className="text-sm text-white/60">{item.intent}</p>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Badge className="border-white/20 bg-white/10 text-white/80">
+                        {item.trend}
+                      </Badge>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-full border-white/30 bg-white/5 text-white hover:border-white/60 hover:bg-white/15"
+                        asChild
+                      >
+                        <Link href={getUrlWithLocale(item.href, locale)}>
+                          {locale.startsWith('zh') ? '跳转页面' : 'View details'}
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <p className="mt-6 text-center text-sm text-white/60">
+              {copy.keywordSection.note}
+            </p>
           </div>
         </section>
 

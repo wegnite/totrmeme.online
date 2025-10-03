@@ -20,92 +20,83 @@ export function getFooterLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: 'TOTR Meme',
+      title: 'Highlights',
       items: [
         {
-          title: 'TOTR Generator',
-          href: '/',
+          title: 'TOTR Meme Generator',
+          href: '/generator/totr',
           external: false,
         },
+        {
+          title: 'Ghostface AI Picture Guide',
+          href: '/meme/ghostface-ai-picture',
+          external: false,
+        },
+        {
+          title: 'Scream AI Challenge',
+          href: '/meme/scream-ai-picture',
+          external: false,
+        },
+        {
+          title: 'Ghost of Yōtei Launch Hub',
+          href: '/ghost-of-yotei',
+          external: false,
+        },
+      ],
+    },
+    {
+      title: 'Memes & AI',
+      items: [
         {
           title: 'What is TOTR?',
-          href: '/#what-is-totr',
+          href: '/what-is-totr',
           external: false,
         },
         {
-          title: 'TOTR Templates',
-          href: '/#templates',
+          title: 'TOTR Meaning',
+          href: '/totr-meaning',
           external: false,
         },
         {
-          title: 'TOTR Timeline',
-          href: '/#timeline',
-          external: false,
-        },
-      ],
-    },
-    {
-      title: 'Meme Tools',
-      items: [
-        {
-          title: 'TOTR vs ПЫ',
-          href: '/#totr-vs-py',
+          title: 'Russian Origins',
+          href: '/totr-russian-meaning',
           external: false,
         },
         {
-          title: 'Meme Creator',
-          href: '/#creator',
+          title: 'TOTR Meme Culture',
+          href: '/totr-meme-meaning',
           external: false,
         },
         {
-          title: 'Template Library',
-          href: '/#library',
-          external: false,
-        },
-        {
-          title: 'Trending Memes',
-          href: '/#trending',
-          external: false,
-        },
-        {
-          title: 'Meme History',
-          href: '/#history',
+          title: 'TOTR Text Pack',
+          href: '/totr-text',
           external: false,
         },
       ],
     },
     {
-      title: 'Help & Guides',
+      title: 'Games & Entertainment',
       items: [
         {
-          title: 'How to Use Generator',
-          href: '/#how-to-use',
+          title: 'Ghost of Yōtei Release Date',
+          href: '/ghost-of-yotei#timeline',
           external: false,
         },
         {
-          title: 'TOTR Meme Guide',
-          href: '/#guide',
+          title: 'Photo Mode Tips',
+          href: '/ghost-of-yotei#photo-mode',
           external: false,
         },
         {
-          title: 'Meme FAQ',
-          href: '/#faq',
+          title: 'Request Coverage',
+          href: Routes.Contact,
           external: false,
         },
         ...(websiteConfig.blog.enable
           ? [
               {
-                title: 'TOTR Meme Blog',
+                title: 'Latest Articles',
                 href: Routes.Blog,
-                external: false,
-              },
-            ]
-          : []),
-        ...(websiteConfig.docs.enable
-          ? [
-              {
-                title: 'Meme Documentation',
-                href: Routes.Docs,
                 external: false,
               },
             ]
@@ -113,28 +104,37 @@ export function getFooterLinks(): NestedMenuItem[] {
       ],
     },
     {
-      title: 'About TOTR',
+      title: 'Support & Company',
       items: [
         {
-          title: 'About the Project',
+          title: 'About Us',
           href: Routes.About,
           external: false,
         },
         {
-          title: 'Contact Support',
+          title: 'Contact',
           href: Routes.Contact,
           external: false,
         },
         {
-          title: 'Updates',
+          title: 'Changelog',
           href: Routes.Changelog,
           external: false,
         },
         {
-          title: 'Feature Requests',
+          title: 'Roadmap',
           href: Routes.Roadmap,
           external: true,
         },
+        ...(websiteConfig.docs.enable
+          ? [
+              {
+                title: 'Documentation',
+                href: Routes.Docs,
+                external: false,
+              },
+            ]
+          : []),
       ],
     },
     {

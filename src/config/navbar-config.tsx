@@ -8,6 +8,7 @@ import {
   CookieIcon,
   FileTextIcon,
   FlameIcon,
+  Gamepad2Icon,
   ListChecksIcon,
   MailIcon,
   RocketIcon,
@@ -33,99 +34,111 @@ export function getNavbarLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: 'TOTR Generator',
-      href: '/generator/totr',
-      external: false,
-    },
-    {
-      title: 'Learn About TOTR',
+      title: 'Start Creating',
       items: [
         {
-          title: 'What is TOTR?',
-          description: "Complete beginner's guide to the viral TOTR meme",
-          icon: <ComponentIcon className="size-4 shrink-0" />,
-          href: '/what-is-totr',
+          title: 'TOTR Meme Generator',
+          description: 'Drag-and-drop editor with parody-safe templates',
+          icon: <WandSparklesIcon className="size-4 shrink-0" />,
+          href: '/generator/totr',
           external: false,
         },
         {
+          title: 'TOTR Text Pack',
+          description: 'Copy “тотя❤️” symbols and styles for captions',
+          icon: <FileTextIcon className="size-4 shrink-0" />,
+          href: '/totr-text',
+          external: false,
+        },
+        {
+          title: 'Compare TOTR vs ПЫ',
+          description: 'See how the two Russian brainrot memes differ',
+          icon: <ComponentIcon className="size-4 shrink-0" />,
+          href: '/compare/totr-vs-py',
+          external: false,
+        },
+      ],
+    },
+    {
+      title: 'Meme Trends',
+      items: [
+        {
+          title: 'Ghostface AI Picture Guide',
+          description: 'Gemini prompts, toolkit comparisons, Shorts strategy',
+          icon: <FlameIcon className="size-4 shrink-0" />,
+          href: '/meme/ghostface-ai-picture',
+          external: false,
+        },
+        {
+          title: 'Scream AI Challenge',
+          description: 'Production pipeline, keyword targeting, safety notes',
+          icon: <RocketIcon className="size-4 shrink-0" />,
+          href: '/meme/scream-ai-picture',
+          external: false,
+        },
+        {
+          title: 'TOTR Meme Hub',
+          description: 'Original clip, timeline, templates, and FAQs',
+          icon: <ShieldCheckIcon className="size-4 shrink-0" />,
+          href: '/what-is-totr',
+          external: false,
+        },
+      ],
+    },
+    {
+      title: 'Games',
+      items: [
+        {
+          title: 'Ghost of Yōtei Launch Hub',
+          description: 'Release timeline, PS5 bundles, Photo Mode toolkit',
+          icon: <Gamepad2Icon className="size-4 shrink-0" />,
+          href: '/ghost-of-yotei',
+          external: false,
+        },
+        {
+          title: 'Request Coverage',
+          description: 'Tell us the next entertainment launch to track',
+          icon: <MailIcon className="size-4 shrink-0" />,
+          href: Routes.Contact,
+          external: false,
+        },
+      ],
+    },
+    {
+      title: 'Guides & Docs',
+      items: [
+        {
           title: 'TOTR Meaning',
-          description: 'Deep dive into the linguistic meaning and definition',
+          description: 'Linguistic breakdown and cultural context',
           icon: <FlameIcon className="size-4 shrink-0" />,
           href: '/totr-meaning',
           external: false,
         },
         {
           title: 'Russian Origins',
-          description:
-            "Discover TOTR's Russian pronunciation and cultural context",
+          description: 'Pronunciation tips and history from Ezo to TikTok',
           icon: <ShieldCheckIcon className="size-4 shrink-0" />,
           href: '/totr-russian-meaning',
           external: false,
         },
         {
           title: 'Meme Culture',
-          description:
-            'Why the TOTR meme went viral and conquered the internet',
-          icon: <RocketIcon className="size-4 shrink-0" />,
+          description: 'How TOTR became a global internet phenomenon',
+          icon: <ComponentIcon className="size-4 shrink-0" />,
           href: '/totr-meme-meaning',
           external: false,
         },
-        {
-          title: 'TOTR Text & Symbols',
-          description: 'Copy authentic Russian TOTR text and variations',
-          icon: <FileTextIcon className="size-4 shrink-0" />,
-          href: '/totr-text',
-          external: false,
-        },
-      ],
-    },
-    ...(websiteConfig.blog.enable
-      ? [
-          {
-            title: t('blog.title'),
-            href: Routes.Blog,
-            external: false,
-          },
-        ]
-      : []),
-    {
-      title: 'Meme Tools',
-      items: [
-        {
-          title: 'TOTR vs ПЫ',
-          description: 'Compare TOTR and PY memes side by side',
-          icon: <WandSparklesIcon className="size-4 shrink-0" />,
-          href: '/#totr-vs-py',
-          external: false,
-        },
-        {
-          title: 'Meme Creator',
-          description: 'Advanced meme generation tools',
-          icon: <FlameIcon className="size-4 shrink-0" />,
-          href: '/#creator',
-          external: false,
-        },
-        {
-          title: 'Template Library',
-          description: 'Browse and download meme templates',
-          icon: <ShieldCheckIcon className="size-4 shrink-0" />,
-          href: '/#library',
-          external: false,
-        },
-        {
-          title: 'Trending Memes',
-          description: "Explore what's trending in the meme world",
-          icon: <RocketIcon className="size-4 shrink-0" />,
-          href: '/#trending',
-          external: false,
-        },
-        {
-          title: 'Meme Timeline',
-          description: 'Track the evolution of TOTR memes',
-          icon: <ComponentIcon className="size-4 shrink-0" />,
-          href: '/#timeline',
-          external: false,
-        },
+        ...(websiteConfig.blog.enable
+          ? [
+              {
+                title: t('blog.title'),
+                description: 'Latest launch notes and editorials',
+                icon: <RocketIcon className="size-4 shrink-0" />,
+                href: Routes.Blog,
+                external: false,
+              },
+            ]
+          : []),
       ],
     },
     {
