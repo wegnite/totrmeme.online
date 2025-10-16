@@ -53,7 +53,7 @@ const DISTRIBUTION_TIPS = [
   },
 ] as const;
 
-const GHOSTFACE_KEYWORD_BLOCK = Array.from({ length: 40 }, () => 'Ghostface AI picture tutorial Ghostface AI picture prompt').join(' ');
+const GHOSTFACE_KEYWORD_BLOCK = Array.from({ length: 160 }, () => 'Ghostface AI picture tutorial Ghostface AI picture prompt Ghostface AI picture workflow').join(' ');
 
 export async function generateMetadata({
   params,

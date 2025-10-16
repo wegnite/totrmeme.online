@@ -14,6 +14,7 @@ import {
   RocketIcon,
   ShieldCheckIcon,
   SquareKanbanIcon,
+  StarIcon,
   WandSparklesIcon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -74,6 +75,13 @@ export function getNavbarLinks(): NestedMenuItem[] {
           description: 'Production pipeline, keyword targeting, safety notes',
           icon: <RocketIcon className="size-4 shrink-0" />,
           href: '/meme/scream-ai-picture',
+          external: false,
+        },
+        {
+          title: 'Chicken Stars Meme Guide',
+          description: 'Audio origin, CapCut packs, posting guardrails',
+          icon: <StarIcon className="size-4 shrink-0" />,
+          href: '/meme/chicken-stars-meme',
           external: false,
         },
         {

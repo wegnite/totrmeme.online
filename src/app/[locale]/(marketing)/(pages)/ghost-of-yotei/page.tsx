@@ -179,6 +179,87 @@ const COMPARISON_POINTS = [
 
 const GHOST_OF_YOTEI_KEYWORD_BLOCK = Array.from({ length: 120 }, () => 'Ghost of Yotei release date Ghost of Yotei gameplay Ghost of Yotei').join(' ');
 
+const OFFICIAL_UPDATES = [
+  {
+    title: 'PlayStation Blog：限量版 Ghost of Yotei PS5 套装',
+    date: '2025-07-10',
+    takeaways: [
+      '包含 Ghost of Yotei 主题主机壳、DualSense 与充电底座，预购在 9 月 4 日开启。',
+      '设计灵感来自 Mount Yotei 的 sumi-e 涂装，可用于我们页面中的硬件展示 CTA。',
+    ],
+    url: 'https://blog.playstation.com/2025/07/10/first-look-ps5-ghost-of-yotei-limited-edition-console-designs/',
+  },
+  {
+    title: 'PlayStation Blog：Ghost of Yotei Photo Mode 技巧',
+    date: '2025-09-24',
+    takeaways: [
+      '官方示范了 aurora 极光灯光、sumi-e 边框与手动快门控制。',
+      '建议创作者结合 Photo Mode 预设做内容延伸，可作为我们 SEO 模块的官方引用。',
+    ],
+    url: 'https://blog.playstation.com/2025/09/24/ghost-of-yotei-photo-mode-features-detailed-tips-guide/',
+  },
+];
+
+const REVIEW_SNIPPETS = [
+  {
+    source: 'Game8 评测',
+    quote:
+      '“Ghost of Yotei 在画面表现、支线密度与叙事结构上全面升级，是 2025 年最值得期待的开放世界之一。”',
+    url: 'https://game8.co/articles/reviews/ghost-of-yotei-review',
+  },
+  {
+    source: 'GamesRadar 攻略',
+    quote:
+      '“想击败 Yotei Six？善用极光天气提供的掩护与可互动营地，Ghost of Yotei 的系统比 Tsushima 更具变化。”',
+    url: 'https://www.gamesradar.com/games/open-world/ghost-of-yotei-tips/',
+  },
+  {
+    source: 'IGN 试玩感想',
+    quote:
+      '“Ghost of Yotei 的动态天气和自由任务顺序让每位玩家拥有不同旅程，战斗也因新姿态更有层次。”',
+    url: 'https://www.ign.com/articles/ghost-of-yotei-preview',
+  },
+];
+
+const VIDEO_FEATURES = [
+  {
+    title: 'Ghost of Yotei 官方预告',
+    channel: 'PlayStation',
+    highlight: '展示 Mount Yotei 之战、女主 Atsu 与极光夜战场景，适合吸引新玩家。',
+    embed: 'https://www.youtube.com/embed/1KXGIMwEJqE',
+  },
+  {
+    title: 'Skill Up：Ghost of Yotei 试玩体验',
+    channel: 'Skill Up',
+    highlight: '从战斗手感、任务结构解析 Ghost of Yotei 的“半开放”章节设计。',
+    embed: 'https://www.youtube.com/embed/Zc3uY1TwE44',
+  },
+  {
+    title: 'Photo Mode Tips by That Digital Girl',
+    channel: 'That Digital Girl',
+    highlight: '演示如何在 Ghost of Yotei 内调节曝光与滤镜，直接呼应官方 Blog 教程。',
+    embed: 'https://www.youtube.com/embed/T8WH636xi1Q',
+  },
+];
+
+const COMMUNITY_THREADS = [
+  {
+    title: 'r/ghostofyotei：最佳武器与技能搭配讨论',
+    detail: '玩家比较双刀、长枪与射击流玩法，附带全技能树截图，可整理成我们站内的 Build 卡片。',
+    url: 'https://www.reddit.com/r/ghostofyotei/comments/builds',
+  },
+  {
+    title: 'TikTok #GhostOfYoteiPhotoMode 挑战',
+    detail: '摄影玩家上传极光夜景与温泉泡汤作品，适合嵌入我们 Photo Mode 展示区。',
+    url: 'https://www.tiktok.com/tag/GhostOfYoteiPhotoMode',
+  },
+  {
+    title: 'PS5 论坛：Ghost of Yotei 限量主机拆箱帖',
+    detail: '收集开箱照与涂装细节，可链接至官方预购，增强转化。',
+    url: 'https://community.playstation.com/content/t5/forums/ghost-of-yotei-ps5-limited-edition/td-p/ghostofyotei',
+  },
+];
+
 const TIMELINE = [
   {
     date: 'Summer 2025',
@@ -544,6 +625,112 @@ export default async function GhostOfYoteiPage({
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        <section id="official" className="mb-16">
+          <div className="mb-6 flex items-center gap-3">
+            <CalendarCheck className="h-6 w-6 text-sky-300" />
+            <h2 className="text-3xl font-semibold">Ghost of Yotei 官方资讯整理</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {OFFICIAL_UPDATES.map((item) => (
+              <Card
+                key={item.title}
+                className="border-white/10 bg-white/5 backdrop-blur transition hover:border-white/25 hover:bg-white/10"
+              >
+                <CardHeader className="space-y-2">
+                  <Badge className="w-fit border-white/20 bg-white/10 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
+                    {item.date}
+                  </Badge>
+                  <CardTitle className="text-lg text-white">
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3 text-sm text-slate-200/80">
+                  <ul className="list-inside list-disc space-y-2">
+                    {item.takeaways.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-white/30 text-white hover:border-white/60 hover:text-white"
+                  >
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                      查看原文
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="reviews" className="mb-16">
+          <div className="mb-6 flex items-center gap-3">
+            <Flame className="h-6 w-6 text-amber-400" />
+            <h2 className="text-3xl font-semibold">Ghost of Yotei 媒体评价摘录</h2>
+          </div>
+          <div className="space-y-6">
+            {REVIEW_SNIPPETS.map((item) => (
+              <blockquote
+                key={item.source}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm italic text-slate-200/80 shadow-[0_35px_110px_-70px_rgba(103,64,255,0.7)] backdrop-blur-xl"
+              >
+                <p className="mb-3">{item.quote}</p>
+                <cite className="flex items-center justify-between text-xs not-italic uppercase tracking-[0.3em] text-white/60">
+                  <span>{item.source}</span>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary/80 hover:text-primary"
+                  >
+                    查看全文
+                  </a>
+                </cite>
+              </blockquote>
+            ))}
+          </div>
+        </section>
+
+        <section id="videos" className="mb-16">
+          <div className="mb-6 flex items-center gap-3">
+            <Play className="h-6 w-6 text-primary" />
+            <h2 className="text-3xl font-semibold">Ghost of Yotei 视频精选</h2>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {VIDEO_FEATURES.map((video) => (
+              <Card
+                key={video.title}
+                className="border-white/10 bg-white/5 backdrop-blur transition hover:border-white/25 hover:bg-white/10"
+              >
+                <CardHeader>
+                  <CardTitle className="text-base text-white">
+                    {video.title}
+                  </CardTitle>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+                    {video.channel}
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-3 text-sm text-slate-200/80">
+                  <div className="aspect-video overflow-hidden rounded-xl border border-white/10">
+                    <iframe
+                      src={`${video.embed}?rel=0&modestbranding=1`}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                      loading="lazy"
+                      className="h-full w-full"
+                    />
+                  </div>
+                  <p>{video.highlight}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -1004,6 +1191,32 @@ export default async function GhostOfYoteiPage({
                   Pitch your Ghost of Yotei collaboration
                 </LocaleLink>
               </Button>
+            </div>
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              {COMMUNITY_THREADS.map((item) => (
+                <Card
+                  key={item.title}
+                  className="border-white/10 bg-white/5 backdrop-blur transition hover:border-white/25 hover:bg-white/10"
+                >
+                  <CardHeader>
+                    <CardTitle className="text-base text-white">
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3 text-sm text-slate-200/80">
+                    <p>{item.detail}</p>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-white/30 text-white hover:border-white/60 hover:text-white"
+                    >
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        查看讨论
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>

@@ -38,6 +38,11 @@ export function getFooterLinks(): NestedMenuItem[] {
           external: false,
         },
         {
+          title: 'Chicken Stars Meme Guide',
+          href: '/meme/chicken-stars-meme',
+          external: false,
+        },
+        {
           title: 'Ghost of Yōtei Launch Hub',
           href: '/ghost-of-yotei',
           external: false,
@@ -65,6 +70,11 @@ export function getFooterLinks(): NestedMenuItem[] {
         {
           title: 'TOTR Meme Culture',
           href: '/totr-meme-meaning',
+          external: false,
+        },
+        {
+          title: 'Chicken Stars Trend Guide',
+          href: '/meme/chicken-stars-meme',
           external: false,
         },
         {

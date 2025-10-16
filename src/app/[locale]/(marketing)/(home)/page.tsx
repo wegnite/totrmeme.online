@@ -14,10 +14,9 @@ import Link from 'next/link';
 const homeCopy = {
   en: {
     metadata: {
-      title:
-        'TOTR Meme (TOTЯ, Тотя) Meaning & Free Generator | TOTR Meme Online',
+      title: 'What Is The TOTR Meme? - The Complete Guide & History',
       description:
-        'Learn what the TOTR/TOTЯ meme means, watch the original clip, and remix it in our free online generator with parody-safe templates. Includes timeline, TOTR vs ПЫ FAQ, and downloads.',
+        'Your ultimate guide to the TOTR meme. We dive deep into its origin, meaning, and why it went viral. Includes a full history and the best examples.',
     },
     schema: {
       faq: [
@@ -69,7 +68,8 @@ const homeCopy = {
       categories: [
         {
           label: 'Game Launches',
-          blurb: 'Release schedules, limited editions, and monetization-ready angles.',
+          blurb:
+            'Release schedules, limited editions, and monetization-ready angles.',
           links: [
             {
               href: '/ghost-of-yotei',
@@ -82,7 +82,8 @@ const homeCopy = {
         },
         {
           label: 'AI Meme Trends',
-          blurb: 'Prompt formulas, creator workflows, and distribution checklists.',
+          blurb:
+            'Prompt formulas, creator workflows, and distribution checklists.',
           links: [
             {
               href: '/meme/ghostface-ai-picture',
@@ -99,6 +100,13 @@ const homeCopy = {
                 'Production pipeline, keyword positioning, and moderation tips for the viral challenge.',
             },
             {
+              href: '/meme/chicken-stars-meme',
+              title: 'Chicken Stars Meme Guide',
+              badge: 'New',
+              description:
+                'Audio credits, CapCut starter packs, and posting cadence for the niche brainrot loop.',
+            },
+            {
               href: '/generator/totr',
               title: 'TOTR Meme Generator',
               badge: 'Core',
@@ -109,7 +117,8 @@ const homeCopy = {
         },
         {
           label: 'TOTR Foundations',
-          blurb: 'Explain the meme’s meaning, text, and cultural roots for new fans.',
+          blurb:
+            'Explain the meme’s meaning, text, and cultural roots for new fans.',
           links: [
             {
               href: '/what-is-totr',
@@ -198,6 +207,14 @@ const homeCopy = {
             'Step-by-step production chain, keyword positioning, and safety notes to keep the viral Scream challenge on your site.',
           href: '/meme/scream-ai-picture',
         },
+        {
+          emoji: '⭐',
+          badge: 'New',
+          title: 'Chicken Stars Meme Guide',
+          description:
+            'Explain the audio origin, share CapCut/Viggle prompts, and publish hashtags for the new brainrot loop.',
+          href: '/meme/chicken-stars-meme',
+        },
       ],
     },
     keywordSection: {
@@ -229,6 +246,12 @@ const homeCopy = {
           intent: 'How-to / tutorial',
           trend: '▲ Viral Shorts',
           href: '/meme/scream-ai-picture',
+        },
+        {
+          keyword: 'chicken stars meme meaning',
+          intent: 'Trend explainer',
+          trend: '▲ Brainrot niche',
+          href: '/meme/chicken-stars-meme',
         },
       ],
     },
@@ -515,11 +538,17 @@ const homeCopy = {
                 '制作流程、关键词布局与安全提示，把挑战流量留在站内。',
             },
             {
+              href: '/meme/chicken-stars-meme',
+              title: 'Chicken Stars 趋势攻略',
+              badge: '新品',
+              description:
+                '说明音源出处、CapCut/Viggle 提词与标签节奏，承接脑腐流量。',
+            },
+            {
               href: '/generator/totr',
               title: 'TOTR 在线生成器',
               badge: '核心',
-              description:
-                '拖拽式模板、音频自动对齐，快速做出正宗 TOTR 视频。',
+              description: '拖拽式模板、音频自动对齐，快速做出正宗 TOTR 视频。',
             },
           ],
         },
@@ -607,11 +636,20 @@ const homeCopy = {
             '梳理制作流程、关键词布局与安全提醒，把病毒式挑战的流量留在站内。',
           href: '/meme/scream-ai-picture',
         },
+        {
+          emoji: '⭐',
+          badge: '新品',
+          title: 'Chicken Stars Meme 指南',
+          description:
+            '总结音源背景、CapCut/Viggle 模板与标签策略，快速接住脑腐访客。',
+          href: '/meme/chicken-stars-meme',
+        },
       ],
     },
     keywordSection: {
       title: '搜索需求清单',
-      subtitle: '把这些问题的答案写在站内，同时安排内链与广告，自然延长停留时长。',
+      subtitle:
+        '把这些问题的答案写在站内，同时安排内链与广告，自然延长停留时长。',
       note: '2025 年 10 月更新 · 可按活动加入导航或邮件订阅。',
       items: [
         {
@@ -637,6 +675,12 @@ const homeCopy = {
           intent: '玩法指南',
           trend: '▲ 短视频爆款',
           href: '/meme/scream-ai-picture',
+        },
+        {
+          keyword: 'chicken stars meme',
+          intent: '梗图解读',
+          trend: '▲ Nich 热词',
+          href: '/meme/chicken-stars-meme',
         },
       ],
     },
@@ -856,6 +900,9 @@ export async function generateMetadata({
     title: copy.metadata.title,
     description: copy.metadata.description,
     canonicalUrl: getUrlWithLocale('/', locale),
+    other: {
+      'naver-site-verification': '77b72dae8fa36c45acbcb61c91e0a803a9c79680',
+    },
   });
 }
 
@@ -979,16 +1026,16 @@ export default async function HomePage({ params }: HomePageProps) {
                         href={getUrlWithLocale(link.href, locale)}
                         className="group block rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-white/25 hover:bg-white/15"
                       >
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-base font-semibold text-white">
-                          {link.title}
-                        </p>
-                        {'badge' in link && link.badge ? (
-                          <Badge className="border-white/20 bg-white/10 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
-                            {link.badge}
-                          </Badge>
-                        ) : null}
-                      </div>
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="text-base font-semibold text-white">
+                            {link.title}
+                          </p>
+                          {'badge' in link && link.badge ? (
+                            <Badge className="border-white/20 bg-white/10 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
+                              {link.badge}
+                            </Badge>
+                          ) : null}
+                        </div>
                         {link.description ? (
                           <p className="mt-2 text-sm leading-relaxed text-white/70">
                             {link.description}
@@ -1434,7 +1481,9 @@ export default async function HomePage({ params }: HomePageProps) {
                         asChild
                       >
                         <Link href={getUrlWithLocale(item.href, locale)}>
-                          {locale.startsWith('zh') ? '跳转页面' : 'View details'}
+                          {locale.startsWith('zh')
+                            ? '跳转页面'
+                            : 'View details'}
                         </Link>
                       </Button>
                     </div>

@@ -1,0 +1,47 @@
+<svg width="960" height="1200" viewBox="0 0 960 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="45%" stop-color="#4338ca" />
+      <stop offset="100%" stop-color="#f472b6" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827cc" />
+      <stop offset="100%" stop-color="#1f2937dd" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg2)" />
+  <g transform="translate(80 160)">
+    <rect width="800" height="520" rx="56" fill="url(#panel)" stroke="#fde68a" stroke-width="4" />
+    <text x="72" y="130" font-family="Poppins, Arial, sans-serif" font-size="64" font-weight="600" fill="#fce7f3">
+      Viggle Shot List
+    </text>
+    <text x="72" y="200" font-family="IBM Plex Mono, monospace" font-size="34" fill="#a5b4fc">
+      01  Neon mascot twirl · 2.1s
+    </text>
+    <text x="72" y="250" font-family="IBM Plex Mono, monospace" font-size="34" fill="#c4b5fd">
+      02  Star wipe burst · 1.4s
+    </text>
+    <text x="72" y="300" font-family="IBM Plex Mono, monospace" font-size="34" fill="#f9a8d4">
+      03  VHS zoom out · 1.0s
+    </text>
+    <text x="72" y="350" font-family="IBM Plex Mono, monospace" font-size="34" fill="#facc15">
+      04  Caption crawl · 0.7s
+    </text>
+    <text x="72" y="400" font-family="IBM Plex Mono, monospace" font-size="34" fill="#fef3c7">
+      05  Confetti flash · 1.2s
+    </text>
+    <text x="72" y="450" font-family="IBM Plex Mono, monospace" font-size="34" fill="#fde68a">
+      Audio: Chicken Stars · 132 BPM
+    </text>
+  </g>
+  <g transform="translate(120 760)">
+    <rect width="720" height="280" rx="40" fill="#fdf4ff55" stroke="#f472b6" stroke-width="3" />
+    <text x="64" y="120" font-family="Space Grotesk, Arial, sans-serif" font-size="80" font-weight="700" fill="#fef9c3">
+      TEMPLATE STACK
+    </text>
+    <text x="64" y="190" font-family="Space Grotesk, Arial, sans-serif" font-size="40" fill="#bfdbfe">
+      CapCut · Viggle · TikTok Drafts
+    </text>
+  </g>
+</svg>

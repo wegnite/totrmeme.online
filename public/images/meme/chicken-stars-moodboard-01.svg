@@ -1,0 +1,31 @@
+<svg width="960" height="1200" viewBox="0 0 960 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff90e8" />
+      <stop offset="50%" stop-color="#6a5bff" />
+      <stop offset="100%" stop-color="#1f1b3a" />
+    </linearGradient>
+    <radialGradient id="pulse" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffe9ff" stop-opacity="0.95" />
+      <stop offset="60%" stop-color="#feb1ff" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#7a4bff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)" />
+  <circle cx="320" cy="360" r="260" fill="url(#pulse)" />
+  <circle cx="700" cy="760" r="320" fill="url(#pulse)" opacity="0.7" />
+  <g fill="#fef6ff" opacity="0.85">
+    <polygon points="120,140 140,190 195,195 150,230 165,285 120,255 75,285 90,230 45,195 100,190" />
+    <polygon points="880,280 905,335 964,342 918,382 935,437 880,406 825,437 842,382 796,342 855,335" />
+    <polygon points="480,960 500,1015 560,1020 515,1060 530,1115 480,1085 430,1115 445,1060 400,1020 460,1015" />
+  </g>
+  <text x="80" y="620" font-family="Space Grotesk, Arial, sans-serif" font-size="120" font-weight="700" fill="#fff9ff" letter-spacing="0.08em">
+    CHICKEN
+  </text>
+  <text x="120" y="720" font-family="Space Grotesk, Arial, sans-serif" font-size="180" font-weight="800" fill="#ffe279" letter-spacing="0.12em">
+    STARS
+  </text>
+  <text x="120" y="820" font-family="Space Grotesk, Arial, sans-serif" font-size="48" fill="#fef6ff" letter-spacing="0.32em">
+    NICHE BRAINROT 2025
+  </text>
+</svg>

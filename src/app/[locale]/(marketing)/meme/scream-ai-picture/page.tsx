@@ -64,7 +64,7 @@ const TOOLKIT = [
   },
 ] as const;
 
-const SCREAM_KEYWORD_BLOCK = Array.from({ length: 45 }, () => 'Scream AI picture tutorial Scream AI picture prompt Scream AI picture').join(' ');
+const SCREAM_KEYWORD_BLOCK = Array.from({ length: 150 }, () => 'Scream AI picture tutorial Scream AI picture prompt Scream AI picture workflow').join(' ');
 
 export async function generateMetadata({
   params,
