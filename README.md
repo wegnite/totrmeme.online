@@ -14,6 +14,30 @@ The documentation is available on the [website](https://mksaas.com/docs). It inc
 
 If you found anything that could be improved, please let me know.
 
+## Cloudflare Deployment
+
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+2. Authenticate Wrangler with your Cloudflare account:
+   ```bash
+   wrangler login
+   ```
+3. Populate runtime secrets (repeat for every key in `.env.production` that should remain private):
+   ```bash
+   wrangler secret put <KEY_NAME>
+   ```
+4. Verify or update `wrangler.jsonc` environment variables and bindings (R2 bucket, Hyperdrive, public URLs).
+5. Build and deploy to Cloudflare:
+   ```bash
+   pnpm opennextjs-cloudflare deploy
+   ```
+6. Preview the deployed worker at the URL printed after deployment (for example `https://totrmeme-online.mryangsd.workers.dev`), and tail logs if needed:
+   ```bash
+   wrangler tail
+   ```
+
 ## Links
 
 - 🔥 website: [mksaas.com](https://mksaas.com)

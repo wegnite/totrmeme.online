@@ -900,9 +900,6 @@ export async function generateMetadata({
     title: copy.metadata.title,
     description: copy.metadata.description,
     canonicalUrl: getUrlWithLocale('/', locale),
-    other: {
-      'naver-site-verification': '77b72dae8fa36c45acbcb61c91e0a803a9c79680',
-    },
   });
 }
 

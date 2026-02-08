@@ -104,12 +104,12 @@ export function getFooterLinks(): NestedMenuItem[] {
         },
         ...(websiteConfig.blog.enable
           ? [
-              {
-                title: 'Latest Articles',
-                href: Routes.Blog,
-                external: false,
-              },
-            ]
+            {
+              title: 'Latest Articles',
+              href: Routes.Blog,
+              external: false,
+            },
+          ]
           : []),
       ],
     },
@@ -138,12 +138,12 @@ export function getFooterLinks(): NestedMenuItem[] {
         },
         ...(websiteConfig.docs.enable
           ? [
-              {
-                title: 'Documentation',
-                href: Routes.Docs,
-                external: false,
-              },
-            ]
+            {
+              title: 'Documentation',
+              href: Routes.Docs,
+              external: false,
+            },
+          ]
           : []),
       ],
     },
@@ -164,6 +164,36 @@ export function getFooterLinks(): NestedMenuItem[] {
           title: t('legal.items.termsOfService'),
           href: Routes.TermsOfService,
           external: false,
+        },
+      ],
+    },
+    {
+      title: 'Friends',
+      items: [
+        {
+          title: 'Seedance AI',
+          href: 'https://seedance20.net',
+          external: true,
+        },
+        {
+          title: 'Seedream AI',
+          href: 'https://seedream50.com',
+          external: true,
+        },
+        {
+          title: 'Kling AI',
+          href: 'https://kling3.co/',
+          external: true,
+        },
+        {
+          title: 'AI Music Maker',
+          href: 'https://musicmake.ai',
+          external: true,
+        },
+        {
+          title: 'Song Unique',
+          href: 'https://songunique.com',
+          external: true,
         },
       ],
     },

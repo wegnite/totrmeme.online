@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
   ...(process.env.DOCKER_BUILD === 'true' && { output: 'standalone' }),
 
   /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: '/naver4f66426ef39e342ddb0dcbced69b7b74.html',
+        destination: '/api/naver-site-verification',
+      },
+    ];
+  },
+
   devIndicators: false,
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console

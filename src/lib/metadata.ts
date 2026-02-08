@@ -12,14 +12,12 @@ export function constructMetadata({
   canonicalUrl,
   image,
   noIndex = false,
-  other,
 }: {
   title?: string;
   description?: string;
   canonicalUrl?: string;
   image?: string;
   noIndex?: boolean;
-  other?: Record<string, string | number | boolean | null | undefined>;
 } = {}): Metadata {
   title = title || defaultMessages.Metadata.title;
   description = description || defaultMessages.Metadata.description;
@@ -60,9 +58,6 @@ export function constructMetadata({
     },
     metadataBase: new URL(getBaseUrl()),
     manifest: `${getBaseUrl()}/manifest.webmanifest`,
-    ...(other && {
-      other,
-    }),
     ...(noIndex && {
       robots: {
         index: false,
